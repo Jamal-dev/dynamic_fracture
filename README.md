@@ -13,18 +13,18 @@ cd candi
 
 # Dynamic Phase field equations
 
-Find a solution $\{\bm{u}, \varphi \} \in \{ \bm{u}_D + V\} \times W$ such that:
+Find a solution $\{\boldsymbol{u}, \varphi \} \in \{ \boldsymbol{u}_D + V\} \times W$ such that:
 
 $$
 \begin{align*}
-\rho \left( \partial_{tt} \bm{u}, \bm{w} \right)
+\rho \left( \partial_{tt} \boldsymbol{u}, \boldsymbol{w} \right)
 +
-\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {\bm{\sigma}}^+ , e(\bm{w}) \right)
+\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {\boldsymbol{\sigma}}^+ , e(\boldsymbol{w}) \right)
 +
-\left( {\bm{\sigma}}^- , e(\bm{w}) \right)
-& =0 & & \forall \bm{w} \in V
+\left( {\boldsymbol{\sigma}}^- , e(\boldsymbol{w}) \right)
+& =0 & & \forall \boldsymbol{w} \in V
 \\
-(1-\kappa) \left( \varphi \left(\bm{\sigma}^+ : e(\bm{u}) \right) , \psi - \varphi \right)
+(1-\kappa) \left( \varphi \left(\boldsymbol{\sigma}^+ : e(\boldsymbol{u}) \right) , \psi - \varphi \right)
 +
 G_c
 \left( \frac{1}{\epsilon} (1- \varphi) , \psi - \varphi \right)
@@ -35,30 +35,30 @@ G_c
 \end{align*}
 $$
 
-* $\bm{u}$ is the displacement $(\bm{u} \coloneqq \Omega \longrightarrow \R^2)$
-* $\bm{\sigma}$ is the stress tensor
-* $e(\bm{u})$ is the symmetric strain tensor $(e(\bm{u}) \coloneqq \frac{1}{2} \left( \nabla{\bm{u}} + \nabla{\bm{u}}^T \right))$
+* $\boldsymbol{u}$ is the displacement $(\boldsymbol{u} \coloneqq \Omega \longrightarrow \R^2)$
+* $\boldsymbol{\sigma}$ is the stress tensor
+* $e(\boldsymbol{u})$ is the symmetric strain tensor $(e(\boldsymbol{u}) \coloneqq \frac{1}{2} \left( \nabla{\boldsymbol{u}} + \nabla{\boldsymbol{u}}^T \right))$
 * $G_c$ is the energy release rate, and it is strictly positive
 * $\kappa$ and $\epsilon$ are the regularization parameters
-* ${\bm{\sigma}}^-$ is the compressive stress tensor
-* ${\bm{\sigma}}^+$ is the tensile stress tensor
+* ${\boldsymbol{\sigma}}^-$ is the compressive stress tensor
+* ${\boldsymbol{\sigma}}^+$ is the tensile stress tensor
 
-By introducing another variable velocity $\bm{v} \coloneq \R^2 \longrightarrow \R^2$, we can write the formulation as:
+By introducing another variable velocity $\boldsymbol{v} \coloneq \R^2 \longrightarrow \R^2$, we can write the formulation as:
 
 #### Formulation
 
-Find a solution $\{\bm{u}, \bm{v}, \varphi \} \in \{ \bm{u}_D + V\} \times \{ \bm{v}_D + L\} \times W$ such that:
+Find a solution $\{\boldsymbol{u}, \boldsymbol{v}, \varphi \} \in \{ \boldsymbol{u}_D + V\} \times \{ \boldsymbol{v}_D + L\} \times W$ such that:
 
 $$
 \begin{align*}
-\rho \left( \partial_{t} \bm{v}, \bm{w} \right)
+\rho \left( \partial_{t} \boldsymbol{v}, \boldsymbol{w} \right)
 +
-\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {\bm{\sigma}}^+ , e(\bm{w}) \right)
+\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {\boldsymbol{\sigma}}^+ , e(\boldsymbol{w}) \right)
 +
-\left( {\bm{\sigma}}^- , e(\bm{w}) \right)
-& =0 & & \forall \bm{w} \in V
+\left( {\boldsymbol{\sigma}}^- , e(\boldsymbol{w}) \right)
+& =0 & & \forall \boldsymbol{w} \in V
 \\
-(1-\kappa) \left( \varphi \left(\bm{\sigma}^+ : e(\bm{u}) \right) , \psi - \varphi \right)
+(1-\kappa) \left( \varphi \left(\boldsymbol{\sigma}^+ : e(\boldsymbol{u}) \right) , \psi - \varphi \right)
 +
 G_c
 \left( \frac{1}{\epsilon} (1- \varphi) , \psi - \varphi \right)
@@ -67,8 +67,8 @@ G_c
 \left(    \nabla \varphi   , \nabla \psi - \nabla \varphi \right)
 & \geq 0 & & \forall \psi \in W_{in}
 \\
-\rho \left( \partial_t \bm{u} - \bm{v}, \bm{w} \right)
-& =0 & & \forall \bm{w} \in L
+\rho \left( \partial_t \boldsymbol{u} - \boldsymbol{v}, \boldsymbol{w} \right)
+& =0 & & \forall \boldsymbol{w} \in L
 \end{align*}
 $$
 
@@ -78,36 +78,36 @@ $$
 
 ### Formulation
 
-Let $\bm{u}^{n-1}$, and $\bm{v}^{n-1}$ be the displacement and velocity at the previous time step. Find $\bm{u}, \bm{v} \in \{ \bm{u}_D + V\} \times \{ \bm{v}_D + L\}$ such that:
+Let $\boldsymbol{u}^{n-1}$, and $\boldsymbol{v}^{n-1}$ be the displacement and velocity at the previous time step. Find $\boldsymbol{u}, \boldsymbol{v} \in \{ \boldsymbol{u}_D + V\} \times \{ \boldsymbol{v}_D + L\}$ such that:
 
 $$
 \begin{align*}
-\rho \left( \frac{ \bm{v} - {\bm{v}}^{n-1} }{\delta t} , \bm{w} \right)
+\rho \left( \frac{ \boldsymbol{v} - {\boldsymbol{v}}^{n-1} }{\delta t} , \boldsymbol{w} \right)
 & +
 \theta 
-\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {{\bm{\sigma}}^+}({\bm{u}}) , e(\bm{w}) \right)
+\left( \left( (1-\kappa) \varphi^2 +\kappa \right) {{\boldsymbol{\sigma}}^+}({\boldsymbol{u}}) , e(\boldsymbol{w}) \right)
 & & &
 \\
 &+
 (1-\theta) 
 \left( \left( (1-\kappa) \varphi^2 +\kappa \right) 
-{{\bm{\sigma}}^+} ({\bm{u}}^{n-1})
-, e(\bm{w}) 
+{{\boldsymbol{\sigma}}^+} ({\boldsymbol{u}}^{n-1})
+, e(\boldsymbol{w}) 
 \right)
 & & &
 \\
 &+
 \theta 
-    \left( {\bm{\sigma}}^-({\bm{u}}) , e(\bm{w}) \right)
+    \left( {\boldsymbol{\sigma}}^-({\boldsymbol{u}}) , e(\boldsymbol{w}) \right)
 & & &
 \\
 &+
 (1-\theta) 
-    \left( {\bm{\sigma}}^-({\bm{u}}^{n-1}) , e(\bm{w}) \right)
-& =0 & & \forall \bm{w} \in V
+    \left( {\boldsymbol{\sigma}}^-({\boldsymbol{u}}^{n-1}) , e(\boldsymbol{w}) \right)
+& =0 & & \forall \boldsymbol{w} \in V
 \\
 % second equation
-(1-\kappa) \left( \varphi \left(\bm{\sigma}^+ : e(\bm{u}) \right) , \psi - \varphi \right)
+(1-\kappa) \left( \varphi \left(\boldsymbol{\sigma}^+ : e(\boldsymbol{u}) \right) , \psi - \varphi \right)
 & +
 G_c
 \left( \frac{1}{\epsilon} (1- \varphi) , \psi - \varphi \right)
@@ -117,41 +117,41 @@ G_c
 & \geq 0 & & \forall \psi \in W_{in}
 \\
 % third equation
-\rho \left( \frac{\bm{u} - {\bm{u}}^{n-1} }{\delta t}, \bm{w} \right) &
-- (\theta \rho) \left(  \bm{v}, \bm{w} \right)
-- \left( (1-\theta) \rho \right) \left(  {\bm{v}}^{n-1}, \bm{w} \right) 
-& =0 & & \forall \bm{w} \in L
+\rho \left( \frac{\boldsymbol{u} - {\boldsymbol{u}}^{n-1} }{\delta t}, \boldsymbol{w} \right) &
+- (\theta \rho) \left(  \boldsymbol{v}, \boldsymbol{w} \right)
+- \left( (1-\theta) \rho \right) \left(  {\boldsymbol{v}}^{n-1}, \boldsymbol{w} \right) 
+& =0 & & \forall \boldsymbol{w} \in L
 \end{align*}
 $$
 
-# Stress $\bm{\sigma}$
+# Stress $\boldsymbol{\sigma}$
 
 The stress tensor is defined as:
 
 $$ 
-\bm{\sigma}(\bm{u}) \coloneqq 2 \mu \ e(\bm{u}) + \lambda \ tr(e(\bm{u})) \ \bm{I} 
+\boldsymbol{\sigma}(\boldsymbol{u}) \coloneqq 2 \mu \ e(\boldsymbol{u}) + \lambda \ tr(e(\boldsymbol{u})) \ \boldsymbol{I} 
 $$
 
-where $\mu$ and $\lambda$ are the Lame parameters, and $\bm{I}$ is the second order identity tensor.
+where $\mu$ and $\lambda$ are the Lame parameters, and $\boldsymbol{I}$ is the second order identity tensor.
 
 # Stress decomposition
 
 The stress tensor can be decomposed into two parts as suggested by Miehe et all (2010):
 
 $$
-{\bm{\sigma}} \coloneqq 
+{\boldsymbol{\sigma}} \coloneqq 
                           \left( 
         \left(1-\kappa \right) \varphi^2 + \kappa
                           \right)
-                          {\bm{\sigma}}^+
-                          + {\bm{\sigma}}^-
+                          {\boldsymbol{\sigma}}^+
+                          + {\boldsymbol{\sigma}}^-
 $$
 
 $$
 \begin{align*}
-    {\bm{\sigma}}^{+} &= 2 \mu \ e(\bm{u}^{+}) + \lambda \ tr(e(\bm{u}^{+})) \ \bm{I} \ ,\\
-    {\bm{\sigma}}^{-} &= 2 \mu \ \left( e(\bm{u})-e(\bm{u}^{+}) \right)
-    + \lambda \ \left( tr(e(\bm{u}))- tr(e(\bm{u}^{+})) \right) \ \bm{I} \ .
+    {\boldsymbol{\sigma}}^{+} &= 2 \mu \ e(\boldsymbol{u}^{+}) + \lambda \ tr(e(\boldsymbol{u}^{+})) \ \boldsymbol{I} \ ,\\
+    {\boldsymbol{\sigma}}^{-} &= 2 \mu \ \left( e(\boldsymbol{u})-e(\boldsymbol{u}^{+}) \right)
+    + \lambda \ \left( tr(e(\boldsymbol{u}))- tr(e(\boldsymbol{u}^{+})) \right) \ \boldsymbol{I} \ .
 \end{align*}
 $$
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # Utility rule file for release.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynam
 include CMakeFiles/release.dir/progress.make
 
 CMakeFiles/release:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Switching CMAKE_BUILD_TYPE to Release"
-	/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Switching CMAKE_BUILD_TYPE to Release"
+	/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 	/usr/bin/cmake -E echo "***"
 	/usr/bin/cmake -E echo "*** Switched to Release mode. Now recompile with:  \$$ make"
 	/usr/bin/cmake -E echo "***"
@@ -75,6 +75,6 @@ CMakeFiles/release.dir/clean:
 .PHONY : CMakeFiles/release.dir/clean
 
 CMakeFiles/release.dir/depend:
-	cd /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/release.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/release.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/release.dir/depend
 

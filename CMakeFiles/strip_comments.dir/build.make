@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # Utility rule file for strip_comments.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynam
 include CMakeFiles/strip_comments.dir/progress.make
 
 CMakeFiles/strip_comments:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
-	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' step-fsi.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "strip comments"
+	/usr/bin/perl -pi -e 's#^[ \t]*//.*\n##g;' dynamic_fracture.cc
 
 strip_comments: CMakeFiles/strip_comments
 strip_comments: CMakeFiles/strip_comments.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/strip_comments.dir/clean:
 .PHONY : CMakeFiles/strip_comments.dir/clean
 
 CMakeFiles/strip_comments.dir/depend:
-	cd /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/strip_comments.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/strip_comments.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/strip_comments.dir/depend
 

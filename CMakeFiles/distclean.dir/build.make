@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # Utility rule file for distclean.
 
@@ -54,9 +54,9 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynam
 include CMakeFiles/distclean.dir/progress.make
 
 CMakeFiles/distclean:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
-	/usr/bin/cmake --build /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture --target clean
-	/usr/bin/cmake --build /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture --target runclean
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "distclean invoked"
+	/usr/bin/cmake --build /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture --target clean
+	/usr/bin/cmake --build /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture --target runclean
 	/usr/bin/cmake -E remove_directory CMakeFiles
 	/usr/bin/cmake -E remove CMakeCache.txt cmake_install.cmake Makefile build.ninja rules.ninja .ninja_deps .ninja_log
 
@@ -75,6 +75,6 @@ CMakeFiles/distclean.dir/clean:
 .PHONY : CMakeFiles/distclean.dir/clean
 
 CMakeFiles/distclean.dir/depend:
-	cd /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/distclean.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/distclean.dir/depend
 

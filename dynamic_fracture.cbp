@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="dynamic_fracture"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\lib\;CMake Files\..\..\lib\cmake\;CMake Files\..\..\lib\cmake\deal.II\;CMake Files\..\..\share\;CMake Files\..\..\share\deal.II\;CMake Files\..\..\share\deal.II\macros\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="info">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 info"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="strip_comments">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 strip_comments"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="distclean">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 distclean"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="runclean">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 runclean"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="release">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 release"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debug">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 debug"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="run">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 run"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dynamic_fracture">
+				<Option output="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/dynamic_fracture" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_NO_AUTO_PTR"/>
+					<Add option="-DDEBUG"/>
+					<Add option="-DTBB_USE_DEBUG"/>
+					<Add option="-DTBB_DO_ASSERT=1"/>
+					<Add option="-Ddeal_II_dimension=2"/>
+					<Add directory="/home/jamal/deal/deal.II-v9.2.0/include"/>
+					<Add directory="/home/jamal/deal/deal.II-v9.2.0/include/deal.II/bundled"/>
+					<Add directory="/home/jamal/deal/parmetis-4.0.3/include"/>
+					<Add directory="/home/jamal/deal/trilinos-release-12-18-1/include"/>
+					<Add directory="/usr/include/suitesparse"/>
+					<Add directory="/home/jamal/deal/petsc-3.13.1/include"/>
+					<Add directory="/home/jamal/deal/hdf5-1.10.5/include"/>
+					<Add directory="/usr/local/include/opencascade"/>
+					<Add directory="/home/jamal/deal/p4est-2.2/FAST/include"/>
+					<Add directory="/home/jamal/deal/slepc-3.13.2/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 dynamic_fracture"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dynamic_fracture/fast">
+				<Option output="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/dynamic_fracture" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DBOOST_NO_AUTO_PTR"/>
+					<Add option="-DDEBUG"/>
+					<Add option="-DTBB_USE_DEBUG"/>
+					<Add option="-DTBB_DO_ASSERT=1"/>
+					<Add option="-Ddeal_II_dimension=2"/>
+					<Add directory="/home/jamal/deal/deal.II-v9.2.0/include"/>
+					<Add directory="/home/jamal/deal/deal.II-v9.2.0/include/deal.II/bundled"/>
+					<Add directory="/home/jamal/deal/parmetis-4.0.3/include"/>
+					<Add directory="/home/jamal/deal/trilinos-release-12-18-1/include"/>
+					<Add directory="/usr/include/suitesparse"/>
+					<Add directory="/home/jamal/deal/petsc-3.13.1/include"/>
+					<Add directory="/home/jamal/deal/hdf5-1.10.5/include"/>
+					<Add directory="/usr/local/include/opencascade"/>
+					<Add directory="/home/jamal/deal/p4est-2.2/FAST/include"/>
+					<Add directory="/home/jamal/deal/slepc-3.13.2/include"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/openmpi/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 dynamic_fracture/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/dynamic_fracture.cc">
+			<Option target="dynamic_fracture"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../lib/cmake/deal.II/deal.IIConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../lib/cmake/deal.II/deal.IIConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../lib/cmake/deal.II/deal.IITargets-debugrelease.cmake">
+			<Option virtualFolder="CMake Files\..\..\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../lib/cmake/deal.II/deal.IITargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\lib\cmake\deal.II\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_add_test.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_initialize_cached_variables.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_pickup_tests.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_query_git_information.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+		<Unit filename="/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/../../share/deal.II/macros/macro_deal_ii_setup_target.cmake">
+			<Option virtualFolder="CMake Files\..\..\share\deal.II\macros\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

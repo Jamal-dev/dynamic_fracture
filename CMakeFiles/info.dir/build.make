@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # Utility rule file for info.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynam
 include CMakeFiles/info.dir/progress.make
 
 CMakeFiles/info:
-	/usr/bin/cmake -P /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/print_usage.cmake
+	/usr/bin/cmake -P /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/print_usage.cmake
 
 info: CMakeFiles/info
 info: CMakeFiles/info.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/info.dir/clean:
 .PHONY : CMakeFiles/info.dir/clean
 
 CMakeFiles/info.dir/depend:
-	cd /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/info.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/info.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/info.dir/depend
 

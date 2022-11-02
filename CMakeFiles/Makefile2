@@ -44,16 +44,16 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/step-fsi.dir/all
+all: CMakeFiles/dynamic_fracture.dir/all
 
 .PHONY : all
 
@@ -70,7 +70,7 @@ clean: CMakeFiles/runclean.dir/clean
 clean: CMakeFiles/release.dir/clean
 clean: CMakeFiles/debug.dir/clean
 clean: CMakeFiles/run.dir/clean
-clean: CMakeFiles/step-fsi.dir/clean
+clean: CMakeFiles/dynamic_fracture.dir/clean
 
 .PHONY : clean
 
@@ -81,14 +81,14 @@ clean: CMakeFiles/step-fsi.dir/clean
 CMakeFiles/info.dir/all:
 	$(MAKE) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/depend
 	$(MAKE) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num= "Built target info"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num= "Built target info"
 .PHONY : CMakeFiles/info.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/info.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/info.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/info.dir/rule
 
 # Convenience name for target.
@@ -108,14 +108,14 @@ CMakeFiles/info.dir/clean:
 CMakeFiles/strip_comments.dir/all:
 	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/depend
 	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=8 "Built target strip_comments"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=8 "Built target strip_comments"
 .PHONY : CMakeFiles/strip_comments.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/strip_comments.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/strip_comments.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/strip_comments.dir/rule
 
 # Convenience name for target.
@@ -135,14 +135,14 @@ CMakeFiles/strip_comments.dir/clean:
 CMakeFiles/distclean.dir/all:
 	$(MAKE) -f CMakeFiles/distclean.dir/build.make CMakeFiles/distclean.dir/depend
 	$(MAKE) -f CMakeFiles/distclean.dir/build.make CMakeFiles/distclean.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=2 "Built target distclean"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=2 "Built target distclean"
 .PHONY : CMakeFiles/distclean.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/distclean.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/distclean.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/distclean.dir/rule
 
 # Convenience name for target.
@@ -162,14 +162,14 @@ CMakeFiles/distclean.dir/clean:
 CMakeFiles/runclean.dir/all:
 	$(MAKE) -f CMakeFiles/runclean.dir/build.make CMakeFiles/runclean.dir/depend
 	$(MAKE) -f CMakeFiles/runclean.dir/build.make CMakeFiles/runclean.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=5 "Built target runclean"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=7 "Built target runclean"
 .PHONY : CMakeFiles/runclean.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/runclean.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/runclean.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/runclean.dir/rule
 
 # Convenience name for target.
@@ -189,14 +189,14 @@ CMakeFiles/runclean.dir/clean:
 CMakeFiles/release.dir/all:
 	$(MAKE) -f CMakeFiles/release.dir/build.make CMakeFiles/release.dir/depend
 	$(MAKE) -f CMakeFiles/release.dir/build.make CMakeFiles/release.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=3 "Built target release"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=5 "Built target release"
 .PHONY : CMakeFiles/release.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/release.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/release.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/release.dir/rule
 
 # Convenience name for target.
@@ -216,14 +216,14 @@ CMakeFiles/release.dir/clean:
 CMakeFiles/debug.dir/all:
 	$(MAKE) -f CMakeFiles/debug.dir/build.make CMakeFiles/debug.dir/depend
 	$(MAKE) -f CMakeFiles/debug.dir/build.make CMakeFiles/debug.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=1 "Built target debug"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=1 "Built target debug"
 .PHONY : CMakeFiles/debug.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/debug.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/debug.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/debug.dir/rule
 
 # Convenience name for target.
@@ -240,17 +240,17 @@ CMakeFiles/debug.dir/clean:
 # Target rules for target CMakeFiles/run.dir
 
 # All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/step-fsi.dir/all
+CMakeFiles/run.dir/all: CMakeFiles/dynamic_fracture.dir/all
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=4 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=6 "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/run.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : CMakeFiles/run.dir/rule
 
 # Convenience name for target.
@@ -264,31 +264,31 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/step-fsi.dir
+# Target rules for target CMakeFiles/dynamic_fracture.dir
 
 # All Build rule for target.
-CMakeFiles/step-fsi.dir/all:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/depend
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles --progress-num=6,7 "Built target step-fsi"
-.PHONY : CMakeFiles/step-fsi.dir/all
+CMakeFiles/dynamic_fracture.dir/all:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/depend
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=3,4 "Built target dynamic_fracture"
+.PHONY : CMakeFiles/dynamic_fracture.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/step-fsi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/step-fsi.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
-.PHONY : CMakeFiles/step-fsi.dir/rule
+CMakeFiles/dynamic_fracture.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_fracture.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
+.PHONY : CMakeFiles/dynamic_fracture.dir/rule
 
 # Convenience name for target.
-step-fsi: CMakeFiles/step-fsi.dir/rule
+dynamic_fracture: CMakeFiles/dynamic_fracture.dir/rule
 
-.PHONY : step-fsi
+.PHONY : dynamic_fracture
 
 # clean rule for target.
-CMakeFiles/step-fsi.dir/clean:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/clean
-.PHONY : CMakeFiles/step-fsi.dir/clean
+CMakeFiles/dynamic_fracture.dir/clean:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/clean
+.PHONY : CMakeFiles/dynamic_fracture.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

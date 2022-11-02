@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_SOURCE_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture
+CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -78,11 +67,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -202,44 +202,44 @@ run/fast:
 .PHONY : run/fast
 
 #=============================================================================
-# Target rules for targets named step-fsi
+# Target rules for targets named dynamic_fracture
 
 # Build rule for target.
-step-fsi: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 step-fsi
-.PHONY : step-fsi
+dynamic_fracture: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_fracture
+.PHONY : dynamic_fracture
 
 # fast build rule for target.
-step-fsi/fast:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/build
-.PHONY : step-fsi/fast
+dynamic_fracture/fast:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/build
+.PHONY : dynamic_fracture/fast
 
-step-fsi.o: step-fsi.cc.o
+dynamic_fracture.o: dynamic_fracture.cc.o
 
-.PHONY : step-fsi.o
+.PHONY : dynamic_fracture.o
 
 # target to build an object file
-step-fsi.cc.o:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/step-fsi.cc.o
-.PHONY : step-fsi.cc.o
+dynamic_fracture.cc.o:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
+.PHONY : dynamic_fracture.cc.o
 
-step-fsi.i: step-fsi.cc.i
+dynamic_fracture.i: dynamic_fracture.cc.i
 
-.PHONY : step-fsi.i
+.PHONY : dynamic_fracture.i
 
 # target to preprocess a source file
-step-fsi.cc.i:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/step-fsi.cc.i
-.PHONY : step-fsi.cc.i
+dynamic_fracture.cc.i:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.i
+.PHONY : dynamic_fracture.cc.i
 
-step-fsi.s: step-fsi.cc.s
+dynamic_fracture.s: dynamic_fracture.cc.s
 
-.PHONY : step-fsi.s
+.PHONY : dynamic_fracture.s
 
 # target to generate assembly for a file
-step-fsi.cc.s:
-	$(MAKE) -f CMakeFiles/step-fsi.dir/build.make CMakeFiles/step-fsi.dir/step-fsi.cc.s
-.PHONY : step-fsi.cc.s
+dynamic_fracture.cc.s:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.s
+.PHONY : dynamic_fracture.cc.s
 
 # Help Target
 help:
@@ -247,7 +247,6 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... info"
 	@echo "... edit_cache"
 	@echo "... strip_comments"
@@ -256,10 +255,11 @@ help:
 	@echo "... release"
 	@echo "... debug"
 	@echo "... run"
-	@echo "... step-fsi"
-	@echo "... step-fsi.o"
-	@echo "... step-fsi.i"
-	@echo "... step-fsi.s"
+	@echo "... rebuild_cache"
+	@echo "... dynamic_fracture"
+	@echo "... dynamic_fracture.o"
+	@echo "... dynamic_fracture.i"
+	@echo "... dynamic_fracture.s"
 .PHONY : help
 
 

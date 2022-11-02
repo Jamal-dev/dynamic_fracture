@@ -35,7 +35,7 @@ G_c
 \end{align*}
 $$
 
-* $\boldsymbol{u}$ is the displacement $(\boldsymbol{u} \coloneqq \Omega \longrightarrow \R^2)$
+* $\boldsymbol{u}$ is the displacement $(\boldsymbol{u} \coloneqq \Omega \longrightarrow \mathbb{R}^2)$
 * $\boldsymbol{\sigma}$ is the stress tensor
 * $e(\boldsymbol{u})$ is the symmetric strain tensor $(e(\boldsymbol{u}) \coloneqq \frac{1}{2} \left( \nabla{\boldsymbol{u}} + \nabla{\boldsymbol{u}}^T \right))$
 * $G_c$ is the energy release rate, and it is strictly positive
@@ -43,7 +43,7 @@ $$
 * ${\boldsymbol{\sigma}}^-$ is the compressive stress tensor
 * ${\boldsymbol{\sigma}}^+$ is the tensile stress tensor
 
-By introducing another variable velocity $\boldsymbol{v} \coloneq \R^2 \longrightarrow \R^2$, we can write the formulation as:
+By introducing another variable velocity $\boldsymbol{v} \coloneq \mathbb{R}^2 \longrightarrow \mathbb{R}^2$, we can write the formulation as:
 
 #### Formulation
 
@@ -74,7 +74,7 @@ $$
 
 ## Temporal Discritization
 
-### One-step-$\theta$ scheme
+### One-step - $\theta$ scheme
 
 ### Formulation
 
@@ -117,9 +117,7 @@ G_c
 & \geq 0 & & \forall \psi \in W_{in}
 \\
 % third equation
-\rho \left( \frac{\boldsymbol{u} - {\boldsymbol{u}}^{n-1} }{\delta t}, \boldsymbol{w} \right) &
-- (\theta \rho) \left(  \boldsymbol{v}, \boldsymbol{w} \right)
-- \left( (1-\theta) \rho \right) \left(  {\boldsymbol{v}}^{n-1}, \boldsymbol{w} \right) 
+\rho \left( \frac{\boldsymbol{u} - {\boldsymbol{u}}^{n-1} }{\delta t}, \boldsymbol{w} \right) & - (\theta \rho) \left(  \boldsymbol{v}, \boldsymbol{w} \right) - \left( (1-\theta) \rho \right) \left(  {\boldsymbol{v}}^{n-1}, \boldsymbol{w} \right) 
 & =0 & & \forall \boldsymbol{w} \in L
 \end{align*}
 $$

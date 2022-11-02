@@ -1,0 +1,10 @@
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/rebuild_cache.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/info.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/edit_cache.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/strip_comments.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/distclean.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/runclean.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/release.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/debug.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/run.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/phasefieldcrackdynamicfracture/CMakeFiles/step-fsi.dir

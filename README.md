@@ -5,11 +5,24 @@
 For easy installation please follow instructions for [candi](https://github.com/dealii/candi).
 For linux distribution
 
-```
+``` bash
 git clone https://github.com/dealii/candi.git
 cd candi
 ./candi.sh
 ```
+
+```latex {cmd = True}
+\documentclass{standalone}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\begin{document}
+  $$
+  \bm{a}
+  $$
+\end{document}```
 
 # Dynamic Phase field equations
 

@@ -1,3 +1,4 @@
+Deal.II is the dependency, and it must be installed before.
 # Installing deal.II
 
 [Deal.II](https://www.dealii.org/) can be download from the offical websit.
@@ -11,6 +12,22 @@ cd candi
 ./candi.sh
 ```
 
+# Runing the code
+You can clone it to the `examples` fodler of the Deal.II. It can be clone at some other directory as well but in that case you have to provide the path of -DEAL_II_DIR when compling with cmake.
+Assuming you are cloning it in the `examples` folder.
+``` bash
+git clone https://github.com/Jamal-dev/dynamic_fracture
+cd dynamic_fracture
+rm -r CMakeFiles CMakeCache.txt cmake_install.cmake
+cmake .
+make
+make run
+```
+You can change the path of the saved files in dynamic_fracture.cc. But it's generated locally you can move it to the result folder.
+```bash
+mkdir results
+mv solution* results
+```
 # Dynamic Phase field equations
 
 Find a solution $\{\boldsymbol{u}, \varphi \} \in \{ \boldsymbol{u}_D + V\} \times W$ such that:

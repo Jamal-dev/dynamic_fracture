@@ -55,11 +55,16 @@
 #include <fstream>
 #include <sstream>
 
+#include "include/utils.h"
+
 // At the end of this top-matter, we import
 // all deal.II names into the global
 // namespace:				
 using namespace dealii;
 using namespace std;
+
+
+
 
 // For Example 3 (multiple cracks in a heterogenous medium)
 // reads .pgm file and returns it as floating point values
@@ -192,213 +197,13 @@ private:
 
 
 
-// First, we define tensors for the solution variables
-// Note: note all of these definitions are needed in 
-// phase-field fracture. Some of them come from 
-// fluid-structure interaction computations.
-namespace ALE_Transformations
-{    
-
- template <int dim> 
-   inline
-   Tensor<1,dim> 
-   get_grad_pf (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads)	 
-   {     
-     Tensor<1,dim> grad_pf;     
-     grad_pf[0] =  old_solution_grads[q][dim][0];
-     grad_pf[1] =  old_solution_grads[q][dim][1];
-     if (dim == 3)
-       grad_pf[2] = old_solution_grads[q][dim][2];
-      
-     return grad_pf;
-   }
-
- template <int dim> 
-   inline
-   Tensor<2,dim> 
-   get_grad_u (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads)	 
-   {   
-     Tensor<2,dim> grad_u;
-    grad_u[0][0] =  old_solution_grads[q][0][0];
-    grad_u[0][1] =  old_solution_grads[q][0][1];
-
-    grad_u[1][0] =  old_solution_grads[q][1][0];
-    grad_u[1][1] =  old_solution_grads[q][1][1];
-    if (dim == 3)
-      {
-        grad_u[0][2] =  old_solution_grads[q][0][2];
-
-        grad_u[1][2] =  old_solution_grads[q][1][2];
-
-        grad_u[2][0] =  old_solution_grads[q][2][0];
-        grad_u[2][1] =  old_solution_grads[q][2][1];
-        grad_u[2][2] =  old_solution_grads[q][2][2];
-      }
-
-    return grad_u;
-   }
-
-
-  template <int dim> 
-    inline
-    Tensor<2,dim> 
-    get_Identity ()
-    {   
-      Tensor<2,dim> identity;
-      identity[0][0] = 1.0;
-      identity[1][1] = 1.0;
-      if (dim == 3)
-	identity[2][2] = 1.0;
-            
-      return identity;      
-   }
-
-
-
- template <int dim> 
- inline
- Tensor<1,dim> 
- get_u (unsigned int q,
-	std::vector<Vector<double> > old_solution_values)
-   {
-     Tensor<1,dim> u;     
-     u[0] = old_solution_values[q](0);
-     u[1] = old_solution_values[q](1);
-     if (dim == 3)
-       u[2] = old_solution_values[q](2);
-     
-     return u;          
-   }
-
- template <int dim> 
-   inline
-   Tensor<1,dim> 
-   get_u_LinU (const Tensor<1,dim> phi_i_u)
-   {
-     Tensor<1,dim> tmp;     
-     tmp[0] = phi_i_u[0];
-     tmp[1] = phi_i_u[1];
-     if (dim == 3)
-       tmp[2] = phi_i_u[2];
-     
-     return tmp;    
-   }
-
-
- template <int dim> 
- inline
- Tensor<1,dim> 
- get_v (unsigned int q,
-	std::vector<Vector<double> > old_solution_values)
-   {
-     Tensor<1,dim> v;     
-     v[0] = old_solution_values[q](dim+1);
-     v[1] = old_solution_values[q](dim+2);
-     if (dim == 3)
-       v[2] = old_solution_values[q](dim+3);
-     
-     return v;          
-   }
- 
-
- template <int dim> 
-   inline
-   Tensor<2,dim> 
-   get_grad_v (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads)	 
-   {   
-     Tensor<2,dim> grad_u;
-    grad_u[0][0] =  old_solution_grads[q][dim+1][0];
-    grad_u[0][1] =  old_solution_grads[q][dim+1][1];
-
-    grad_u[1][0] =  old_solution_grads[q][dim+2][0];
-    grad_u[1][1] =  old_solution_grads[q][dim+2][1];
-    if (dim == 3)
-      {
-        grad_u[0][2] =  old_solution_grads[q][dim+1][2];
-
-        grad_u[1][2] =  old_solution_grads[q][dim+2][2];
-
-        grad_u[2][0] =  old_solution_grads[q][dim+3][0];
-        grad_u[2][1] =  old_solution_grads[q][dim+3][1];
-        grad_u[2][2] =  old_solution_grads[q][dim+3][2];
-      }
-
-    return grad_u;
-   }
-
-
-
-  template <int dim> 
-  inline
-  double
-  get_deviator_norm (const Tensor<2,dim> deviator)	 
-  {    
-    if (dim == 2)
-      {
-	return std::sqrt(deviator[0][0] * deviator[0][0] 
-			 + deviator[0][1] * deviator[0][1]
-			 + deviator[1][0] * deviator[1][0]
-			 + deviator[1][1] * deviator[1][1]);
-      }
-    else if (dim == 3)
-      {
-	// TODO: needs to be done
-	return 0.0;
-
-
-      }
-    
-  }
 
  
-}
 
 
 
-// In the third namespace, we summarize the 
-// constitutive relations for the structure equations.
-namespace Structure_Terms_in_ALE
-{
-  // Green-Lagrange strain tensor
-  template <int dim> 
-  inline
-  Tensor<2,dim> 
-  get_E (const Tensor<2,dim> F_T,
-	 const Tensor<2,dim> F,
-	 const Tensor<2,dim> Identity)
-  {    
-    return 0.5 * (F_T * F - Identity);
-  }
 
-  template <int dim> 
-  inline
-  double
-  get_tr_E (const Tensor<2,dim> E)
-  {     
-    return trace (E);
-  }
 
-  template <int dim> 
-  inline
-  double
-  get_tr_E_LinU (unsigned int q, 
-		 const std::vector<std::vector<Tensor<1,dim> > > old_solution_grads,
-		 const Tensor<2,dim> phi_i_grads_u)	    
-  {
-    return ((1 + old_solution_grads[q][0][0]) *
-	    phi_i_grads_u[0][0] + 
-	    old_solution_grads[q][0][1] *
-	    phi_i_grads_u[0][1] +
-	    (1 + old_solution_grads[q][1][1]) *
-	    phi_i_grads_u[1][1] + 
-	    old_solution_grads[q][1][0] *
-	    phi_i_grads_u[1][0]); 
-  }
-  
-}
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -2764,7 +2569,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 		  const Tensor<2, dim> E_LinU = 0.5
 		    * (phi_i_grads_u[i] + transpose(phi_i_grads_u[i]));
 
-		  const double tr_E_LinU = trace(E_LinU);
+		  const double tr_E_LinU = dealii::trace(E_LinU);
 
 		  Tensor<2,dim> stress_term_LinU;
 		  stress_term_LinU = lame_coefficient_lambda * tr_E_LinU * Identity
@@ -2810,9 +2615,9 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 
 
 			      local_matrix(j,i) += timestep * theta * 
-				(delta_fixed_point_newton * scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
-				 + scalar_product(((1-constant_k) * pf * pf + constant_k) * stress_term_plus_LinU, phi_i_grads_u[j])
-				 + scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
+				(delta_fixed_point_newton * dealii::scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
+				 + dealii::scalar_product(((1-constant_k) * pf * pf + constant_k) * stress_term_plus_LinU, phi_i_grads_u[j])
+				 + dealii::scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
 				 // Pressure (pf is solution variable)
 				 - 2.0 * (alpha_biot - 1.0) * current_pressure * pf * phi_i_pf[i] * divergence_u_LinU
 				 ) * fe_values.JxW(q);
@@ -2821,9 +2626,9 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 			    {
 			      // pf extrapolated
 			      local_matrix(j,i) += timestep * theta * 
-				(scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) * 	      
+				(dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) * 	      
 						stress_term_plus_LinU, phi_i_grads_u[j])
-				 + scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
+				 + dealii::scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
 				 ) * fe_values.JxW(q);
 			    }
 			}		     
@@ -2842,9 +2647,9 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 
 
 			      local_matrix(j,i) += timestep * theta *
-				( (1-constant_k) * (scalar_product(stress_term_plus_LinU, E)
-						    + scalar_product(stress_term_plus, E_LinU)) * pf * phi_i_pf[j]
-				  +(1-constant_k) * scalar_product(stress_term_plus, E) * phi_i_pf[i] * phi_i_pf[j]
+				( (1-constant_k) * (dealii::scalar_product(stress_term_plus_LinU, E)
+						    + dealii::scalar_product(stress_term_plus, E_LinU)) * pf * phi_i_pf[j]
+				  +(1-constant_k) * dealii::scalar_product(stress_term_plus, E) * phi_i_pf[i] * phi_i_pf[j]
 				  + G_c/alpha_eps * phi_i_pf[i] * phi_i_pf[j]  
 				  + G_c * alpha_eps * phi_i_grads_pf[i] * phi_i_grads_pf[j]
 				  // Pressure terms
@@ -2857,9 +2662,9 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 			    {
 
 			      local_matrix(j,i) += timestep * theta *
-			    ((1-constant_k) * (0.0 * scalar_product(stress_term_plus_LinU, E)
-			     		       + scalar_product(stress_term_history, E_LinU)) * pf * phi_i_pf[j]
-			     +(1-constant_k) * scalar_product(stress_term_history, E) * phi_i_pf[i] * phi_i_pf[j]
+			    ((1-constant_k) * (0.0 * dealii::scalar_product(stress_term_plus_LinU, E)
+			     		       + dealii::scalar_product(stress_term_history, E_LinU)) * pf * phi_i_pf[j]
+			     +(1-constant_k) * dealii::scalar_product(stress_term_history, E) * phi_i_pf[i] * phi_i_pf[j]
 
 			     + G_c/alpha_eps * phi_i_pf[i] * phi_i_pf[j]  
 			     + G_c * alpha_eps * phi_i_grads_pf[i] * phi_i_grads_pf[j]
@@ -3198,18 +3003,18 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			  
 			  // Current timestep solution
 			  local_rhs(i) -= timestep * theta * 
-			    (scalar_product(((1-constant_k) * pf * pf + constant_k) *	  
+			    (dealii::scalar_product(((1-constant_k) * pf * pf + constant_k) *	  
 					    stress_term_plus, phi_i_grads_u)
-			     + scalar_product(stress_term_minus, phi_i_grads_u)
+			     + dealii::scalar_product(stress_term_minus, phi_i_grads_u)
 			     // Pressure terms (pf is solution variable)
 			     - (alpha_biot - 1.0) * current_pressure * pf * pf * divergence_u_LinU
 			     ) * fe_values.JxW(q); 
 
 			  // Old timestep solution
 			  local_rhs(i) -= timestep * (1.0-theta) * 
-			    (scalar_product(((1-constant_k) * old_timestep_pf * old_timestep_pf + constant_k) *	  
+			    (dealii::scalar_product(((1-constant_k) * old_timestep_pf * old_timestep_pf + constant_k) *	  
 					    old_timestep_stress_term_plus, phi_i_grads_u)
-			     + scalar_product(old_timestep_stress_term_minus, phi_i_grads_u)
+			     + dealii::scalar_product(old_timestep_stress_term_minus, phi_i_grads_u)
 			     // Pressure terms (pf is solution variable)
 			     - (alpha_biot - 1.0) * old_timestep_current_pressure * old_timestep_pf * old_timestep_pf * divergence_u_LinU
 			     ) * fe_values.JxW(q); 
@@ -3225,9 +3030,9 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			  // Current timestep solution
 			  // pf extrapolated
 			  local_rhs(i) -= timestep * theta * 
-			    (scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
+			    (dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
 					    stress_term_plus, phi_i_grads_u)
-			     + scalar_product(stress_term_minus, phi_i_grads_u)
+			     + dealii::scalar_product(stress_term_minus, phi_i_grads_u)
 			     // Pressure terms (extrapolated)
 			     - (alpha_biot - 1.0) * current_pressure * pf_extra * pf_extra * divergence_u_LinU
 			     ) * fe_values.JxW(q); 
@@ -3235,9 +3040,9 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			  // Old timestep solution
 			  // TODO: need to define previous timestep extrapolation
 			  local_rhs(i) -= timestep * (1.0 - theta) * 
-			    (scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
+			    (dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
 					    old_timestep_stress_term_plus, phi_i_grads_u)
-			     + scalar_product(old_timestep_stress_term_minus, phi_i_grads_u)
+			     + dealii::scalar_product(old_timestep_stress_term_minus, phi_i_grads_u)
 			     // Pressure terms (extrapolated)
 			     - (alpha_biot - 1.0) * old_timestep_current_pressure * pf_extra * pf_extra * divergence_u_LinU
 			     ) * fe_values.JxW(q); 
@@ -3263,7 +3068,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      
 			  // Current time step
 			  local_rhs(i) -= timestep * theta * 
-			    ((1.0 - constant_k) * scalar_product(stress_term_plus, E) * pf * phi_i_pf
+			    ((1.0 - constant_k) * dealii::scalar_product(stress_term_plus, E) * pf * phi_i_pf
 			     - G_c/alpha_eps * (1.0 - pf) * phi_i_pf
 			     + G_c * alpha_eps * grad_pf * phi_i_grads_pf
 			     // Pressure terms
@@ -3272,7 +3077,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 
 			  // Old timestep
 			  local_rhs(i) -= timestep * (1.0-theta) * 
-			    ((1.0 - constant_k) * scalar_product(old_timestep_stress_term_plus, E) * old_timestep_pf * phi_i_pf
+			    ((1.0 - constant_k) * dealii::scalar_product(old_timestep_stress_term_plus, E) * old_timestep_pf * phi_i_pf
 			     - G_c/alpha_eps * (1.0 - old_timestep_pf) * phi_i_pf
 			     + G_c * alpha_eps * old_timestep_grad_pf * phi_i_grads_pf
 			     // Pressure terms
@@ -4759,7 +4564,7 @@ void Dynamic_Fracture_Problem<dim>::compute_functional_values()
 		   ::get_grad_u<dim> (q_point, face_solution_grads);
 		 
 		 const Tensor<2, dim> E = 0.5 * (grad_u + transpose(grad_u));
-		 const double tr_E = trace(E);
+		 const double tr_E = dealii::trace(E);
 		 
 		 Tensor<2, dim> stress_term;
 		 stress_term = lame_coefficient_lambda * tr_E * Identity
@@ -4866,7 +4671,7 @@ double Dynamic_Fracture_Problem<dim>::goal_functional_stress_x ()
 		   ::get_grad_u<dim> (q_point, face_solution_grads);
 		 
 		 const Tensor<2, dim> E = 0.5 * (grad_u + transpose(grad_u));
-		 const double tr_E = trace(E);
+		 const double tr_E = dealii::trace(E);
 		 
 		 Tensor<2, dim> stress_term;
 		 stress_term = lame_coefficient_lambda * tr_E * Identity
@@ -5129,17 +4934,17 @@ Dynamic_Fracture_Problem<dim>::compute_energy()
 	      ::get_grad_u<dim> (q, old_solution_grads);
 
             const Tensor<2,dim> E = 0.5 * (grad_u + transpose(grad_u));
-            const double tr_E = trace(E);
+            const double tr_E = dealii::trace(E);
 
 	    const double pf = old_solution_values[q](dim);
 
-            const double tr_e_2 = trace(E*E);
+            const double tr_e_2 = dealii::trace(E*E);
 
             const double psi_e = 0.5 * lame_coefficient_lambda * tr_E*tr_E + lame_coefficient_mu * tr_e_2;
 
             local_bulk_energy += ((1+constant_k)*pf*pf+constant_k) * psi_e * fe_values.JxW(q);
 
-            local_crack_energy += G_c/2.0 * ((pf-1) * (pf-1)/alpha_eps + alpha_eps * scalar_product(grad_u, grad_u))
+            local_crack_energy += G_c/2.0 * ((pf-1) * (pf-1)/alpha_eps + alpha_eps * dealii::scalar_product(grad_u, grad_u))
                                   * fe_values.JxW(q);
           }
 

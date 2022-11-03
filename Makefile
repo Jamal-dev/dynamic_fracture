@@ -241,6 +241,33 @@ dynamic_fracture.cc.s:
 	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.s
 .PHONY : dynamic_fracture.cc.s
 
+src/utils.o: src/utils.cpp.o
+
+.PHONY : src/utils.o
+
+# target to build an object file
+src/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.o
+.PHONY : src/utils.cpp.o
+
+src/utils.i: src/utils.cpp.i
+
+.PHONY : src/utils.i
+
+# target to preprocess a source file
+src/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.i
+.PHONY : src/utils.cpp.i
+
+src/utils.s: src/utils.cpp.s
+
+.PHONY : src/utils.s
+
+# target to generate assembly for a file
+src/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.s
+.PHONY : src/utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +287,9 @@ help:
 	@echo "... dynamic_fracture.o"
 	@echo "... dynamic_fracture.i"
 	@echo "... dynamic_fracture.s"
+	@echo "... src/utils.o"
+	@echo "... src/utils.i"
+	@echo "... src/utils.s"
 .PHONY : help
 
 

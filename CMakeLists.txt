@@ -7,6 +7,7 @@ SET(TARGET "dynamic_fracture")
 
 # Declare all source files the target consists of:
 SET(TARGET_SRC
+   src/utils.cpp
    ${TARGET}.cc
   # You can specify additional files here!
   )

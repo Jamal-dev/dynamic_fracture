@@ -2,74 +2,18 @@
 #define utils_local_h
 #include <vector>
 #include <deal.II/base/tensor.h>
+#include <deal.II/base/function.h>
+#include <deal.II/base/point.h>
 using namespace dealii;
 
 
 
 
 
-/*
-namespace ALE_Transformations
-{ 
-   // get_grad_pf
-    template <int dim> 
-   inline
-   Tensor<1,dim> 
-   get_grad_pf (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads);	 
-        
-   // get_grad_u
-    template <int dim> 
-   inline
-   Tensor<2,dim> 
-   get_grad_u (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads);    
-        
-    
-
-    // get_Identity
-     template <int dim> 
-    inline
-    Tensor<2,dim> 
-    get_Identity ();
-
-    // get_u
-     template <int dim> 
-    inline
-    Tensor<1,dim> 
-    get_u (unsigned int q,
-        std::vector<Vector<double> > old_solution_values);
-    
-    // get_u_LinU
- template <int dim> 
-   inline
-   Tensor<1,dim> 
-   get_u_LinU (const Tensor<1,dim> phi_i_u);
-
-   // get_v
- template <int dim> 
- inline
- Tensor<1,dim> 
- get_v (unsigned int q,
-	std::vector<Vector<double> > old_solution_values);
-
-// get_grad_v
- template <int dim> 
-   inline
-   Tensor<2,dim> 
-   get_grad_v (unsigned int q,
-	       std::vector<std::vector<Tensor<1,dim> > > old_solution_grads);
-
-
-// get_deviator_norm
-  template <int dim> 
-  inline
-  double
-  get_deviator_norm (const Tensor<2,dim> deviator);
-
-}
-*/
-
+// First, we define tensors for the solution variables
+// Note: note all of these definitions are needed in 
+// phase-field fracture. Some of them come from 
+// fluid-structure interaction computations.
 namespace ALE_Transformations
 {    
 
@@ -279,6 +223,55 @@ namespace Structure_Terms_in_ALE
   }
   
 }
+
+
+
+// Bitmap class
+// For Example 3 (multiple cracks in a heterogenous medium)
+// reads .pgm file and returns it as floating point values
+// taken from step-42
+class BitmapFile
+{
+public:
+  BitmapFile(const std::string &name);
+
+  double
+  get_value(const double x, const double y) const;
+
+private:
+  std::vector<double> image_data;
+  double hx, hy;
+  int nx, ny;
+
+  double
+  get_pixel_value(const int i, const int j) const;
+};
+
+/*
+    Bitmap function class
+*/
+
+template <int dim>
+class BitmapFunction : public Function<dim>
+{
+public:
+  BitmapFunction(const std::string &filename,
+                 double x1_, 
+                 double x2_, 
+                 double y1_, 
+                 double y2_, 
+                 double minvalue_, 
+                 double maxvalue_);
+
+  virtual double value (const Point<dim> &p,
+                const unsigned int /*component*/ = 0) const;
+private:
+  BitmapFile f;
+  double x1,x2,y1,y2;
+  double minvalue, maxvalue;
+};
+///////////////////////////////////////////////////////////////
+
 
 
 #endif

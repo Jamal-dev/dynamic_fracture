@@ -58,8 +58,8 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -241,33 +241,6 @@ dynamic_fracture.cc.s:
 	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.s
 .PHONY : dynamic_fracture.cc.s
 
-src/utils.o: src/utils.cpp.o
-
-.PHONY : src/utils.o
-
-# target to build an object file
-src/utils.cpp.o:
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.o
-.PHONY : src/utils.cpp.o
-
-src/utils.i: src/utils.cpp.i
-
-.PHONY : src/utils.i
-
-# target to preprocess a source file
-src/utils.cpp.i:
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.i
-.PHONY : src/utils.cpp.i
-
-src/utils.s: src/utils.cpp.s
-
-.PHONY : src/utils.s
-
-# target to generate assembly for a file
-src/utils.cpp.s:
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/src/utils.cpp.s
-.PHONY : src/utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -287,9 +260,6 @@ help:
 	@echo "... dynamic_fracture.o"
 	@echo "... dynamic_fracture.i"
 	@echo "... dynamic_fracture.s"
-	@echo "... src/utils.o"
-	@echo "... src/utils.i"
-	@echo "... src/utils.s"
 .PHONY : help
 
 

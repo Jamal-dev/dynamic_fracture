@@ -1,0 +1,10 @@
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/info.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/edit_cache.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/strip_comments.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/distclean.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/runclean.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/release.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/debug.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/run.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/rebuild_cache.dir
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/build/CMakeFiles/dynamic_fracture.dir

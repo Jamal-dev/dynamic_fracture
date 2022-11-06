@@ -1,0 +1,879 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "dynamic_fracture"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"ADD_EXECUTABLE",
+			"DEAL_II_INVOKE_AUTOPILOT",
+			"TARGET_LINK_LIBRARIES",
+			"DEAL_II_SETUP_TARGET",
+			"TARGET_COMPILE_OPTIONS",
+			"TARGET_COMPILE_DEFINITIONS",
+			"add_definitions",
+			"TARGET_INCLUDE_DIRECTORIES"
+		],
+		"files" : 
+		[
+			"/home/jamal/deal/deal.II-v9.2.0/share/deal.II/macros/macro_deal_ii_invoke_autopilot.cmake",
+			"CMakeLists.txt",
+			"/home/jamal/deal/deal.II-v9.2.0/share/deal.II/macros/macro_deal_ii_setup_target.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 37,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 55,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 172,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 132,
+				"parent" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 136,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 42,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 2,
+				"line" : 113,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " "
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-pedantic"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fPIC"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Woverloaded-virtual"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wpointer-arith"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wsign-compare"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wswitch"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wsynth"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wwrite-strings"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-placement-new"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-literal-suffix"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-psabi"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-class-memaccess"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-fopenmp-simd"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-std=c++17"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-parentheses"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wno-unused-local-typedefs"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-O0"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 5,
+					"fragment" : "-Wa,--compress-debug-sections"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "BOOST_NO_AUTO_PTR"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "DEBUG"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "TBB_DO_ASSERT=1"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "TBB_USE_DEBUG"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "deal_II_dimension=2"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/deal.II-v9.2.0/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/deal.II-v9.2.0/include/deal.II/bundled"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/parmetis-4.0.3/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/trilinos-release-12-18-1/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/usr/include/suitesparse"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/petsc-3.13.1/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/hdf5-1.10.5/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/usr/local/include/opencascade"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/p4est-2.2/FAST/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/jamal/deal/slepc-3.13.2/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "dynamic_fracture::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-rdynamic  -rdynamic -fuse-ld=gold -lgfortran -ggdb",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/jamal/deal/deal.II-v9.2.0/lib:/home/jamal/deal/p4est-2.2/DEBUG/lib:/home/jamal/deal/trilinos-release-12-18-1/lib:/home/jamal/deal/hdf5-1.10.5/lib:/usr/local/lib:/home/jamal/deal/slepc-3.13.2/lib:/home/jamal/deal/petsc-3.13.1/lib:/home/jamal/deal/parmetis-4.0.3/lib:/usr/lib/x86_64-linux-gnu/openmpi/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "/home/jamal/deal/deal.II-v9.2.0/lib/libdeal_II.g.so.9.2.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/p4est-2.2/DEBUG/lib/libp4est.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/p4est-2.2/DEBUG/lib/libsc.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lz",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/librol.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtempus.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libmuelu-adapters.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libmuelu-interface.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libmuelu.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/liblocathyra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/liblocaepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/liblocalapack.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libloca.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libnoxepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libnoxlapack.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libnox.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libintrepid2.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libintrepid.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteko.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikos.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosbelos.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosamesos2.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosaztecoo.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosamesos.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosml.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libstratimikosifpack.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libanasazitpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libModeLaplace.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libanasaziepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libanasazi.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libamesos2.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libshylu_nodetacho.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libbelosxpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libbelostpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libbelosepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libbelos.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libml.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libifpack.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libzoltan2.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libpamgen_extras.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libpamgen.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libamesos.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libgaleri-xpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libgaleri-epetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libaztecoo.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libisorropia.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libxpetra-sup.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libxpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libthyratpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libthyraepetraext.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libthyraepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libthyracore.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtrilinosss.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetraext.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetrainout.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libkokkostsqr.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetraclassiclinalg.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetraclassicnodeapi.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtpetraclassic.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libepetraext.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libtriutils.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libshards.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libzoltan.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libepetra.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libsacado.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/librtop.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libkokkoskernels.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchoskokkoscomm.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchoskokkoscompat.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchosremainder.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchosnumerics.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchoscomm.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchosparameterlist.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchosparser.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libteuchoscore.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libkokkosalgorithms.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libkokkoscontainers.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libkokkoscore.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/trilinos-release-12-18-1/lib/libgtest.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lumfpack",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcholmod",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lccolamd",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcolamd",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcamd",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lsuitesparseconfig",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lamd",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/hdf5-1.10.5/lib/libhdf5_hl.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/hdf5-1.10.5/lib/libhdf5.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKBO.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKBool.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKBRep.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKernel.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKFeat.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKFillet.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKG2d.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKG3d.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKGeomAlgo.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKGeomBase.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKHLR.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKIGES.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKMath.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKMesh.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKOffset.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKPrim.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKShHealing.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKSTEP.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKSTEPAttr.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKSTEPBase.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKSTEP209.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKSTL.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKTopAlgo.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libTKXSBase.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmpi_usempif08",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmpi_usempi_ignore_tkr",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmpi_mpifh",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmpi",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lc",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc_s",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/slepc-3.13.2/lib/libslepc.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libpetsc.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libHYPRE.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libcmumps.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libdmumps.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libsmumps.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libzmumps.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libmumps_common.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libpord.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/petsc-3.13.1/lib/libscalapack.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-llapack",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lblas",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/parmetis-4.0.3/lib/libparmetis.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/jamal/deal/parmetis-4.0.3/lib/libmetis.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_usempif08.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_usempi_ignore_tkr.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_mpifh.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgfortran",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lquadmath",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "dynamic_fracture",
+	"nameOnDisk" : "dynamic_fracture",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "dynamic_fracture.cc",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

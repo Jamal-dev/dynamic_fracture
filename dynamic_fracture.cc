@@ -63,6 +63,7 @@
 #include "include/initial_values/het3d.h"
 #include "include/initial_values/miehe.h"
 #include "include/initial_values/hohlwalzung.h"
+#include "include/initial_values/dynamic_slit.h"
 
 // Importing boundary values
 #include "source/boundary_conditions/nonhomoDirichletBoundary.cpp"
@@ -82,6 +83,7 @@
 #include "source/parameters/het3d.cpp"
 #include "source/parameters/screw_domi.cpp"
 #include "source/parameters/l_shaped.cpp"
+#include "source/parameters/dynamic_slit.cpp"
 
 // Import initial condition
 #include "source/boundary_conditions/initial_bc.cpp"
@@ -151,7 +153,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
   // Switch dimension !!
 
   // Defining test cases
-  test_case = "miehe_shear";
+  test_case = "dynamic_slit";
+  // test_case = "miehe_shear";
   //test_case = "l_shaped";
   //test_case = "Sneddon";
   // before it was pressurized test case
@@ -171,6 +174,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
   if (test_case == "miehe_tension" ||
       test_case == "miehe_shear")
     set_runtime_parameters_Miehe ();
+  else if (test_case == "dynamic_slit")
+    set_runtime_parameters_Dynamic_Slit();
   else if (test_case == "l_shaped")
     set_runtime_parameters_L_shaped ();
   else if (test_case == "Sneddon")
@@ -203,7 +208,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
       )
     {
       for (unsigned int i=0;i<3;i++)
-	refine_mesh();
+	        refine_mesh();
     }
 
 
@@ -256,7 +261,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
        if (test_case == "miehe_shear" ||
 	   test_case == "miehe_tension" ||
 	   test_case == "screw_domi" ||
-	   test_case == "l_shaped")
+	   test_case == "l_shaped" || test_case == "dynamic_slit")
 	 {
 	   ConstraintMatrix constraints;
 	   constraints.close();
@@ -272,6 +277,15 @@ void Dynamic_Fracture_Problem<dim>::run ()
 				     solution
 				     );
 	     }
+      else if (test_case == "dynamic_slit")
+        {
+         VectorTools::project (dof_handler,
+				     constraints,
+				     QGauss<dim>(degree+2),
+				     InitialValuesDynamicSlit<dim>(),
+				     solution
+				     ); 
+        }
 	   else 
 	     {
 	       VectorTools::project (dof_handler,
@@ -287,56 +301,56 @@ void Dynamic_Fracture_Problem<dim>::run ()
 	 }
        else if (test_case == "pressurized" ||
 		test_case == "Sneddon")
-	 {
-	   /*
-	   ConstraintMatrix constraints;
-	   constraints.close();
-	   
-	   std::vector<bool> component_mask (dim+1+dim, true);
-	   VectorTools::project (dof_handler,
-				 constraints,
-				 QGauss<dim>(degree+2),
-				 InitialValuesPressurized<dim>(alpha_eps),
-				 solution
-				 );
-	   */
-    
-	   VectorTools::interpolate(dof_handler,
-				    InitialValuesPressurized<dim>(alpha_eps), 
-				    solution);
+      {
+        /*
+        ConstraintMatrix constraints;
+        constraints.close();
+        
+        std::vector<bool> component_mask (dim+1+dim, true);
+        VectorTools::project (dof_handler,
+            constraints,
+            QGauss<dim>(degree+2),
+            InitialValuesPressurized<dim>(alpha_eps),
+            solution
+            );
+        */
+        
+        VectorTools::interpolate(dof_handler,
+                InitialValuesPressurized<dim>(alpha_eps), 
+                solution);
 
-	   output_results (i,solution);
-	 }
+        output_results (i,solution);
+      }
        else if (test_case == "Sneddon3D")
-	 {
-	   ConstraintMatrix constraints;
-	   constraints.close();
-	   
-	   std::vector<bool> component_mask (dim+1+dim, true);
-	   VectorTools::project (dof_handler,
-				 constraints,
-				 QGauss<dim>(degree+2),
-				 InitialValuesSneddon3D<dim>(alpha_eps),
-				 solution
-				 );
-	   
-	   output_results (0,solution);
-	 }
+          {
+            ConstraintMatrix constraints;
+            constraints.close();
+            
+            std::vector<bool> component_mask (dim+1+dim, true);
+            VectorTools::project (dof_handler,
+                constraints,
+                QGauss<dim>(degree+2),
+                InitialValuesSneddon3D<dim>(alpha_eps),
+                solution
+                );
+            
+            output_results (0,solution);
+          }
        else if (test_case == "Het3D")
-	 {
-	   ConstraintMatrix constraints;
-	   constraints.close();
-	   
-	   std::vector<bool> component_mask (dim+1+dim, true);
-	   VectorTools::project (dof_handler,
-				 constraints,
-				 QGauss<dim>(degree+2),
-				 InitialValuesHet3D<dim>(alpha_eps),
-				 solution
-				 );
-	   
-	   output_results (0,solution);
-	 }
+          {
+            ConstraintMatrix constraints;
+            constraints.close();
+            
+            std::vector<bool> component_mask (dim+1+dim, true);
+            VectorTools::project (dof_handler,
+                constraints,
+                QGauss<dim>(degree+2),
+                InitialValuesHet3D<dim>(alpha_eps),
+                solution
+                );
+            
+            output_results (0,solution);
+          }
        
        cout<<"PRE REFINEMENT STEP :: " << i << endl;
        refine_mesh();
@@ -426,18 +440,18 @@ void Dynamic_Fracture_Problem<dim>::run ()
 
       old_timestep_current_pressure = current_pressure;
       if (test_case == "pressurized")
-	current_pressure += pressure_increment; //5.0e-2 + time * 5.0e-2; //1.0e-1 + time * 1.0e-1;
+	        current_pressure += pressure_increment; //5.0e-2 + time * 5.0e-2; //1.0e-1 + time * 1.0e-1;
       else if ((test_case == "Sneddon") || (test_case == "Sneddon3D"))
-	current_pressure = 1.0e-3;
+	        current_pressure = 1.0e-3;
       else if (test_case == "Het3D")
-	current_pressure = 1.0e-3 + time * 0.25;
+	        current_pressure = 1.0e-3 + time * 0.25;
       else 
-	current_pressure = 0.0;
+        	current_pressure = 0.0;
 
      
 
       if (test_case == "pressurized" || test_case == "Het3D")
-	std::cout << "Current pressure: " << time << "\t" << current_pressure << std::endl;
+	      std::cout << "Current pressure: " << time << "\t" << current_pressure << std::endl;
       
       std::cout << std::endl;
       
@@ -455,38 +469,38 @@ void Dynamic_Fracture_Problem<dim>::run ()
 
 
       if (use_time_step_control)
-	{
-	  if (timestep_number <= number_of_nonadaptive_time_steps) 
-	    time_stepping_scheme = "BE";
-	  else
-	    time_stepping_scheme = "BE_adaptive"; 
+          {
+          if (timestep_number <= number_of_nonadaptive_time_steps) 
+            time_stepping_scheme = "BE";
+          else
+            time_stepping_scheme = "BE_adaptive"; 
 
-	  std::cout << "Not tested in detail." << std::endl;
-	  abort();
-	  
-	}
+          std::cout << "Not tested in detail." << std::endl;
+          abort();
+          
+        }
 
  
      if (time_stepping_scheme == "BE")
-	{
-	  solve_spatial_problem ();
-	  time += timestep;
-	}
+      {
+        solve_spatial_problem ();
+        time += timestep;
+      }
      else if (time_stepping_scheme == "CN")
-       {
-	 // n = 0 BE to obtain "smooth" solution
-	 if (timestep_number == 0)
-	   {
-	     theta = 1.0;
-	   }
-	 else
-	   theta = 0.5;
-	
-	 solve_spatial_problem ();
-	 time += timestep;
+        {
+    // n = 0 BE to obtain "smooth" solution
+    if (timestep_number == 0)
+      {
+        theta = 1.0;
+      }
+    else
+      theta = 0.5;
+    
+    solve_spatial_problem ();
+    time += timestep;
 
-	 
-       }
+    
+        }
       else if (time_stepping_scheme == "BE_adaptive")
       {
 	tmp_timestep = timestep;
@@ -617,21 +631,21 @@ void Dynamic_Fracture_Problem<dim>::run ()
       // Compute functional values
       std::cout << std::endl;
       if (test_case == "miehe_shear" ||
-	  test_case == "miehe_tension" ||
-	  test_case == "l_shaped")
-	compute_functional_values();
+            test_case == "miehe_tension" ||
+            test_case == "l_shaped" || test_case == "dynamic_slit")
+      	compute_functional_values();
 
       if (test_case == "Sneddon")
-	compute_functional_values_Sneddon();
+	      compute_functional_values_Sneddon();
 
       if (test_case == "screw_domi")
-	{
-	  compute_stress_per_cell();
-	  compute_energy();
-	}
+        {
+          compute_stress_per_cell();
+          compute_energy();
+        }
 
       if (test_case == "Sneddon3D")
-	compute_cod_Sneddon3D();
+      	compute_cod_Sneddon3D();
 
 
       // Reset to standard timestep
@@ -640,7 +654,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
       // Write solutions 
       // Plot corrector solution on new mesh (i.e., the final solution)
       if ((timestep_number % output_skip == 0))
-	output_results (timestep_number+1,solution);
+	      output_results (timestep_number+1,solution);
       
 
       if (bool_use_strain_history)

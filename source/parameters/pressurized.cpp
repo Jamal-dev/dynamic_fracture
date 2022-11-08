@@ -88,7 +88,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_pressurized ()
   std::string grid_name;
   //grid_name  = "unit_slit.inp"; 
   // Example 2
-  grid_name  = "unit_square_4.inp"; 
+  grid_name  = "./mesh_files/unit_square_4.inp"; 
   
   GridIn<dim> grid_in;
   grid_in.attach_triangulation (triangulation);
@@ -105,7 +105,10 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_pressurized ()
 
   //filename_basis  = "solution_pressurized_pf_extra_eps_2h_ref_7_adaptive_"; 
   // filename_basis  = "solution_pressurized_dynamic_";  
-  filename_basis  = "solution_pressurized_quasi_static_";
+  std::string parent_dir = "./results/pressurized_test";
+  create_directory (parent_dir);
+  // filename_basis  = "solution_pressurized_quasi_static_";
+  filename_basis  = parent_dir + "/" + "solution_pressurized_dynamic_";  
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = false; // if true and be used, then must set error oriented false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false

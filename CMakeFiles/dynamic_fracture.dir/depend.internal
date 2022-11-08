@@ -5,6 +5,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/dynamic_fracture.cc
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundary.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/het3d.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/hohlwalzung.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/miehe.h
@@ -29,6 +30,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/mesh/refine_mesh.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/operations.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/output/write_vtk.cpp
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/dynamic_slit.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/global.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/het3d.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/l_shaped.cpp

@@ -174,6 +174,27 @@ template <int dim>
       }
     
   }
+  
+ // get diverence of u
+ template <int dim>
+  inline
+  double
+  get_divergence_u (const Tensor<dim,dim> grad_u)
+  {
+
+    if (dim == 2)
+      {
+        return grad_u[0][0] + grad_u[1][1];
+      }
+    else if (dim == 3)
+      {
+        return grad_u[0][0] + grad_u[1][1] + grad_u[2][2];
+      }
+     else
+         std::logic_error("Function not yet implemented");
+
+
+  }
 
 
 }

@@ -96,10 +96,12 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
 
   // In the following, we read a *.inp grid from a file.
   std::string grid_name;
+  // grid_name  = "mesh_files/unit_slit.inp";
+  // Comented this part
   if (!bool_initial_crack_via_phase_field)
-    grid_name  = "unit_slit.inp";
+    grid_name  = "mesh_files/unit_slit.inp";
   else if (bool_initial_crack_via_phase_field)
-    grid_name  = "unit_square_1.inp"; 
+    grid_name  = "mesh_files/unit_square_4.inp"; 
  
   GridIn<dim> grid_in;
   grid_in.attach_triangulation (triangulation);

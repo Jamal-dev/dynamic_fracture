@@ -24,6 +24,17 @@ NonhomDirichletBoundaryValues<dim>::value (const Point<dim>  &p,
 		
 		}
     }
+  else if (_test_case == "dynamic_slit")
+    {
+      // Dynamic slit
+      if (component == 1) // u_y
+		{
+		return ( ((p(1) == 1.0) && (p(0) <= 1.0) && (p(0) >= 0.0)) 
+			? 			
+			(1.0) * _time * dis_step_per_timestep : 0 ); 
+		
+		}
+    }
   else if (_test_case == "miehe_shear")
     {
       // Miehe shear

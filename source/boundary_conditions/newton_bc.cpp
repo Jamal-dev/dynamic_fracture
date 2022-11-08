@@ -44,6 +44,46 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 					      component_mask);
 
       }
+	else if  (test_case == "dynamic_slit")
+      {
+		// ux = component_mask[0]
+        // uy = component_mask[1]
+        // phi = component_mask[2]
+        // vx = component_mask[3]
+        // vy = component_mask[4]
+
+		// 0 is the left edge
+		// 1 is the right edge
+		// 2 is the bottom edge
+		// 3 is the top edge
+		// 4 is the crack line
+
+
+    component_mask[0] = false;
+    component_mask[1] = true;
+    component_mask[2] = false; // phase_field
+	component_mask[dim+1]     = false;
+    component_mask[dim+dim]     = true;
+    VectorTools::interpolate_boundary_values (dof_handler,
+                                              2/*bottom edge*/,
+					      ZeroFunction<dim>(dim+1+dim),
+					      //NonhomDirichletBoundaryValues2<dim>(time),
+                                              constraints,
+                                              component_mask);
+ 
+    component_mask[0]   = false; // ux
+    component_mask[1]   = true; 
+    component_mask[2]   = false; // phase_field
+	component_mask[dim+1]     = false;
+    component_mask[dim+dim]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      3/*top edge*/,
+					      ZeroFunction<dim>(dim+1+dim),
+					      constraints,
+					      component_mask);
+
+
+      }
     else if (test_case == "miehe_shear")
       {
         // 0 is the left edge

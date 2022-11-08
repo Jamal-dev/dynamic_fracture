@@ -89,6 +89,8 @@ include/initial_values/miehe.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/miehe.h
 include/initial_values/hohlwalzung.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/hohlwalzung.h
+include/initial_values/dynamic_slit.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
 source/boundary_conditions/nonhomoDirichletBoundary.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundary.cpp
 source/operations.cpp
@@ -111,6 +113,8 @@ source/parameters/screw_domi.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/screw_domi.cpp
 source/parameters/l_shaped.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/l_shaped.cpp
+source/parameters/dynamic_slit.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/dynamic_slit.cpp
 source/boundary_conditions/initial_bc.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_bc.cpp
 source/boundary_conditions/newton_bc.cpp
@@ -242,6 +246,16 @@ dirent.h
 cstdlib
 -
 
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
+vector
+-
+deal.II/base/tensor.h
+-
+deal.II/base/function.h
+-
+deal.II/base/point.h
+-
+
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/het3d.h
 vector
 -
@@ -371,6 +385,10 @@ deal.II/base/point.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/operations.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/output/write_vtk.cpp
+./../../include/dynamic_fracture.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/dynamic_slit.cpp
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
 

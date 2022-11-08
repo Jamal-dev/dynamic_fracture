@@ -28,6 +28,8 @@ double Dynamic_Fracture_Problem<dim>::newton_iteration (const double time)
   // Application of the initial boundary conditions to the 
   // variational equations:
   // Removed because of coupled Newton iteration.
+  // changed: adding initial_bc() to the newton iteration
+  // set_initial_bc (time);
   assemble_system_rhs();
 
   double newton_residuum = system_rhs.linfty_norm(); 

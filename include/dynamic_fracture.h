@@ -86,6 +86,7 @@ public:
   void set_global_parameters ();
 
   void set_runtime_parameters_Miehe ();
+  void set_runtime_parameters_Dynamic_Slit ();
   void set_runtime_parameters_L_shaped ();
   void set_runtime_parameters_Sneddon ();
   void set_runtime_parameters_pressurized ();
@@ -184,6 +185,7 @@ public:
   
   // Structure parameters
   double density_structure; 
+  double density_timestep_ratio;
   double lame_coefficient_mu, lame_coefficient_lambda, poisson_ratio_nu;  
 
 
@@ -241,7 +243,7 @@ Dynamic_Fracture_Problem<dim>::Dynamic_Fracture_Problem (const unsigned int degr
                 :
                 degree (degree),
 		triangulation (Triangulation<dim>::maximum_smoothing),
-                fe (FE_Q<dim>(degree), dim,  // velocities                
+                /*dim is the number of copies*/fe (FE_Q<dim>(degree), dim,  // velocities                
 		    FE_Q<dim>(degree), 1,    // phase-field
 		    FE_Q<dim>(degree), dim),   // displacements
                 dof_handler (triangulation),

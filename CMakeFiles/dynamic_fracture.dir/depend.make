@@ -4,6 +4,7 @@
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: dynamic_fracture.cc
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/boundary_conditions/nonhomoDirichletBoundary.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/dynamic_fracture.h
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/dynamic_slit.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/het3d.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/hohlwalzung.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/miehe.h
@@ -28,6 +29,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/create_quantities/
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/mesh/refine_mesh.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/operations.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/output/write_vtk.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/dynamic_slit.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/global.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/het3d.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/l_shaped.cpp

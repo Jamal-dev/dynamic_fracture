@@ -26,6 +26,7 @@ void Dynamic_Fracture_Problem<dim>::setup_system ()
 
   {				 
     constraints.clear ();
+    // constraints.reinit(solution);
     set_newton_bc ();
     DoFTools::make_hanging_node_constraints (dof_handler,
 					     constraints);

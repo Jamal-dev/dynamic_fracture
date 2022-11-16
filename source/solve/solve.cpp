@@ -17,6 +17,7 @@ Dynamic_Fracture_Problem<dim>::solve ()
   A_direct.vmult(sol,rhs); 
   newton_update = sol;
   
+  // TODO: constraints.distrubte is it making sense here?
   constraints.distribute (newton_update);
   timer.exit_section();
 }

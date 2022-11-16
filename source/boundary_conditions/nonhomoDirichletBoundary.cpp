@@ -27,9 +27,13 @@ NonhomDirichletBoundaryValues<dim>::value (const Point<dim>  &p,
   else if (_test_case == "dynamic_slit")
     {
       // Dynamic slit
-      if (component == 1) // u_y
+	  // Important: dynamic slit is not from 0 to 1
+	  // max(y) = 0.04, max(x) = 0.1
+	  const float max_y = 0.04;
+	  const float max_x = 0.1;
+      if (component == comp.disp_y ) // u_y
 		{
-		return ( ((p(1) == 1.0) && (p(0) <= 1.0) && (p(0) >= 0.0)) 
+		return ( ((p(1) == max_y) && (p(0) <= max_x) && (p(0) >= 0.0)) 
 			? 			
 			(1.0) * _time * dis_step_per_timestep : 0 ); 
 		
@@ -45,12 +49,7 @@ NonhomDirichletBoundaryValues<dim>::value (const Point<dim>  &p,
 			(-1.0) * _time *dis_step_per_timestep : 0 );
 		}
 
-      if (component == dim+1) // v_x
-		{
-		return ( ((p(1) == 1.0) )
-			?
-			(-1.0) * dis_step_per_timestep : 0 );
-		}
+
 
 
   // changed

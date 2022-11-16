@@ -20,7 +20,9 @@ class NonhomDirichletBoundaryValues : public Function<dim>
       _test_case = test_case;
       _alpha_eps = alpha_eps;
     }
-    
+  struct components {unsigned int disp_x =0 , disp_y = 1; 
+                     unsigned int phase_field = 2; 
+                     unsigned int vel_x = 3, vel_y=4;}comp;  
   virtual double value (const Point<dim>   &p,
 			const unsigned int  component = 0) const;
 

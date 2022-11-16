@@ -67,6 +67,7 @@
 
 // Importing boundary values
 #include "source/boundary_conditions/nonhomoDirichletBoundary.cpp"
+#include "source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp"
 
 // Importing math operations
 #include "source/operations.cpp"
@@ -85,7 +86,7 @@
 #include "source/parameters/l_shaped.cpp"
 #include "source/parameters/dynamic_slit.cpp"
 
-// Import initial condition
+// Import initial guesses for the newton iteration
 #include "source/boundary_conditions/initial_bc.cpp"
 #include "source/boundary_conditions/newton_bc.cpp"
 
@@ -153,8 +154,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
   // Switch dimension !!
 
   // Defining test cases
-  test_case = "dynamic_slit";
-  // test_case = "miehe_shear";
+  // test_case = "dynamic_slit";
+  test_case = "miehe_shear";
   //test_case = "l_shaped";
   //test_case = "Sneddon";
   // before it was pressurized test case
@@ -263,8 +264,9 @@ void Dynamic_Fracture_Problem<dim>::run ()
 	   test_case == "screw_domi" ||
 	   test_case == "l_shaped" || test_case == "dynamic_slit")
 	 {
-	   ConstraintMatrix constraints;
-	   constraints.close();
+	   // TODO: constraints.close()?
+    //  ConstraintMatrix constraints;
+	  //  constraints.close();
 	   
 	   std::vector<bool> component_mask (dim+1+dim, true);
 	   

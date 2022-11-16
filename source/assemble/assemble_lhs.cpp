@@ -279,11 +279,11 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 	      for (unsigned int i=0; i<dofs_per_cell; ++i)
 		{
 		  // Simple penalization
-		  double pf_minus_old_timestep_pf_plus = 0.0;
-		  if ((pf - old_timestep_pf) < 0.0)
-		    pf_minus_old_timestep_pf_plus = 0.0;
-		  else 
-		    pf_minus_old_timestep_pf_plus = phi_i_pf[i]; 
+		//   double pf_minus_old_timestep_pf_plus = 0.0;
+		//   if ((pf - old_timestep_pf) < 0.0)
+		//     pf_minus_old_timestep_pf_plus = 0.0;
+		//   else 
+		//     pf_minus_old_timestep_pf_plus = phi_i_pf[i]; 
 
 
 		  double chi = 0.0;
@@ -356,7 +356,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 			      local_matrix(j,i) += timestep * theta * 
 									(
 										delta_fixed_point_newton 
-										* dealii::scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
+											* dealii::scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
 										+ dealii::scalar_product(((1-constant_k) * pf * pf + constant_k) * stress_term_plus_LinU_i, phi_i_grads_u[j])
 										+ dealii::scalar_product(stress_term_minus_LinU_i, phi_i_grads_u[j])
 									// Pressure (pf is solution variable)
@@ -387,14 +387,14 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 			    { //this case is used
 
 			  // Simple penalization
-			  local_matrix(j,i) += delta_penal 
-			  						*  1.0/(cell_diameter * cell_diameter) 
-									*  phi_i_pf[j] 
-			   						* pf_minus_old_timestep_pf_plus
-									* fe_values.JxW(q);
+			//   local_matrix(j,i) += delta_penal 
+			//   						*  1.0/(cell_diameter * cell_diameter) 
+			// 						*  phi_i_pf[j] 
+			//    						* pf_minus_old_timestep_pf_plus
+			// 						* fe_values.JxW(q);
 
 			  // Augmented Lagrangian penalization
-			    //   local_matrix(j,i) += chi * gamma_penal * phi_i_pf[i] * phi_i_pf[j] * fe_values.JxW(q);
+			      local_matrix(j,i) += chi * gamma_penal * phi_i_pf[i] * phi_i_pf[j] * fe_values.JxW(q);
 
 				  // adding interial term
 				  local_matrix(j,i) += phi_i_pf[i] * phi_i_pf[j] 

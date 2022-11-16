@@ -110,7 +110,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Dynamic_Slit ()
   grid_in.read_ucd (input_file); 
   
   global_refinement_steps = 4;
-  pred_corr_levels = 0;
+  pred_corr_levels = 1;
   triangulation.refine_global (global_refinement_steps); 
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 

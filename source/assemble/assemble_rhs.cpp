@@ -351,7 +351,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      if (bool_use_dynamic_code_with_velocities)
 			{
 			//   local_rhs(i) -= (v - old_timestep_v) * phi_i_u * fe_values.JxW(q);
-			  local_rhs(i) += density_structure * (old_timestep_v) * phi_i_u * fe_values.JxW(q);
+			  local_rhs(i) += density_structure * (old_timestep_v - v) * phi_i_u * fe_values.JxW(q);
 			}
 
 		      // pf is solution variable
@@ -386,13 +386,13 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			 
 			  // Current timestep solution
 			  // pf extrapolated
-			//   local_rhs(i) -= timestep * theta * 
-			//     (dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
-			// 		    stress_term_plus, phi_i_grads_u)
-			//      + dealii::scalar_product(stress_term_minus, phi_i_grads_u)
-			//      // Pressure terms (extrapolated)
-			//      - (alpha_biot - 1.0) * current_pressure * pf_extra * pf_extra * divergence_u_LinU
-			//      ) * fe_values.JxW(q); 
+			  local_rhs(i) -= timestep * theta * 
+			    (dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
+					    stress_term_plus, phi_i_grads_u)
+			     + dealii::scalar_product(stress_term_minus, phi_i_grads_u)
+			     // Pressure terms (extrapolated)
+			     - (alpha_biot - 1.0) * current_pressure * pf_extra * pf_extra * divergence_u_LinU
+			     ) * fe_values.JxW(q); 
 
 			  // Old timestep solution
 			  // TODO: need to define previous timestep extrapolation
@@ -421,21 +421,21 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      if (!bool_use_strain_history)
 			{
 			  //  Simple penalization
-			  local_rhs(i) -= delta_penal *  1.0/(cell_diameter * cell_diameter)  
-			  	* pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
+			//   local_rhs(i) -= delta_penal *  1.0/(cell_diameter * cell_diameter)  
+			//   	* pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
 
 		     
 			  // Augmented Lagrangian penalization
-			//   local_rhs(i) -= pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
+			  local_rhs(i) -= pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
 		      
 			  // Current time step
-			//   local_rhs(i) -= timestep * theta * 
-			//     ((1.0 - constant_k) * dealii::scalar_product(stress_term_plus, E) * pf * phi_i_pf
-			//      - G_c/alpha_eps * (1.0 - pf) * phi_i_pf
-			//      + G_c * alpha_eps * grad_pf * phi_i_grads_pf
-			//      // Pressure terms
-			//      - 2.0 * (alpha_biot - 1.0) * current_pressure * pf * divergence_u * phi_i_pf
-			//      ) * fe_values.JxW(q);
+			  local_rhs(i) -= timestep * theta * 
+			    ((1.0 - constant_k) * dealii::scalar_product(stress_term_plus, E) * pf * phi_i_pf
+			     - G_c/alpha_eps * (1.0 - pf) * phi_i_pf
+			     + G_c * alpha_eps * grad_pf * phi_i_grads_pf
+			     // Pressure terms
+			     - 2.0 * (alpha_biot - 1.0) * current_pressure * pf * divergence_u * phi_i_pf
+			     ) * fe_values.JxW(q);
 
 			  // Old timestep
 			  local_rhs(i) -= timestep * (1.0-theta) * 
@@ -481,8 +481,8 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			  // desnity is common so not using it; it should not be used in
 			  // left side as well
 			  local_rhs(i) += (
-									(old_timestep_u)  
-			  					+ timestep *(1-theta) * old_timestep_v)
+									(old_timestep_u - u)  
+			  					+ timestep *(theta * v + (1-theta) * old_timestep_v))
 								 * phi_i_v * fe_values.JxW(q);  
 			}
 		      else 

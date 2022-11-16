@@ -93,6 +93,8 @@ include/initial_values/dynamic_slit.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
 source/boundary_conditions/nonhomoDirichletBoundary.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundary.cpp
+source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp
 source/operations.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/operations.cpp
 include/dynamic_fracture.h
@@ -163,6 +165,16 @@ source/create_quantities/make_material_vectors.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/create_quantities/make_material_vectors.cpp
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundary.h
+vector
+-
+deal.II/base/tensor.h
+-
+deal.II/base/function.h
+-
+deal.II/base/point.h
+-
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
 vector
 -
 deal.II/base/tensor.h
@@ -339,6 +351,10 @@ deal.II/base/point.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundary.cpp
 ./../../include/boundary_conditions/nonhomoDirichletBoundary.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundary.h
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp
+./../../include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/compute_quantities/cod.cpp
 ./../../include/dynamic_fracture.h

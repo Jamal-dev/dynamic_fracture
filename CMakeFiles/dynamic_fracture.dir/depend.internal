@@ -4,6 +4,7 @@
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/dynamic_fracture.cc
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundary.h
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/het3d.h
@@ -18,6 +19,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_bc.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/newton_bc.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundary.cpp
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/compute_quantities/cod.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/compute_quantities/cod_sneddon3d.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/compute_quantities/compute_energy.cpp

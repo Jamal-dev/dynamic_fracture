@@ -3,6 +3,7 @@
 
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: dynamic_fracture.cc
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/boundary_conditions/nonhomoDirichletBoundary.h
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/dynamic_fracture.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/dynamic_slit.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/het3d.h
@@ -17,6 +18,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/assemble/assemble_
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/initial_bc.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/newton_bc.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/nonhomoDirichletBoundary.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/compute_quantities/cod.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/compute_quantities/cod_sneddon3d.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/compute_quantities/compute_energy.cpp

@@ -7,7 +7,7 @@
 using namespace dealii;
 using namespace std;
 
-
+// this is the initial condition for the dynamic slit problem
 template <int dim>
   class InitialValuesDynamicSlit : public Function<dim>
   {

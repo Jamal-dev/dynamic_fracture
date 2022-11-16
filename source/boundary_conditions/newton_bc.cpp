@@ -9,7 +9,8 @@ template <int dim>
 void
 Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 {
-    std::vector<bool> component_mask (dim+1+dim, false);
+    // ConstraintMatrix constraints; // let it use the global constraint
+	std::vector<bool> component_mask (dim+1+dim, false);
     component_mask[dim] = false;  // false  // phase_field
     component_mask[dim+1] = true;
     component_mask[dim+2] = true;
@@ -75,7 +76,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
     component_mask[1]   = true; 
     component_mask[2]   = false; // phase_field
 	component_mask[dim+1]     = false;
-    component_mask[dim+dim]     = false;
+    component_mask[dim+dim]     = true;
     VectorTools::interpolate_boundary_values (dof_handler,
 					      3/*top edge*/,
 					      ZeroFunction<dim>(dim+1+dim),
@@ -124,10 +125,10 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
   // 3 is the top edge
   component_mask[0]     = true;
   // changed component_mask[1]     = true;
-	component_mask[1]     = false;
+	component_mask[1]     = true;
 	component_mask[dim+1]     = true;
 	// changed component_mask[dim+2]     = true;
-  component_mask[dim+2]     = false;
+  component_mask[dim+2]     = true;
 	VectorTools::interpolate_boundary_values (dof_handler,
 						  3,
 						  ZeroFunction<dim>(dim+1+dim), 

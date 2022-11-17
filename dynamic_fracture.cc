@@ -155,7 +155,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
 
   // Defining test cases
   // test_case = "dynamic_slit";
-  test_case = "miehe_shear";
+  // test_case = "miehe_shear";
   test_case = "miehe_tension";
   //test_case = "l_shaped";
   //test_case = "Sneddon";
@@ -266,8 +266,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
 	   test_case == "l_shaped" || test_case == "dynamic_slit")
 	 {
 	   // TODO: constraints.close()?
-    //  ConstraintMatrix constraints;
-	  //  constraints.close();
+     ConstraintMatrix constraints;
+	   constraints.close();
 	   
 	   std::vector<bool> component_mask (dim+1+dim, true);
 	   

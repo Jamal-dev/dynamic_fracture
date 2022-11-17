@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,6 +122,19 @@ info: cmake_check_build_system
 info/fast:
 	$(MAKE) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/build
 .PHONY : info/fast
+
+#=============================================================================
+# Target rules for targets named strip_comments
+
+# Build rule for target.
+strip_comments: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 strip_comments
+.PHONY : strip_comments
+
+# fast build rule for target.
+strip_comments/fast:
+	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/build
+.PHONY : strip_comments/fast
 
 #=============================================================================
 # Target rules for targets named distclean
@@ -189,57 +202,44 @@ run/fast:
 .PHONY : run/fast
 
 #=============================================================================
-# Target rules for targets named strip_comments
+# Target rules for targets named dynamic_fracture
 
 # Build rule for target.
-strip_comments: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 strip_comments
-.PHONY : strip_comments
+dynamic_fracture: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_fracture
+.PHONY : dynamic_fracture
 
 # fast build rule for target.
-strip_comments/fast:
-	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/build
-.PHONY : strip_comments/fast
+dynamic_fracture/fast:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/build
+.PHONY : dynamic_fracture/fast
 
-#=============================================================================
-# Target rules for targets named test
+dynamic_fracture.o: dynamic_fracture.cc.o
 
-# Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
-
-# fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
-
-test.o: test.cc.o
-
-.PHONY : test.o
+.PHONY : dynamic_fracture.o
 
 # target to build an object file
-test.cc.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cc.o
-.PHONY : test.cc.o
+dynamic_fracture.cc.o:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
+.PHONY : dynamic_fracture.cc.o
 
-test.i: test.cc.i
+dynamic_fracture.i: dynamic_fracture.cc.i
 
-.PHONY : test.i
+.PHONY : dynamic_fracture.i
 
 # target to preprocess a source file
-test.cc.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cc.i
-.PHONY : test.cc.i
+dynamic_fracture.cc.i:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.i
+.PHONY : dynamic_fracture.cc.i
 
-test.s: test.cc.s
+dynamic_fracture.s: dynamic_fracture.cc.s
 
-.PHONY : test.s
+.PHONY : dynamic_fracture.s
 
 # target to generate assembly for a file
-test.cc.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cc.s
-.PHONY : test.cc.s
+dynamic_fracture.cc.s:
+	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.s
+.PHONY : dynamic_fracture.cc.s
 
 # Help Target
 help:
@@ -247,19 +247,19 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... info"
+	@echo "... edit_cache"
+	@echo "... strip_comments"
 	@echo "... distclean"
 	@echo "... runclean"
 	@echo "... release"
 	@echo "... debug"
 	@echo "... run"
-	@echo "... edit_cache"
-	@echo "... strip_comments"
-	@echo "... test"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... rebuild_cache"
+	@echo "... dynamic_fracture"
+	@echo "... dynamic_fracture.o"
+	@echo "... dynamic_fracture.i"
+	@echo "... dynamic_fracture.s"
 .PHONY : help
 
 

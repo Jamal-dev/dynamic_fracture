@@ -35,38 +35,12 @@ void Dynamic_Fracture_Problem<dim>::assemble_system_matrix ()
   // Now, we are going to use the 
   // FEValuesExtractors to determine
   // the four principle variables
-  const FEValuesExtractors::Vector displacements (0); // 0:1, 2
-  const FEValuesExtractors::Scalar phase_field (dim); // 2, 3
-  const FEValuesExtractors::Vector velocities (dim+1); // 3:4, 4
+  const FEValuesExtractors::Vector displacements (0); // 2
+  const FEValuesExtractors::Scalar phase_field (dim); // 4
+  const FEValuesExtractors::Vector velocities (dim+1); // 4
 
   // We declare Vectors and Tensors for 
   // the solutions at the previous Newton iteration:
-  // old Newtown step values
-  std::vector<Tensor<1, dim> > old_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_velocity_values(n_q_points);
-  std::vector<double> old_phase_field_values(n_q_points);
-
-  // Old Newton step grads
-  std::vector<Tensor<2,dim> > old_displacement_grads (n_q_points);
-  std::vector<Tensor<2,dim> > old_velocity_grads (n_q_points);
-  std::vector<Tensor<1,dim> > old_phase_field_grads (n_q_points);
-
-  /*old time step */
-  std::vector<Tensor<1, dim> > old_timestep_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_timestep_velocity_values(n_q_points);
-  std::vector<double> old_timestep_phase_field_values(n_q_points);
-
-  // Old time step grads
-  std::vector<Tensor<2,dim> > old_timestep_displacement_grads (n_q_points);
-  std::vector<Tensor<2,dim> > old_timestep_velocity_grads (n_q_points);
-  std::vector<Tensor<1,dim> > old_timestep_phase_field_grads (n_q_points);
-  
-  // old old time step values
-  std::vector<Tensor<1, dim> > old_old_timestep_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_old_timestep_velocity_values(n_q_points);
-  std::vector<double> old_old_timestep_phase_field_values(n_q_points);
-
-  
   std::vector<Vector<double> > old_solution_values (n_q_points, 
 				 		    Vector<double>(dim+1+dim));
 
@@ -105,24 +79,19 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 
    
   // Declaring test functions:
-  // phi_i_u : displacement test functions
-  std::vector<Tensor<1,dim> > phi_i_u (dofs_per_cell); // tensor of 1st order
-  // phi_i_grads_u : grad(displacement) test functions
-  std::vector<Tensor<2,dim> > phi_i_grads_u(dofs_per_cell); // tensor of 2nd order
-  // phi_i_p : phase field test functions
-  std::vector<double>         phi_i_pf(dofs_per_cell); // zeroth order
-  // phi_i_grads_p : grad(phase field) test functions
-  std::vector<Tensor<1,dim> > phi_i_grads_pf (dofs_per_cell); // tensor of 1st order
-  // phi_i_v is test function for velocity
-  std::vector<Tensor<1,dim> > phi_i_v (dofs_per_cell); // tensor of 1st order
-  // phi_i_grads_v is test function for grad(velocity)
-  std::vector<Tensor<2,dim> > phi_i_grads_v(dofs_per_cell); // tensor of 2nd order
+  std::vector<Tensor<1,dim> > phi_i_u (dofs_per_cell); 
+  std::vector<Tensor<2,dim> > phi_i_grads_u(dofs_per_cell);
+  std::vector<double>         phi_i_pf(dofs_per_cell); 
+  std::vector<Tensor<1,dim> > phi_i_grads_pf (dofs_per_cell);
+  // u and v here components of displacements
+  std::vector<Tensor<1,dim> > phi_i_v (dofs_per_cell); 
+  std::vector<Tensor<2,dim> > phi_i_grads_v(dofs_per_cell);
 
   // This is the identity matrix in two dimensions:
   const Tensor<2,dim> Identity = ALE_Transformations
     ::get_Identity<dim> ();
 
-  Tensor<2,dim> zero_matrix; // tensor of 2nd order
+  Tensor<2,dim> zero_matrix;
   zero_matrix.clear();
  				     				   
   typename DoFHandler<dim>::active_cell_iterator
@@ -130,7 +99,6 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
     endc = dof_handler.end();
   
   unsigned int cell_counter = 0;
-  // Assembly loop over all cells:
   for (; cell!=endc; ++cell)
     { 
       //lame_coefficient_mu = lame_coefficient_mu_vector(cell_counter);
@@ -155,33 +123,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 	    / (1.0 - 2 * poisson_ratio_nu);
 	}
 
-      // old Newton iteration values
-	  fe_values[displacements].get_function_values (solution, old_displacement_values);
-	  fe_values[phase_field].get_function_values (solution, old_phase_field_values);
-	  fe_values[velocities].get_function_values (solution, old_velocity_values);
-	  
-	  // old Newton iteration gradients
-	  fe_values[displacements].get_function_gradients (solution, old_displacement_grads);
-	  fe_values[phase_field].get_function_gradients (solution, old_phase_field_grads);
-	  fe_values[velocities].get_function_gradients (solution, old_velocity_grads);
-
-	  // old time step values
-	  fe_values[displacements].get_function_values (old_timestep_solution, old_timestep_displacement_values);
-	  fe_values[phase_field].get_function_values (old_timestep_solution, old_timestep_phase_field_values);
-	  fe_values[velocities].get_function_values (old_timestep_solution, old_timestep_velocity_values);
-
-	  // old time step gradients
-	  fe_values[displacements].get_function_gradients (old_timestep_solution, old_timestep_displacement_grads);
-	  fe_values[phase_field].get_function_gradients (old_timestep_solution, old_timestep_phase_field_grads);
-	  fe_values[velocities].get_function_gradients (old_timestep_solution, old_timestep_velocity_grads);
-	  
-	  // old old time step values
-	  fe_values[displacements].get_function_values (old_old_timestep_solution, old_old_timestep_displacement_values);
-	  fe_values[phase_field].get_function_values (old_old_timestep_solution, old_old_timestep_phase_field_values);
-	  fe_values[velocities].get_function_values (old_old_timestep_solution, old_old_timestep_velocity_values);
-
-	  
-	  // Old Newton iteration values
+      // Old Newton iteration values
       fe_values.get_function_values (solution, old_solution_values);
       fe_values.get_function_gradients (solution, old_solution_grads);
       
@@ -212,8 +154,8 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 		}
 	      
 
-	      const double pf = old_phase_field_values[q];
-	      const double old_timestep_pf = old_timestep_phase_field_values[q]; 
+	      const double pf = old_solution_values[q](dim); 
+	      const double old_timestep_pf = old_timestep_solution_values[q](dim); 
 	      const double old_old_timestep_pf = old_old_timestep_solution_values[q](dim); 
 
 	      const double  lambda_penal_func = old_solution_values_lambda_penal_func[q](dim);
@@ -233,32 +175,28 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
               if (pf_extra >= 1.0)
                 pf_extra = 1.0;
 
-	    //   const Tensor<2,dim> grad_u = ALE_Transformations 
-		// ::get_grad_u<dim> (q, old_solution_grads);
-		const Tensor<2,dim> grad_u = old_displacement_grads[q];
-		const Tensor<2,dim> grad_v = old_velocity_grads[q];
-		const Tensor<1,dim> grad_pf = old_phase_field_grads[q];
+	      const Tensor<2,dim> grad_u = ALE_Transformations 
+		::get_grad_u<dim> (q, old_solution_grads);
 
-	    
-		const double divergence_u = ALE_Transformations::get_divergence_u<dim>(grad_u);
+	      double divergence_u = old_solution_grads[q][0][0] +  old_solution_grads[q][1][1];
+	      if (dim == 3)
+		divergence_u += old_solution_grads[q][2][2];
 
 	      // Linearized strain
 	      const Tensor<2,dim> E = 0.5 * (grad_u + transpose(grad_u));
 	      
-	      // trace of linear strain
-		  const double tr_E = Structure_Terms_in_ALE
+	      const double tr_E = Structure_Terms_in_ALE
 		::get_tr_E<dim> (E);
 
 	      
 	      Tensor<2,dim> stress_term;
 	      stress_term.clear();
 	      stress_term = lame_coefficient_lambda * tr_E * Identity
-						+ 2 * lame_coefficient_mu * E;
+		+ 2 * lame_coefficient_mu * E;
 
 
-	      // tensile and compressive stress
-		  Tensor<2,dim> stress_term_plus;
-          Tensor<2,dim> stress_term_minus;
+	      Tensor<2,dim> stress_term_plus;
+              Tensor<2,dim> stress_term_minus;
 	      
 	      if ((timestep_number > 1) && (dim == 2) && bool_use_stress_splitting)
 		{
@@ -274,16 +212,16 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 		}
 
 	      const Tensor<2,dim> &stress_term_history
-						= local_quadrature_points_data[q].old_stress;
+		= local_quadrature_points_data[q].old_stress;
 
 	      for (unsigned int i=0; i<dofs_per_cell; ++i)
 		{
 		  // Simple penalization
-		//   double pf_minus_old_timestep_pf_plus = 0.0;
-		//   if ((pf - old_timestep_pf) < 0.0)
-		//     pf_minus_old_timestep_pf_plus = 0.0;
-		//   else 
-		//     pf_minus_old_timestep_pf_plus = phi_i_pf[i]; 
+//		  double pf_minus_old_timestep_pf_plus = 0.0;
+//		  if ((pf - old_timestep_pf) < 0.0)
+//		    pf_minus_old_timestep_pf_plus = 0.0;
+//		  else 
+//		    pf_minus_old_timestep_pf_plus = phi_i_pf[i]; 
 
 
 		  double chi = 0.0;
@@ -292,55 +230,47 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 		  else 
 		    chi = 0.0;
 
-		  double divergence_u_LinU = ALE_Transformations::get_divergence_u<dim>(phi_i_grads_u[i]);
+		  double divergence_u_LinU = phi_i_grads_u[i][0][0] + phi_i_grads_u[i][1][1];
+		  if (dim == 3)
+		    divergence_u_LinU += phi_i_grads_u[i][2][2];
 	    	     
-		  // E_linU is constructed from test function
-		  const Tensor<2, dim> E_LinU_i = 0.5
+		
+		  const Tensor<2, dim> E_LinU = 0.5
 		    * (phi_i_grads_u[i] + transpose(phi_i_grads_u[i]));
 
-		  const double tr_E_LinU = dealii::trace(E_LinU_i);
+		  const double tr_E_LinU = dealii::trace(E_LinU);
 
-		  // stress_term_LinU is made from test functions
-		  Tensor<2,dim> stress_term_LinU_i;
-		  stress_term_LinU_i = lame_coefficient_lambda * tr_E_LinU * Identity
-		    				+ 2 * lame_coefficient_mu * E_LinU_i;
+		  Tensor<2,dim> stress_term_LinU;
+		  stress_term_LinU = lame_coefficient_lambda * tr_E_LinU * Identity
+		    + 2 * lame_coefficient_mu * E_LinU;
 
-		  Tensor<2,dim> stress_term_plus_LinU_i;
-		  Tensor<2,dim> stress_term_minus_LinU_i;
+		  Tensor<2,dim> stress_term_plus_LinU;
+		  Tensor<2,dim> stress_term_minus_LinU;
 		  if ((timestep_number > 1) && (dim == 2) && bool_use_stress_splitting)
 		    {
-		  decompose_stress(stress_term_plus_LinU_i, 
-		  					stress_term_minus_LinU_i,
-				   			E, 
-							tr_E, 
-							E_LinU_i, 
-							tr_E_LinU,
-				   			lame_coefficient_lambda,
-				   			lame_coefficient_mu,
-				   			true);
+		  decompose_stress(stress_term_plus_LinU, stress_term_minus_LinU,
+				   E, tr_E, E_LinU, tr_E_LinU,
+				   lame_coefficient_lambda,
+				   lame_coefficient_mu,
+				   true);
 		    }
 		  else 
 		    {
-		      stress_term_plus_LinU_i = stress_term_LinU_i;
-		      stress_term_minus_LinU_i = 0;
+		      stress_term_plus_LinU = stress_term_LinU;
+		      stress_term_minus_LinU = 0;
 		    }
 
 
 		  for (unsigned int j=0; j<dofs_per_cell; ++j)
 		    {
-				const Tensor<2, dim> E_LinU_j = 0.5
-		    			* (phi_i_grads_u[j] + transpose(phi_i_grads_u[j]));
 		      // STVK 
 		      const unsigned int comp_j = fe.system_to_component_index(j).first; 
-		      if (comp_j < dim) // displacement component
+		      if (comp_j < dim)
 			{
 			  if (bool_use_dynamic_code_with_velocities)
-			    { 
-			      // interial term
-			      local_matrix(j,i) += density_structure 
-				  						* phi_i_v[i]/*v is velocity*/ 
-				  						* phi_i_u[j] 
-										* fe_values.JxW(q);
+			    {
+			      // TODO: density, dividing over time step
+			      local_matrix(j,i) += phi_i_v[i] * phi_i_u[j] * fe_values.JxW(q);
 			    }
 
 			  // pf is solution variable
@@ -354,76 +284,55 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 
 
 			      local_matrix(j,i) += timestep * theta * 
-									(
-										delta_fixed_point_newton 
-											* dealii::scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
-										+ dealii::scalar_product(((1-constant_k) * pf * pf + constant_k) * stress_term_plus_LinU_i, phi_i_grads_u[j])
-										+ dealii::scalar_product(stress_term_minus_LinU_i, phi_i_grads_u[j])
-									// Pressure (pf is solution variable)
-									- 2.0 * (alpha_biot - 1.0) * current_pressure * pf * phi_i_pf[i] * divergence_u_LinU
-									) * fe_values.JxW(q);
+				(delta_fixed_point_newton * dealii::scalar_product((1-constant_k) * 2.0 * pf * phi_i_pf[i] * stress_term_plus,phi_i_grads_u[j])
+				 + dealii::scalar_product(((1-constant_k) * pf * pf + constant_k) * stress_term_plus_LinU, phi_i_grads_u[j])
+				 + dealii::scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
+				 // Pressure (pf is solution variable)
+				 - 2.0 * (alpha_biot - 1.0) * current_pressure * pf * phi_i_pf[i] * divergence_u_LinU
+				 ) * fe_values.JxW(q);
 			    }
 			  else if (bool_use_pf_extra)
 			    {
 			      // pf extrapolated
 			      local_matrix(j,i) += timestep * theta * 
-								(
-									dealii::scalar_product(
-										(
-										(1-constant_k) * pf_extra * pf_extra + constant_k
-										) * 	      
-										stress_term_plus_LinU_i  , E_LinU_j
-										)
-									+ dealii::scalar_product(
-										stress_term_minus_LinU_i, E_LinU_j
-										)
-								) * fe_values.JxW(q);
+				(dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) * 	      
+						stress_term_plus_LinU, phi_i_grads_u[j])
+				 + dealii::scalar_product(stress_term_minus_LinU, phi_i_grads_u[j])
+				 ) * fe_values.JxW(q);
 			    }
 			}		     
-		      else if (comp_j == dim) //phase-field component
+		      else if (comp_j == dim)
 			{
 
 			  if (!bool_use_strain_history)
-			    { //this case is used
+			    {
 
 			  // Simple penalization
-			//   local_matrix(j,i) += delta_penal 
-			//   						*  1.0/(cell_diameter * cell_diameter) 
-			// 						*  phi_i_pf[j] 
-			//    						* pf_minus_old_timestep_pf_plus
-			// 						* fe_values.JxW(q);
+			  //local_matrix(j,i) += delta_penal *  1.0/cell_diameter *  phi_i_pf[j] 
+			  //  * pf_minus_old_timestep_pf_plus* fe_values.JxW(q);
 
 			  // Augmented Lagrangian penalization
 			      local_matrix(j,i) += chi * gamma_penal * phi_i_pf[i] * phi_i_pf[j] * fe_values.JxW(q);
 
-				  // adding interial term
-				  local_matrix(j,i) += phi_i_pf[i] * phi_i_pf[j] 
-				  						* fe_values.JxW(q);	
+
 			      local_matrix(j,i) += timestep * theta *
-										( 
-											(1-constant_k) * 
-											(
-												dealii::scalar_product(stress_term_plus_LinU_i, E)
-											  + dealii::scalar_product(stress_term_plus, E_LinU_i)
-													)
-													 * pf * phi_i_pf[j]
-											+(1-constant_k) 
-												* dealii::scalar_product(stress_term_plus, E) 
-												* phi_i_pf[i] * phi_i_pf[j]
-											+ G_c/alpha_eps * phi_i_pf[i] * phi_i_pf[j]  
-											+ G_c * alpha_eps * phi_i_grads_pf[i] * phi_i_grads_pf[j]
-											// Pressure terms
-											- 2.0 * (alpha_biot - 1.0) * current_pressure *
-											(pf * divergence_u_LinU + phi_i_pf[i] * divergence_u) * phi_i_pf[j]
-										) * fe_values.JxW(q);      
+				( (1-constant_k) * (dealii::scalar_product(stress_term_plus_LinU, E)
+						    + dealii::scalar_product(stress_term_plus, E_LinU)) * pf * phi_i_pf[j]
+				  +(1-constant_k) * dealii::scalar_product(stress_term_plus, E) * phi_i_pf[i] * phi_i_pf[j]
+				  + G_c/alpha_eps * phi_i_pf[i] * phi_i_pf[j]  
+				  + G_c * alpha_eps * phi_i_grads_pf[i] * phi_i_grads_pf[j]
+				  // Pressure terms
+				  - 2.0 * (alpha_biot - 1.0) * current_pressure *
+				  (pf * divergence_u_LinU + phi_i_pf[i] * divergence_u) * phi_i_pf[j]
+				  ) * fe_values.JxW(q);      
 
 			    }
 			  else if (bool_use_strain_history)
 			    {
 
 			      local_matrix(j,i) += timestep * theta *
-			    ((1-constant_k) * (0.0 * dealii::scalar_product(stress_term_plus_LinU_i, E)
-			     		       + dealii::scalar_product(stress_term_history, E_LinU_i)) * pf * phi_i_pf[j]
+			    ((1-constant_k) * (0.0 * dealii::scalar_product(stress_term_plus_LinU, E)
+			     		       + dealii::scalar_product(stress_term_history, E_LinU)) * pf * phi_i_pf[j]
 			     +(1-constant_k) * dealii::scalar_product(stress_term_history, E) * phi_i_pf[i] * phi_i_pf[j]
 
 			     + G_c/alpha_eps * phi_i_pf[i] * phi_i_pf[j]  
@@ -443,10 +352,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 
 			  if (bool_use_dynamic_code_with_velocities)
 			    {
-			      local_matrix(j,i) += (
-										phi_i_u[i] 
-										- timestep * theta * phi_i_v[i]
-										)  * phi_i_v[j] * fe_values.JxW(q);
+			      local_matrix(j,i) += (phi_i_u[i] - timestep * theta * phi_i_v[i])  * phi_i_v[j] * fe_values.JxW(q);
 			    }
 			  else 
 			    {
@@ -474,5 +380,3 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
   
   timer.exit_section();
 }
-
-

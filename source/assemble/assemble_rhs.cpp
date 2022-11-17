@@ -38,31 +38,6 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
   const FEValuesExtractors::Scalar phase_field (dim);
   const FEValuesExtractors::Vector velocities (dim+1);
  
-  // old Newton step values
-  std::vector<Tensor<1, dim> > old_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_velocity_values(n_q_points);
-  std::vector<double> old_phase_field_values(n_q_points);
-
-  // old Newton step grads
-  std::vector<Tensor<2, dim> > old_displacement_grads(n_q_points);
-  std::vector<Tensor<2, dim> > old_velocity_grads(n_q_points);
-  std::vector<Tensor<1,dim> > old_phase_field_grads(n_q_points);
-
-  /*old time step */
-  std::vector<Tensor<1, dim> > old_timestep_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_timestep_velocity_values(n_q_points);
-  std::vector<double> old_timestep_phase_field_values(n_q_points);
-
-  // Old time step grads
-  std::vector<Tensor<2,dim> > old_timestep_displacement_grads (n_q_points);
-  std::vector<Tensor<2,dim> > old_timestep_velocity_grads (n_q_points);
-  std::vector<Tensor<1,dim> > old_timestep_phase_field_grads (n_q_points);
-
-  // old old time step values
-  std::vector<Tensor<1, dim> > old_old_timestep_displacement_values(n_q_points);
-  std::vector<Tensor<1, dim> > old_old_timestep_velocity_values(n_q_points);
-  std::vector<double> old_old_timestep_phase_field_values(n_q_points);
-  
   std::vector<Vector<double> > 
     old_solution_values (n_q_points, Vector<double>(dim+1+dim));
 
@@ -132,30 +107,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 	    / (1.0 - 2 * poisson_ratio_nu);
 	}
 
-      // old Newton iteration values
-	  fe_values[displacements].get_function_values (solution, old_displacement_values);
-	  fe_values[phase_field].get_function_values (solution, old_phase_field_values);
-	  fe_values[velocities].get_function_values (solution, old_velocity_values);
-	  
-	  // old Newton iteration gradients
-	  fe_values[displacements].get_function_gradients (solution, old_displacement_grads);
-	  fe_values[phase_field].get_function_gradients (solution, old_phase_field_grads);
-	  fe_values[velocities].get_function_gradients (solution, old_velocity_grads);
-
-	  // old time step values
-	  fe_values[displacements].get_function_values (old_timestep_solution, old_timestep_displacement_values);
-	  fe_values[phase_field].get_function_values (old_timestep_solution, old_timestep_phase_field_values);
-	  fe_values[velocities].get_function_values (old_timestep_solution, old_timestep_velocity_values);
-
-	  // old time step gradients
-	  fe_values[displacements].get_function_gradients (old_timestep_solution, old_timestep_displacement_grads);
-	  fe_values[phase_field].get_function_gradients (old_timestep_solution, old_timestep_phase_field_grads);
-	  fe_values[velocities].get_function_gradients (old_timestep_solution, old_timestep_velocity_grads);
-
-	  // old old time step values
-	  fe_values[displacements].get_function_values (old_old_timestep_solution, old_old_timestep_displacement_values);
-	  fe_values[phase_field].get_function_values (old_old_timestep_solution, old_old_timestep_phase_field_values);
-	  fe_values[velocities].get_function_values (old_old_timestep_solution, old_old_timestep_velocity_values);
+      
       // old Newton iteration
       fe_values.get_function_values (solution, old_solution_values);
       fe_values.get_function_gradients (solution, old_solution_grads);
@@ -173,17 +125,16 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 
 
     const PointHistory<dim> *local_quadrature_points_data
-			= reinterpret_cast<PointHistory<dim>*>(cell->user_pointer());
+	= reinterpret_cast<PointHistory<dim>*>(cell->user_pointer());
 
       
 
 	  for (unsigned int q=0; q<n_q_points; ++q)
 	    {
-	      const double pf = old_phase_field_values[q];
-	      const double old_timestep_pf = old_timestep_phase_field_values[q];
-		
-		  const double old_old_timestep_pf = old_old_timestep_phase_field_values[q];
-	      
+	      const double pf = old_solution_values[q](dim);
+	      const double old_timestep_pf = old_timestep_solution_values[q](dim); 
+
+	      const double old_old_timestep_pf = old_old_timestep_solution_values[q](dim); 
 	      
 	      const double  lambda_penal_func = old_solution_values_lambda_penal_func[q](dim);
 
@@ -193,10 +144,8 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
               // This idea might be refined in a future work (be also careful because
               // theoretically, we do not have time regularity; therefore extrapolation in time
               // might be questionable. But for the time being, this is numerically robust.
-              pf_extra = old_old_timestep_pf + 
-			  			(time - (time-old_timestep-old_old_timestep))/
-                         (time-old_timestep - (time-old_timestep-old_old_timestep)) 
-						 * (old_timestep_pf - old_old_timestep_pf);
+              pf_extra = old_old_timestep_pf + (time - (time-old_timestep-old_old_timestep))/
+                         (time-old_timestep - (time-old_timestep-old_old_timestep)) * (old_timestep_pf - old_old_timestep_pf);
 
 
               if (pf_extra <= 0.0)
@@ -222,82 +171,63 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 
 	      //std::cout << pf_minus_old_timestep_pf_plus << std::endl;
 
-	    //   const Tensor<1,dim> grad_pf = ALE_Transformations
-		// ::get_grad_pf<dim> (q, old_solution_grads);
-		const Tensor<1,dim> grad_pf = old_phase_field_grads[q];
+	      const Tensor<1,dim> grad_pf = ALE_Transformations
+		::get_grad_pf<dim> (q, old_solution_grads);
 
-	    //   const Tensor<1,dim> old_timestep_grad_pf = ALE_Transformations
-		// ::get_grad_pf<dim> (q, old_timestep_solution_grads);
+	      const Tensor<1,dim> old_timestep_grad_pf = ALE_Transformations
+		::get_grad_pf<dim> (q, old_timestep_solution_grads);
 
-		const Tensor<1,dim> old_timestep_grad_pf = 
-									old_timestep_phase_field_grads[q];
+	      const Tensor<1,dim> v = ALE_Transformations 
+		::get_v<dim> (q, old_solution_values);
 
-	    //   const Tensor<1,dim> v = ALE_Transformations 
-		// ::get_v<dim> (q, old_solution_values);
-		const Tensor<1,dim> v = old_velocity_values[q];
+	      const Tensor<1,dim> old_timestep_v = ALE_Transformations 
+		::get_v<dim> (q, old_timestep_solution_values);
 
-	    //   const Tensor<1,dim> old_timestep_v = ALE_Transformations 
-		// ::get_v<dim> (q, old_timestep_solution_values);
-
-		const Tensor<1,dim> old_timestep_v = old_timestep_velocity_values[q];
-
-	    //   const Tensor<2,dim> grad_v = ALE_Transformations 
-		// ::get_grad_v<dim> (q, old_solution_grads);
-
-		const Tensor<2,dim> grad_v = old_velocity_grads[q];
+	      const Tensor<2,dim> grad_v = ALE_Transformations 
+		::get_grad_v<dim> (q, old_solution_grads);
 	      
 
-	    //   const Tensor<1,dim> u = ALE_Transformations 
-		// ::get_u<dim> (q, old_solution_values);
-
-		const Tensor<1,dim> u = old_displacement_values[q];
+	      const Tensor<1,dim> u = ALE_Transformations 
+		::get_u<dim> (q, old_solution_values);
 	      
-	    //   const Tensor<1,dim> old_timestep_u = ALE_Transformations 
-		// ::get_u<dim> (q, old_timestep_solution_values);
-
-		const Tensor<1,dim> old_timestep_u = old_timestep_displacement_values[q];
+	      const Tensor<1,dim> old_timestep_u = ALE_Transformations 
+		::get_u<dim> (q, old_timestep_solution_values);
 	      
-	    //   const Tensor<2,dim> grad_u = ALE_Transformations 
-		// ::get_grad_u<dim> (q, old_solution_grads);
+	      const Tensor<2,dim> grad_u = ALE_Transformations 
+		::get_grad_u<dim> (q, old_solution_grads);
 
-		const Tensor<2,dim> grad_u = old_displacement_grads[q];
+	      const Tensor<2,dim> old_timestep_grad_u = ALE_Transformations 
+		::get_grad_u<dim> (q, old_timestep_solution_grads);
+	      
+	      double divergence_u = old_solution_grads[q][0][0] +  old_solution_grads[q][1][1];
+	      if (dim == 3)
+		divergence_u += old_solution_grads[q][2][2];
 
-	    //   const Tensor<2,dim> old_timestep_grad_u = ALE_Transformations 
-		// ::get_grad_u<dim> (q, old_timestep_solution_grads);
-
-		const Tensor<2,dim> old_timestep_grad_u = old_timestep_displacement_grads[q];
-
-		double divergence_u = ALE_Transformations::get_divergence_u<dim> (grad_u);	      
-	    //   double divergence_u = old_solution_grads[q][0][0] +  old_solution_grads[q][1][1];
-	    //   if (dim == 3)
-		// divergence_u += old_solution_grads[q][2][2];
-
-	    double old_timestep_divergence_u = ALE_Transformations::get_divergence_u<dim> (old_timestep_grad_u);
-		//   double old_timestep_divergence_u = old_timestep_solution_grads[q][0][0] +  old_timestep_solution_grads[q][1][1];
-	    //   if (dim == 3)
-		// old_timestep_divergence_u += old_timestep_solution_grads[q][2][2];
+	      double old_timestep_divergence_u = old_timestep_solution_grads[q][0][0] +  old_timestep_solution_grads[q][1][1];
+	      if (dim == 3)
+		old_timestep_divergence_u += old_timestep_solution_grads[q][2][2];
 
 	      // Linearized strain
 	      const Tensor<2,dim> E = 0.5 * (grad_u + transpose(grad_u));
 	      
 	      const double tr_E = Structure_Terms_in_ALE
-								::get_tr_E<dim> (E);
+		::get_tr_E<dim> (E);
 
 	      const Tensor<2,dim> old_timestep_E = 0.5 * (old_timestep_grad_u + transpose(old_timestep_grad_u));
 	      
 	      const double old_timestep_tr_E = Structure_Terms_in_ALE
-										::get_tr_E<dim> (old_timestep_E);
+		::get_tr_E<dim> (old_timestep_E);
 	      
 	      
 	      Tensor<2,dim> stress_term;
 	      stress_term.clear();
 	      stress_term = lame_coefficient_lambda * tr_E * Identity
-							+ 2 * lame_coefficient_mu * E;
+		+ 2 * lame_coefficient_mu * E;
 
 	      Tensor<2,dim> old_timestep_stress_term;
 	      old_timestep_stress_term.clear();
 	      old_timestep_stress_term = lame_coefficient_lambda * old_timestep_tr_E * Identity
-								+ 2 * lame_coefficient_mu * old_timestep_E;
+		+ 2 * lame_coefficient_mu * old_timestep_E;
 
 	      Tensor<2,dim> stress_term_plus;
               Tensor<2,dim> stress_term_minus;
@@ -330,14 +260,14 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 	      
 
 	       const Tensor<2,dim> &stress_term_history
-					= local_quadrature_points_data[q].old_stress; 
+		= local_quadrature_points_data[q].old_stress; 
 
 
 	      for (unsigned int i=0; i<dofs_per_cell; ++i)
 		{
 		  // Info: Compute velocities
 		  const unsigned int comp_i = fe.system_to_component_index(i).first; 
-		  if (comp_i < dim) // displacement part
+		  if (comp_i < dim)
 		    { 
 		      const Tensor<1,dim> phi_i_u = fe_values[displacements].value (i, q);
 		      const Tensor<2,dim> phi_i_grads_u = fe_values[displacements].gradient (i, q);
@@ -350,8 +280,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      // Acceleration term
 		      if (bool_use_dynamic_code_with_velocities)
 			{
-			//   local_rhs(i) -= (v - old_timestep_v) * phi_i_u * fe_values.JxW(q);
-			  local_rhs(i) += density_structure * (old_timestep_v - v) * phi_i_u * fe_values.JxW(q);
+			  local_rhs(i) -= (v - old_timestep_v) * phi_i_u * fe_values.JxW(q);
 			}
 
 		      // pf is solution variable
@@ -397,14 +326,9 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 			  // Old timestep solution
 			  // TODO: need to define previous timestep extrapolation
 			  local_rhs(i) -= timestep * (1.0 - theta) * 
-			    (dealii::scalar_product(
-							(   
-								(1-constant_k) * pf_extra * pf_extra 
-								+ constant_k) 
-								* old_timestep_stress_term_plus, 
-											phi_i_grads_u)
-			     + dealii::scalar_product(old_timestep_stress_term_minus
-				 							, phi_i_grads_u)
+			    (dealii::scalar_product(((1-constant_k) * pf_extra * pf_extra + constant_k) *	  
+					    old_timestep_stress_term_plus, phi_i_grads_u)
+			     + dealii::scalar_product(old_timestep_stress_term_minus, phi_i_grads_u)
 			     // Pressure terms (extrapolated)
 			     - (alpha_biot - 1.0) * old_timestep_current_pressure * pf_extra * pf_extra * divergence_u_LinU
 			     ) * fe_values.JxW(q); 
@@ -421,8 +345,8 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      if (!bool_use_strain_history)
 			{
 			  //  Simple penalization
-			//   local_rhs(i) -= delta_penal *  1.0/(cell_diameter * cell_diameter)  
-			//   	* pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
+			  //local_rhs(i) -= delta_penal *  1.0/cell_diameter  
+			  //	* pf_minus_old_timestep_pf_plus * phi_i_pf * fe_values.JxW(q);
 
 		     
 			  // Augmented Lagrangian penalization
@@ -439,9 +363,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 
 			  // Old timestep
 			  local_rhs(i) -= timestep * (1.0-theta) * 
-			    ((1.0 - constant_k) 
-				* dealii::scalar_product(old_timestep_stress_term_plus, E) 
-				* old_timestep_pf * phi_i_pf
+			    ((1.0 - constant_k) * dealii::scalar_product(old_timestep_stress_term_plus, E) * old_timestep_pf * phi_i_pf
 			     - G_c/alpha_eps * (1.0 - old_timestep_pf) * phi_i_pf
 			     + G_c * alpha_eps * old_timestep_grad_pf * phi_i_grads_pf
 			     // Pressure terms
@@ -477,13 +399,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 
 		      if (bool_use_dynamic_code_with_velocities)
 			{
-			  //local_rhs(i) -= ((u - old_timestep_u) - timestep * (theta * v + (1-theta) * old_timestep_v)) * phi_i_v * fe_values.JxW(q);
-			  // desnity is common so not using it; it should not be used in
-			  // left side as well
-			  local_rhs(i) += (
-									(old_timestep_u - u)  
-			  					+ timestep *(theta * v + (1-theta) * old_timestep_v))
-								 * phi_i_v * fe_values.JxW(q);  
+			  local_rhs(i) -= ((u - old_timestep_u) - timestep * (theta * v + (1-theta) * old_timestep_v)) * phi_i_v * fe_values.JxW(q); 
 			}
 		      else 
 			{
@@ -586,5 +502,3 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
       
   timer.exit_section();
 }
-
-

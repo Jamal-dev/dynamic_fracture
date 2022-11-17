@@ -18,6 +18,8 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
       {
     component_mask[0]       = false;
     component_mask[1]     = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
     VectorTools::interpolate_boundary_values (dof_handler,
 					      0,
 					      ZeroFunction<dim>(dim+1+dim), 
@@ -28,6 +30,8 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
     component_mask[0] = false;
     component_mask[1] = true;
     component_mask[2] = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
     VectorTools::interpolate_boundary_values (dof_handler,
                                               2,
 					      ZeroFunction<dim>(dim+1+dim),  
@@ -37,6 +41,8 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
     component_mask[0] = false;
     component_mask[1] = true; 
     component_mask[2] = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
     VectorTools::interpolate_boundary_values (dof_handler,
 					      3,
 					      ZeroFunction<dim>(dim+1+dim),  

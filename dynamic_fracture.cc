@@ -152,6 +152,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
 
   // Defining test cases
   test_case = "miehe_shear";
+  test_case = "miehe_tension";
   //test_case = "l_shaped";
   //test_case = "Sneddon";
   // before it was pressurized test case

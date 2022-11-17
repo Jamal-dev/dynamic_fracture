@@ -4,6 +4,7 @@
 
 # Set the name of the project and target:
 SET(TARGET "dynamic_fracture")
+SET(TARGET "test")
 
 
 SET(TARGET_SRC 

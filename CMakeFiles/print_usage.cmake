@@ -1,7 +1,7 @@
 MESSAGE(
 "###
 #
-#  Project  dynamic_fracture  set up with  deal.II-9.2.0  found at
+#  Project  test  set up with  deal.II-9.2.0  found at
 #      /home/jamal/deal/deal.II-v9.2.0
 #
 #  CMAKE_BUILD_TYPE:          Debug

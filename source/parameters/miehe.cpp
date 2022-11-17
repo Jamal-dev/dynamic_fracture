@@ -17,8 +17,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
 
   G_c = 2.7;
   delta_penal = 0.0; // simple penalization
-  //changed gamma_penal =  1.0 
-  gamma_penal = 1.0e+3; //  augmented Lagrangian penalization
+  gamma_penal = 1.0; //  augmented Lagrangian penalization
 
   gravity_x = 0.0;
   gravity_y = 0.0;
@@ -49,12 +48,12 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
   time_stepping_scheme = "BE";
 
   // Timestep size:
-  timestep = 1.0e-5; //1.0e-4;
+  timestep = 1.0e-4; //1.0e-4;
 
   // Maximum number of timesteps:
   max_no_timesteps = 1000; //130;
   // changed end_time_value = 1.0e-2;
-  end_time_value = 1.3e-2; // Crack reaches lower left around 1.3e-2 sec
+  end_time_value = 2.0e-2; // Crack reaches lower left around 1.3e-2 sec
 
   number_of_nonadaptive_time_steps = 2;
 
@@ -115,13 +114,18 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
   std::string parent_dir = "./results/miehe_test";
+  std::string current_test_case = test_case;
+  if (current_test_case.compare("miehe_tension")==0)
+    parent_dir = "./results/miehe_tension";
+  else
+    parent_dir = "./results/miehe_shear";
   create_directory (parent_dir);
   filename_basis  = parent_dir + "/" +  "solution_Miehe_test_"; 
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = true; // if true need to set error_oriented_Newton to false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false
   bool_set_explicitely_constant_k = false;
-  bool_use_pf_extra = false;
+  bool_use_pf_extra = true;
 
   a_fp = 1e-2; //0.001; //0.05;
   b_fp = 5.0; //1.5;
@@ -130,7 +134,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
     max_no_of_augmented_L_penal_iterations = 0;
 
   // changed tolerance_augmented_L_iteration = 1.0e-5;
-  tolerance_augmented_L_iteration = 1.0e-2;
+  tolerance_augmented_L_iteration = 1.0e-5;
   tolerance_absolute_augmented_L_iteration = 1.0e-5;
 
   max_no_newton_steps  = 100;

@@ -3,124 +3,45 @@
 // Here, we impose boundary conditions
 // for the whole system.
 template <int dim>
-void Dynamic_Fracture_Problem<dim>::set_initial_bc(const double time)
-{
+void
+Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
+{ 
+    std::map<unsigned int,double> boundary_values;  
+    std::vector<bool> component_mask (dim+1+dim, false);
+    component_mask[dim] = false; // scalar-valued phase-field
+    component_mask[dim+1] = true;
+    component_mask[dim+2] = true;
+ 
+    if (test_case == "miehe_tension")
+      {
+    component_mask[0]     = false;
+    component_mask[1]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      0,
+					      ZeroFunction<dim>(dim+1+dim),
+					      //NonhomDirichletBoundaryValues<dim>(time),
+					      boundary_values,
+					      component_mask);  
 
-	std::map<unsigned int, double> boundary_values;
-	std::vector<bool> component_mask(dim + 1 + dim, false);
-	component_mask[dim] = false;	// scalar-valued phase-field
-	component_mask[dim + 1] = true; // x-velocity
-	component_mask[dim + 2] = true; // y-velocity
 
-	if (test_case == "miehe_tension")
-	{
-		component_mask[0] = false;
-		component_mask[1] = false;
-		component_mask[dim+1]     = false;
-    	component_mask[dim+2]     = false;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 0,
-												 ZeroFunction<dim>(dim + 1 + dim),
-												 boundary_values,
-												 component_mask);
-
-		component_mask[0] = false;
-		component_mask[1] = true;
-		component_mask[2] = false; // phase_field
-		component_mask[dim+1]     = false;
-    	component_mask[dim+2]     = false;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 2,
-												 ZeroFunction<dim>(dim + 1 + dim),
-												 boundary_values,
-												 component_mask);
-
-		component_mask[0] = false; // ux
-		component_mask[1] = true;
-		component_mask[2] = false; // phase_field
-		component_mask[dim+1]     = false;
-    	component_mask[dim+2]     = false;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 3,
-												 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
-												 boundary_values,
-												 component_mask);
-
-		//    component_mask[0] = false;
-		//    component_mask[1] = false;
-		//    component_mask[2] = true; // phase_field
-		//    VectorTools::interpolate_boundary_values (dof_handler,
-		//                                              2,
-		//					      ConstantFunction<dim>(1.0, dim+1),
-		//                                              boundary_values,
-		//                                              component_mask);
-		//
-		//    component_mask[0]   = false; // ux
-		//    component_mask[1]   = false;
-		//    component_mask[2]   = true; // phase_field
-		//    VectorTools::interpolate_boundary_values (dof_handler,
-		//					      3,
-		//					      ConstantFunction<dim>(1.0, dim+1),
-		//					      boundary_values,
-		//					      component_mask);
-	}
-	else if (test_case == "dynamic_slit")
-	{
-		// ux = component_mask[0]
-		// uy = component_mask[1]
-		// phi = component_mask[2]
-		// vx = component_mask[3]
-		// vy = component_mask[4]
-
-		// 0 is the left edge
-		// 1 is the right edge
-		// 2 is the bottom edge
-		// 3 is the top edge
-		// 4 is the crack line
-		// component_mask[0]     = false;
-		// component_mask[1]     = false;
-		// component_mask[2] = false; // phase_field
-		// component_mask[dim+1]     = false;
-		// component_mask[dim+dim]     = false;
-		// VectorTools::interpolate_boundary_values (dof_handler,
-		// 				      0/*left edge*/,
-		// 				      ZeroFunction<dim>(dim+1+dim),
-		// 				      //NonhomDirichletBoundaryValues<dim>(time),
-		// 				      boundary_values,
-		// 				      component_mask);
-
-		component_mask[0] = false;
-		component_mask[1] = true;
-		component_mask[2] = false; // phase_field
-		component_mask[dim + 1] = false;
-		component_mask[dim + dim] = true;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 2 /*bottom edge*/,
-												 ZeroFunction<dim>(dim + 1 + dim),
-												 boundary_values,
-												 component_mask);
-
-		component_mask[0] = false; // ux
-		component_mask[1] = true;
-		component_mask[2] = false; // phase_field
-		component_mask[dim + 1] = false;
-		component_mask[dim + dim] = false;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 3 /*top edge*/,
-												 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
-												 boundary_values,
-												 component_mask);
-
-		component_mask[0] = false; // ux
-		component_mask[1] = false;
-		component_mask[2] = false; // phase_field
-		component_mask[dim + 1] = false;
-		component_mask[dim + dim] = true;
-		VectorTools::interpolate_boundary_values(dof_handler,
-												 3 /*top edge*/,
-												 NonhomDirichletBoundaryVelocity<dim>(time, test_case, alpha_eps),
-												 boundary_values,
-												 component_mask);
+    component_mask[0] = false;
+    component_mask[1] = true;
+    component_mask[2] = false; // phase_field
+    VectorTools::interpolate_boundary_values (dof_handler,
+                                              2,
+					      ZeroFunction<dim>(dim+1+dim),
+					      //NonhomDirichletBoundaryValues2<dim>(time),
+                                              boundary_values,
+                                              component_mask);
+ 
+    component_mask[0]   = false; // ux
+    component_mask[1]   = true; 
+    component_mask[2]   = false; // phase_field
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      3,
+					      NonhomDirichletBoundaryValues<dim>(time, test_case,alpha_eps),
+					      boundary_values,
+					      component_mask);
 
 		//    component_mask[0] = false;
 		//    component_mask[1] = false;

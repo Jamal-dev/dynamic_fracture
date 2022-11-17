@@ -280,7 +280,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 		      // Acceleration term
 		      if (bool_use_dynamic_code_with_velocities)
 			{
-			  local_rhs(i) -= (v - old_timestep_v) * phi_i_u * fe_values.JxW(q);
+			  local_rhs(i) -= density_structure * (v - old_timestep_v) * phi_i_u * fe_values.JxW(q);
 			}
 
 		      // pf is solution variable

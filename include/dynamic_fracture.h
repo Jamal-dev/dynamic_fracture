@@ -48,6 +48,7 @@
 #include <dirent.h>
 #include <cstdlib>
 
+#include "./../source/test_cases.cpp"
 
 void create_directory (const std::string &directory_name)
 {
@@ -175,6 +176,7 @@ public:
   double timestep, theta, time; 
   std::string time_stepping_scheme;
   std::string test_case, sub_test_case;
+  test_cases current_test_case;
   double old_timestep, old_old_timestep;
 
   double force_structure_x, force_structure_y;	  

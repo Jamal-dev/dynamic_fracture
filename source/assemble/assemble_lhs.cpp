@@ -270,7 +270,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
 			  if (bool_use_dynamic_code_with_velocities)
 			    {
 			      // TODO: density, dividing over time step
-			      local_matrix(j,i) += phi_i_v[i] * phi_i_u[j] * fe_values.JxW(q);
+			      local_matrix(j,i) += density_structure * phi_i_v[i] * phi_i_u[j] * fe_values.JxW(q);
 			    }
 
 			  // pf is solution variable

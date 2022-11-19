@@ -320,17 +320,17 @@ $$
 
 $$
 \begin{align*}
-\delta u &= phi \_ i \_ u[i] 
+\delta u &= phi \unicode{U+005F} \\_ i \\_ u[i] 
 \\ 
-\nabla \delta u &= phi \_ i \_ grads \_ u[i]
+\nabla \delta u &= phi \\_ i \\_ grads \\_ u[i]
 \\
-\delta v &= phi \_ i \_ v[i] 
+\delta v &= phi \\_ i \\_ v[i] 
 \\
-\nabla \delta v &= phi \_ i \_ grads \_ v[i]
+\nabla \delta v &= phi \\_ i \\_ grads \\_ v[i]
 \\
-\delta \varphi &= phi \_ i \_ ph[i] 
+\delta \varphi &= phi \\_ i \\_ ph[i] 
 \\
-\nabla \delta \varphi &= phi \_ i \_ grads \_ph[i]
+\nabla \delta \varphi &= phi \\_ i \\_ grads \\_ph[i]
 \end{align*}
 $$
 

@@ -47,6 +47,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/newton_itera
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/newton_iteration_error_based.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/solve.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/solve_spatial_problem.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/test_cases.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/update_quantities/update_quadrature_point_history.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: /home/jamal/deal/deal.II-v9.2.0/include/deal.II/base/aligned_vector.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: /home/jamal/deal/deal.II-v9.2.0/include/deal.II/base/array_view.h

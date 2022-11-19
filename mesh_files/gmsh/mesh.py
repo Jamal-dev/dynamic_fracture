@@ -78,7 +78,7 @@ gmsh.option.setNumber('Mesh.MshFileVersion', 4)
 
 gmsh.model.mesh.generate()
 # Write mesh data:
-gmsh.write("mesh.msh")
+gmsh.write("mesh_1.msh")
 # Creates  graphical user interface
 if 'close' not in sys.argv:
     gmsh.fltk.run()

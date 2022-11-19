@@ -152,7 +152,7 @@ template <int dim>
 void Dynamic_Fracture_Problem<dim>::run () 
 { 
   // Switch dimension !!
-
+  current_test_case = test_cases::P_MESH_1;
   // Defining test cases
   // test_case = "dynamic_slit";
   // test_case = "miehe_shear";
@@ -173,25 +173,25 @@ void Dynamic_Fracture_Problem<dim>::run ()
   set_global_parameters ();
 
   // Setting specific parameters for each problem
-  if (test_case == "miehe_tension" ||
-      test_case == "miehe_shear")
+  if (current_test_case == test_cases::MIEHE_TENSION ||
+      current_test_case == test_cases::MIEHE_SHEAR)
     set_runtime_parameters_Miehe ();
-  else if (test_case == "dynamic_slit")
+  else if (current_test_case == test_cases::DYANMIC_SLIT)
     set_runtime_parameters_Dynamic_Slit();
-  else if (test_case == "l_shaped")
+  else if (current_test_case == test_cases::L_SHAPED)
     set_runtime_parameters_L_shaped ();
-  else if (test_case == "Sneddon")
+  else if (current_test_case == test_cases::SNEDDON)
     set_runtime_parameters_Sneddon ();
-  else if (test_case == "pressurized")
+  else if (current_test_case == test_cases::PRESSURIZED)
     set_runtime_parameters_pressurized ();
-  else if (test_case == "screw_domi")
+  else if (current_test_case == test_cases::SCREW_DOMI)
     set_runtime_parameters_screw_domi ();
-  else if (test_case == "Sneddon3D")
+  else if (current_test_case == test_cases::SNEDDON3D)
     {
       set_runtime_parameters_Sneddon3D ();
       // TODO: set dimension to 3 !!
     }
-  else if (test_case == "Het3D")
+  else if (current_test_case == test_cases::HET3D)
     {
       set_runtime_parameters_Het3D ();
       // TODO: set dimension to 3 !!
@@ -205,8 +205,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
   setup_system();
 
 
-  if (test_case == "Sneddon3D" 
-      || test_case == "Het3D"
+  if (current_test_case == test_cases::SNEDDON3D 
+      || current_test_case == test_cases::HET3D
       )
     {
       for (unsigned int i=0;i<3;i++)

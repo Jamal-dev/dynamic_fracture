@@ -1,4 +1,5 @@
 Deal.II is the dependency, and it must be installed before.
+
 # Installing deal.II
 
 [Deal.II](https://www.dealii.org/) can be download from the offical websit.
@@ -6,16 +7,18 @@ Deal.II is the dependency, and it must be installed before.
 For easy installation please follow instructions for [candi](https://github.com/dealii/candi).
 For linux distribution
 
-``` bash
+```bash
 git clone https://github.com/dealii/candi.git
 cd candi
 ./candi.sh
 ```
 
 # Runing the code
+
 You can clone it to the `examples` fodler of the Deal.II. It can be clone at some other directory as well but in that case you have to provide the path of -DEAL_II_DIR when compling with cmake.
 Assuming you are cloning it in the `examples` folder.
-``` bash
+
+```bash
 git clone https://github.com/Jamal-dev/dynamic_fracture
 cd dynamic_fracture
 rm -r CMakeFiles CMakeCache.txt cmake_install.cmake
@@ -23,11 +26,14 @@ cmake .
 make
 make run
 ```
+
 You can change the path of the saved files in dynamic_fracture.cc. But it's generated locally you can move it to the result folder.
+
 ```bash
 mkdir results
 mv solution* results
 ```
+
 # Dynamic Phase field equations
 
 Find a solution $\{\boldsymbol{u}, \varphi \} \in \{ \boldsymbol{u}_D + V\} \times W$ such that:
@@ -197,5 +203,109 @@ $$
     \end{align*}
 $$
 
+# Linearized versin of equations
+
+Let $\delta t = t_n - t_{n-1}$ be a time step
+
+$$
+A_1(U)(w) = \rho \left( 
+          \frac{u - u^{n-1}}{\delta t},w
+\right)
+- \rho \theta (v, w) - \rho (1 - \theta) (v^{n-1},w)
+\\ \\
+A_2(U)(w) =  \rho \left( 
+          \frac{v - v^{n-1}}{\delta t},w
+\right) 
+\\ + \theta \left( g(\varphi) \sigma^{+}(u), \nabla w \right) \\
++ (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right)
+\\ + \theta \left(  \sigma^{-}(u), \nabla w \right) \\
++ (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
+\\ \\
+A_3(U)(\Psi) = 
+ \theta (1-\kappa) \left( \varphi \sigma(u) : e(u), \Psi \right)
++  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
+ \\+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
++ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
+\\ - \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
+(1-\theta) \frac{G_c}{\epsilon} \left( 1- \varphi^{n-1}, \Psi \right)
+\\ + \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
+$$
+
+# Newton's method
+
+$$
+A'(U)(\delta U^j, \Psi) = - A(U^j)(\Psi)
+$$
+
+$$
+U^{j+1} = U^{j} + \omega \delta U
+$$
+
+where $\omega$ is the line search parameter
+
+## Jacobian (system matrix)
+
+$$
+A_1(U)(\delta U, w) = \rho \left( 
+          \frac{\delta u }{\delta t},w
+\right)
+- \rho \theta (\delta v, w) 
+\\ \\
+A_2(U)(w) =  \rho \left( 
+          \frac{\delta v }{\delta t},w
+\right) 
+\\ + \theta \left( g'(\varphi) (\delta \varphi)\sigma^{+}(u), \nabla w \right) 
++ \theta \left( g(\varphi) {\sigma^{+}}'(u)(\delta u), \nabla w \right)
+\\ + \theta \left(  {\sigma^{-}}'(u)(\delta u), \nabla w \right) 
+\\ \\
+A_3(U)(\Psi) = 
+ \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
++ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
+\\ + \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
+ \\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
+\\ - \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
+\\ + \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
+$$
+
+with
+
+$$
+A(\varphi) = \{ x \in B \ | \ \Xi + \gamma(\varphi - \varphi^{n-1} >0 \}
+$$
+
+and
+
+$$
+\begin {aligned}
+g(\varphi) & = (1-\kappa) \varphi^2 + \kappa
+\\
+g'(\varphi)(\delta \varphi) & = 2(1-\kappa) \delta \varphi
+\\
+e(u) &= \frac{1}{2} \left(\nabla u + \nabla u^T \right)
+\\
+e'(u)(\delta u) &= \frac{1}{2} \left(\nabla \delta u + \nabla \delta u^T \right)
+\\
+{\boldsymbol{\sigma}}^{+}(u) &= 2 \mu \ e^+(\boldsymbol{u}) + \lambda \ tr(e^+(\boldsymbol{u})) \ \boldsymbol{I} \ ,\\
+\\
+{\boldsymbol{\sigma'}}^{+}(u)(\delta u) &= 2 \mu \ e{^+}'(\boldsymbol{u})(\delta u) 
++ \lambda \ tr\left(
+              e{^+}'(\boldsymbol{u})(\delta u) \right) \ \boldsymbol{I} \ ,\\
+\end {aligned}
+$$
+
+### Code
+
+$$
+\begin{aligned}
+\delta u &= phi\_i\_u[i] &&,&& \nabla \delta u &= phi\_i\_grads\_u[i]
+\\
+\delta v &= phi\_i\_v[i] &&,&& \nabla \delta v &= phi\_i\_grads\_v[i]
+\\
+\delta \varphi &= phi\_i\_ph[i] &&,&& \nabla \delta \varphi &= phi\_i\_grads\_ph[i]
+\\ 
+\end{aligned}
+$$
+
 # Acknowledgement
-This code is initially developed by ![Prof. Thomas Wick](https://thomaswick.org/). Then modified by Monika Senftl in her master thesis. Her thesis pdf is included in the docs folder. The code is further modified by me to make it more general and easy to use.
+
+This code is initially developed by . Then modified by Monika Senftl in her master thesis. Her thesis pdf is included in the docs folder. The code is further modified by me to make it more general and easy to use.

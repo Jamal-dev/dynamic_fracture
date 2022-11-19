@@ -320,7 +320,7 @@ $$
 
 $$
 \begin{align*}
-\delta u &= phi \unicode{U+005F} \\_ i \\_ u[i] 
+\delta u &= phi  \\_ i \\_ u[i] 
 \\ 
 \nabla \delta u &= phi \\_ i \\_ grads \\_ u[i]
 \\

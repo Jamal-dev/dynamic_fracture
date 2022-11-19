@@ -210,9 +210,10 @@ Let $\delta t = t_n - t_{n-1}$ be a time step
 $$
 A_1(U)(w) = \rho \left( 
           \frac{u - u^{n-1}}{\delta t},w
-\right)
-- \rho \theta (v, w) - \rho (1 - \theta) (v^{n-1},w)
-\\ \\
+\right) - \rho \theta (v, w) - \rho (1 - \theta) (v^{n-1},w)
+$$
+
+$$
 A_2(U)(w) =  \rho \left( 
           \frac{v - v^{n-1}}{\delta t},w
 \right) 
@@ -220,7 +221,9 @@ A_2(U)(w) =  \rho \left(
 + (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right)
 \\ + \theta \left(  \sigma^{-}(u), \nabla w \right) \\
 + (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
-\\ \\
+$$
+
+$$
 A_3(U)(\Psi) = 
  \theta (1-\kappa) \left( \varphi \sigma(u) : e(u), \Psi \right)
 +  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
@@ -248,16 +251,19 @@ where $\omega$ is the line search parameter
 $$
 A_1(U)(\delta U, w) = \rho \left( 
           \frac{\delta u }{\delta t},w
-\right)
-- \rho \theta (\delta v, w) 
-\\ \\
+\right)- \rho \theta (\delta v, w) 
+$$
+
+$$
 A_2(U)(w) =  \rho \left( 
           \frac{\delta v }{\delta t},w
 \right) 
 \\ + \theta \left( g'(\varphi) (\delta \varphi)\sigma^{+}(u), \nabla w \right) 
 + \theta \left( g(\varphi) {\sigma^{+}}'(u)(\delta u), \nabla w \right)
 \\ + \theta \left(  {\sigma^{-}}'(u)(\delta u), \nabla w \right) 
-\\ \\
+$$
+
+$$
 A_3(U)(\Psi) = 
  \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
 + \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
@@ -276,7 +282,7 @@ $$
 and
 
 $$
-\begin {aligned}
+\begin{align*}
 g(\varphi) & = (1-\kappa) \varphi^2 + \kappa
 \\
 g'(\varphi)(\delta \varphi) & = 2(1-\kappa) \delta \varphi
@@ -290,20 +296,20 @@ e'(u)(\delta u) &= \frac{1}{2} \left(\nabla \delta u + \nabla \delta u^T \right)
 {\boldsymbol{\sigma'}}^{+}(u)(\delta u) &= 2 \mu \ e{^+}'(\boldsymbol{u})(\delta u) 
 + \lambda \ tr\left(
               e{^+}'(\boldsymbol{u})(\delta u) \right) \ \boldsymbol{I} \ ,\\
-\end {aligned}
+\end {align*}
 $$
 
 ### Code
 
 $$
-\begin{aligned}
+\begin{align*}
 \delta u &= phi\_i\_u[i] &&,&& \nabla \delta u &= phi\_i\_grads\_u[i]
 \\
 \delta v &= phi\_i\_v[i] &&,&& \nabla \delta v &= phi\_i\_grads\_v[i]
 \\
 \delta \varphi &= phi\_i\_ph[i] &&,&& \nabla \delta \varphi &= phi\_i\_grads\_ph[i]
 \\ 
-\end{aligned}
+\end{align*}
 $$
 
 # Acknowledgement

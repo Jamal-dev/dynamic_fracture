@@ -214,24 +214,30 @@ A_1(U)(w) = \rho \left(
 $$
 
 $$
-A_2(U)(w) =  \rho \left( 
+\begin{align*}
+A_2(U)(w) &=  \rho \left( 
           \frac{v - v^{n-1}}{\delta t},w
-\right) + 
-\+ \theta \left( g(\varphi) \sigma^{+}(u), \nabla w \right) +\\
-\+ (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right) +\\ 
-\+ \theta \left(  \sigma^{-}(u), \nabla w \right) +\\
-\+ (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
+\right)
+\\  
+&\+ \theta \left( g(\varphi) \sigma^{+}(u), \nabla w \right) \\
+&\+ (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right) \\ 
+&\+ \theta \left(  \sigma^{-}(u), \nabla w \right) \\
+&\+ (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
+\end{align*}
 $$
 
 $$
-A_3(U)(\Psi) = 
+\begin{align*}
+A_3(U)(\Psi) &= 
  \theta (1-\kappa) \left( \varphi \sigma(u) : e(u), \Psi \right)
-\+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
- \\+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
-\+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
-\\ - \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
+ \\
+&\+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
+ \\&\+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
+&\+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
+\\ &\- \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
 (1-\theta) \frac{G_c}{\epsilon} \left( 1- \varphi^{n-1}, \Psi \right)
-\\ + \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
+\\ &\+ \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
+\end{align*}
 $$
 
 # Newton's method
@@ -264,13 +270,15 @@ A_2(U)(w) =  \rho \left(
 $$
 
 $$
-A_3(U)(\Psi) = 
+\beign{align*}
+A_3(U)(\Psi) &= 
  \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
-\+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
-\\ + \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
- \\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
-\\ - \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
-\\ + \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
+&\+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
+\\ &\+ \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
+ \\&\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
+\\ &\- \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
+\\ &\+ \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
+\end{align*}
 $$
 
 with
@@ -308,7 +316,6 @@ $$
 \delta v &= phi\_i\_v[i] &&,&& \nabla \delta v &= phi\_i\_grads\_v[i]
 \\
 \delta \varphi &= phi\_i\_ph[i] &&,&& \nabla \delta \varphi &= phi\_i\_grads\_ph[i]
-\\ 
 \end{align*}
 $$
 

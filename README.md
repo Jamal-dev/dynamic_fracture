@@ -231,12 +231,16 @@ $$
 A_3(U)(\Psi) &= 
  \theta (1-\kappa) \left( \varphi \sigma(u) : e(u), \Psi \right)
  \\
-&\+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
- \\&\+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
-&\+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
-\\ &\- \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
+& \+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
+ \\
+ & \+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
+ \\
+& \+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
+\\ 
+& \- \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
 (1-\theta) \frac{G_c}{\epsilon} \left( 1- \varphi^{n-1}, \Psi \right)
-\\ &\+ \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
+\\ 
+& \+ \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
 \end{align*}
 $$
 
@@ -273,11 +277,16 @@ $$
 \beign{align*}
 A_3(U)(\Psi) &= 
  \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
+ \\
 &\+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
-\\ &\+ \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
- \\&\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
-\\ &\- \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
-\\ &\+ \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
+\\ 
+&\+ \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
+ \\
+ &\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
+\\ 
+&\- \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
+\\ 
+&\+ \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
 \end{align*}
 $$
 
@@ -311,11 +320,11 @@ $$
 
 $$
 \begin{align*}
-\delta u &= phi\_i\_u[i] &&,&& \nabla \delta u &= phi\_i\_grads\_u[i]
+\delta u &= phi{\_}i{\_}u[i] &&,&& \nabla \delta u &= phi{\_}i{\_}grads{\_}u[i]
 \\
-\delta v &= phi\_i\_v[i] &&,&& \nabla \delta v &= phi\_i\_grads\_v[i]
+\delta v &= phi{\_}i{\_}v[i] &&,&& \nabla \delta v &= phi{\_}i{\_}grads{\_}v[i]
 \\
-\delta \varphi &= phi\_i\_ph[i] &&,&& \nabla \delta \varphi &= phi\_i\_grads\_ph[i]
+\delta \varphi &= phi{\_}i{\_}ph[i] &&,&& \nabla \delta \varphi &= phi{\_}i{\_}grads{\_}ph[i]
 \end{align*}
 $$
 

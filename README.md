@@ -216,19 +216,19 @@ $$
 $$
 A_2(U)(w) =  \rho \left( 
           \frac{v - v^{n-1}}{\delta t},w
-\right) 
-\\ + \theta \left( g(\varphi) \sigma^{+}(u), \nabla w \right) \\
-+ (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right)
-\\ + \theta \left(  \sigma^{-}(u), \nabla w \right) \\
-+ (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
+\right) + 
+\+ \theta \left( g(\varphi) \sigma^{+}(u), \nabla w \right) +\\
+\+ (1-\theta) \left( g(\varphi^{n-1}) \sigma^{+}(u^{n-1}), \nabla w \right) +\\ 
+\+ \theta \left(  \sigma^{-}(u), \nabla w \right) +\\
+\+ (1-\theta) \left(  \sigma^{-}(u^{n-1}), \nabla w \right)
 $$
 
 $$
 A_3(U)(\Psi) = 
  \theta (1-\kappa) \left( \varphi \sigma(u) : e(u), \Psi \right)
-+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
+\+  (1-\theta) (1-\kappa) \left( \varphi \sigma(u^{n-1}) : e(u^{n-1}), \Psi \right)
  \\+ \theta \epsilon \left( G_c \nabla \varphi, \nabla \Psi \right)
-+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
+\+ (1-\theta) \epsilon \left( G_c \nabla \varphi^{n-1}, \nabla \Psi \right)
 \\ - \theta \frac{G_c}{\epsilon} \left( 1- \varphi, \Psi \right) - 
 (1-\theta) \frac{G_c}{\epsilon} \left( 1- \varphi^{n-1}, \Psi \right)
 \\ + \left( \Xi + \gamma \frac{\varphi - \varphi^{n-1}}{\delta t}, \Psi \right)
@@ -259,14 +259,14 @@ A_2(U)(w) =  \rho \left(
           \frac{\delta v }{\delta t},w
 \right) 
 \\ + \theta \left( g'(\varphi) (\delta \varphi)\sigma^{+}(u), \nabla w \right) 
-+ \theta \left( g(\varphi) {\sigma^{+}}'(u)(\delta u), \nabla w \right)
+\+ \theta \left( g(\varphi) {\sigma^{+}}'(u)(\delta u), \nabla w \right)
 \\ + \theta \left(  {\sigma^{-}}'(u)(\delta u), \nabla w \right) 
 $$
 
 $$
 A_3(U)(\Psi) = 
  \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
-+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
+\+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
 \\ + \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
  \\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
 \\ - \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
@@ -294,7 +294,7 @@ e'(u)(\delta u) &= \frac{1}{2} \left(\nabla \delta u + \nabla \delta u^T \right)
 {\boldsymbol{\sigma}}^{+}(u) &= 2 \mu \ e^+(\boldsymbol{u}) + \lambda \ tr(e^+(\boldsymbol{u})) \ \boldsymbol{I} \ ,\\
 \\
 {\boldsymbol{\sigma'}}^{+}(u)(\delta u) &= 2 \mu \ e{^+}'(\boldsymbol{u})(\delta u) 
-+ \lambda \ tr\left(
+\+ \lambda \ tr\left(
               e{^+}'(\boldsymbol{u})(\delta u) \right) \ \boldsymbol{I} \ ,\\
 \end {align*}
 $$

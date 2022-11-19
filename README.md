@@ -274,19 +274,19 @@ A_2(U)(w) =  \rho \left(
 $$
 
 $$
-\beign{align*}
-A_3(U)(\Psi) &= 
+\begin{align*}
+A_3(U)(\Psi) & = 
  \theta (1-\kappa) \left( \delta \varphi \sigma(u) : e(u), \Psi \right)
  \\
-&\+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
+& \+ \theta (1-\kappa) \left(  \varphi \sigma'(u)(\delta u) : e(u), \Psi \right)
 \\ 
-&\+ \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
+& \+ \theta (1-\kappa) \left(  \varphi \sigma(u) : e'(u)(\delta u), \Psi \right)
  \\
- &\+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
+ & \+ \theta \epsilon \left( G_c \nabla \delta \varphi, \nabla \Psi \right)
 \\ 
-&\- \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
+& \- \theta \frac{G_c}{\epsilon} \left( - \delta \varphi, \Psi \right) 
 \\ 
-&\+ \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
+& \+ \left(  \gamma \frac{\delta \varphi }{\delta t}, \Psi \right)
 \end{align*}
 $$
 
@@ -320,11 +320,11 @@ $$
 
 $$
 \begin{align*}
-\delta u &= phi{\_}i{\_}u[i] &&,&& \nabla \delta u &= phi{\_}i{\_}grads{\_}u[i]
+\delta u &= phi{\_}i{\_}u[i] \ \ \ , \ \ \ \nabla \delta u &= phi{\_}i{\_}grads{\_}u[i]
 \\
-\delta v &= phi{\_}i{\_}v[i] &&,&& \nabla \delta v &= phi{\_}i{\_}grads{\_}v[i]
+\delta v &= phi{\_}i{\_}v[i] \ \ \ , \ \ \ \nabla \delta v &= phi{\_}i{\_}grads{\_}v[i]
 \\
-\delta \varphi &= phi{\_}i{\_}ph[i] &&,&& \nabla \delta \varphi &= phi{\_}i{\_}grads{\_}ph[i]
+\delta \varphi &= phi{\_}i{\_}ph[i] \ \ \ , \ \ \ \nabla \delta \varphi &= phi{\_}i{\_}grads{\_}ph[i]
 \end{align*}
 $$
 

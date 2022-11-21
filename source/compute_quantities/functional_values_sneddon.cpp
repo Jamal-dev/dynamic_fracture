@@ -28,7 +28,7 @@ Dynamic_Fracture_Problem<dim>::compute_functional_values_Sneddon ()
 
       std::ofstream f(filename.str().c_str());
 
-      if (test_case == "Sneddon")
+      if (current_test_case.IsSnedon())
         {
           for (unsigned int i = 0; i < n_lines_sneddon_2d; ++i)
             {

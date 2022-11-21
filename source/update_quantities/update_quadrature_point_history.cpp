@@ -82,7 +82,7 @@
 		}
 	      
 
-	      if (bool_set_initial_strain_history && (test_case == "pressurized"))
+	      if (bool_set_initial_strain_history && (current_test_case.IsPressurized() ))
 		{
 		  //std::cout << "Drin" << std::endl;
 		  double top = 2.0 + alpha_eps/4.0;
@@ -107,7 +107,7 @@
 		}
 
 
-	      if (bool_set_initial_strain_history && (test_case == "miehe_shear"))
+	      if (bool_set_initial_strain_history && (current_test_case.IsMiehe_Shear() ))
 		{
 		  //std::cout << "Drin" << std::endl;
 		   double top = 0.5 + alpha_eps/4.0;

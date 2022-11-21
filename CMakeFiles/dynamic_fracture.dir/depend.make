@@ -12,6 +12,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/mi
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/pressurized.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/initial_values/sneddon3d.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/operations.h
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/test_cases.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/utils.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/assemble/assemble_lhs.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/assemble/assemble_rhs.cpp
@@ -36,6 +37,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/global.
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/het3d.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/l_shaped.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/miehe.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/p_mesh1.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/pressurized.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/screw_domi.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/sneddon.cpp
@@ -47,7 +49,6 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/newton_itera
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/newton_iteration_error_based.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/solve.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/solve/solve_spatial_problem.cpp
-CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/test_cases.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/update_quantities/update_quadrature_point_history.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: /home/jamal/deal/deal.II-v9.2.0/include/deal.II/base/aligned_vector.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: /home/jamal/deal/deal.II-v9.2.0/include/deal.II/base/array_view.h

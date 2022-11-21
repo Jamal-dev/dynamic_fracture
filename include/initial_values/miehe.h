@@ -9,10 +9,10 @@ using namespace std;
 
 
 template <int dim>
-  class InitialValuesMiehe : public Function<dim>
+  class InitialValuesPhaseField : public Function<dim>
   {
     public:
-      InitialValuesMiehe (const double alpha_eps, 
+      InitialValuesPhaseField (const double alpha_eps, 
 			  const bool bool_initial_crack_via_phase_field) : Function<dim>(dim+1+dim) 
     {
       _alpha_eps = alpha_eps;
@@ -34,7 +34,7 @@ _bool_initial_crack_via_phase_field = bool_initial_crack_via_phase_field;
 
   template <int dim>
   double
-  InitialValuesMiehe<dim>::value (const Point<dim>  &p,
+  InitialValuesPhaseField<dim>::value (const Point<dim>  &p,
 			     const unsigned int component) const
   {
     // only phase field
@@ -75,11 +75,11 @@ _bool_initial_crack_via_phase_field = bool_initial_crack_via_phase_field;
 
   template <int dim>
   void
-  InitialValuesMiehe<dim>::vector_value (const Point<dim> &p,
+  InitialValuesPhaseField<dim>::vector_value (const Point<dim> &p,
 				    Vector<double>   &values) const
   {
     for (unsigned int comp=0; comp<this->n_components; ++comp)
-      values (comp) = InitialValuesMiehe<dim>::value (p, comp);
+      values (comp) = InitialValuesPhaseField<dim>::value (p, comp);
   }
 
 #endif // miehe_initial_values_local_h

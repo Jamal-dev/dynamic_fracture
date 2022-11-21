@@ -15,7 +15,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
     component_mask[dim+1] = true;
     component_mask[dim+2] = true;
 
-    if (test_case == "miehe_tension")
+    if (current_test_case == test_cases::MIEHE_TENSION)
       {
     component_mask[0]       = false;
     component_mask[1]     = false;
@@ -51,7 +51,51 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 					      component_mask);
 
       }
-	else if  (test_case == "dynamic_slit")
+	else if (current_test_case == test_cases::P_MESH_1)
+      {
+		/*
+			left_edge,      1
+			right_edge,     0
+			top_edge,       3
+			bottom_edge,    2
+			crack_bottom,   4
+			crack_top,      5
+		*/
+    component_mask[0]       = false;
+    component_mask[1]     = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      0,
+					      ZeroFunction<dim>(dim+1+dim), 
+					      constraints,				
+					      component_mask);  
+
+ 
+    component_mask[0] = false;
+    component_mask[1] = true;
+    component_mask[2] = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+                                              2,
+					      ZeroFunction<dim>(dim+1+dim),  
+					      constraints,
+                                              component_mask);
+ 
+    component_mask[0] = false;
+    component_mask[1] = true; 
+    component_mask[2] = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      3,
+					      ZeroFunction<dim>(dim+1+dim),  
+					      constraints,		
+					      component_mask);
+
+      }
+	else if  (current_test_case == test_cases::DYNAMIC_SLIT)
       {
 		// ux = component_mask[0]
         // uy = component_mask[1]
@@ -91,8 +135,16 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 
 
       }
-    else if (test_case == "miehe_shear")
+    else if (current_test_case == test_cases::MIEHE_SHEAR)
       {
+		/*
+			left_edge,      0
+			right_edge,     1
+			top_edge,       3
+			bottom_edge,    2
+			crack_bottom,   4
+			crack_top,      5
+		*/
         // 0 is the left edge
 	component_mask[0]     = false;
 	component_mask[1]     = true;
@@ -168,7 +220,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 
 
       }
-    else if (test_case == "l_shaped")
+    else if (current_test_case == test_cases::L_SHAPED)
       {
 	component_mask[0]     = false;
 	component_mask[1]     = false;
@@ -233,7 +285,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
   
 
       }
-    else if (test_case == "pressurized" || test_case == "Sneddon")
+    else if (current_test_case == test_cases::PRESSURIZED || current_test_case == test_cases::SNEDDON)
       {
 	component_mask[0]     = true;
 	component_mask[1]     = true;
@@ -244,7 +296,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 						  component_mask);  
 
       }
-    else if (test_case == "screw_domi")
+    else if (current_test_case == test_cases::SCREW_DOMI)
       {
 	component_mask[0]       = false;
 	component_mask[1]       = false;
@@ -292,7 +344,7 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 	
 
       }
-    else if ((test_case == "Sneddon3D") || (test_case == "Het3D"))
+    else if ((current_test_case == test_cases::SNEDDON3D) || (current_test_case == test_cases::HET3D))
       {
     component_mask[0]       = true;
     component_mask[1]       = true;

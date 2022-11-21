@@ -117,6 +117,8 @@ source/parameters/l_shaped.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/l_shaped.cpp
 source/parameters/dynamic_slit.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/dynamic_slit.cpp
+source/parameters/p_mesh1.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh1.cpp
 source/boundary_conditions/initial_bc.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_bc.cpp
 source/boundary_conditions/newton_bc.cpp
@@ -173,6 +175,8 @@ deal.II/base/function.h
 -
 deal.II/base/point.h
 -
+./../test_cases.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/boundary_conditions/nonhomoDirichletBoundaryVelocities.h
 vector
@@ -183,6 +187,8 @@ deal.II/base/function.h
 -
 deal.II/base/point.h
 -
+./../test_cases.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
 deal.II/base/quadrature_lib.h
@@ -257,8 +263,8 @@ dirent.h
 -
 cstdlib
 -
-./../source/test_cases.cpp
-/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/test_cases.cpp
+test_cases.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
 vector
@@ -323,6 +329,14 @@ deal.II/base/point.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/operations.h
 utils.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utils.h
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
+iostream
+-
+set
+-
+algorithm
+-
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utils.h
 vector
@@ -426,6 +440,10 @@ deal.II/base/point.h
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
 
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh1.cpp
+./../../include/dynamic_fracture.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
+
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/pressurized.cpp
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
@@ -469,8 +487,6 @@ deal.II/base/point.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/solve/solve_spatial_problem.cpp
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
-
-/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/test_cases.cpp
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/update_quantities/update_quadrature_point_history.cpp
 ./../../include/dynamic_fracture.h

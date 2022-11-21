@@ -28,9 +28,9 @@ double Dynamic_Fracture_Problem<dim>::goal_functional_stress_x ()
     ALE_Transformations::get_Identity<dim>();
 
  unsigned int bc_color = 3;
- if (test_case == "miehe_shear")
+ if (current_test_case.IsMiehe_Shear())
    bc_color = 3;
- else if (test_case == "l_shaped")
+ else if (current_test_case.IsL_Shaped())
    bc_color = 5;
   
   typename DoFHandler<dim>::active_cell_iterator
@@ -78,14 +78,15 @@ double Dynamic_Fracture_Problem<dim>::goal_functional_stress_x ()
      } 
 
 
-   if (test_case == "miehe_shear" || 
-       test_case == "miehe_tension")
+   if (current_test_case.IsMiehe_Shear()  || 
+       current_test_case.IsMiehe_Tension()
+       || current_test_case.IsPMesh1())
      {
        load_value[0] *= -1.0;
 
 
      }
-   else if (test_case == "l_shaped")
+   else if (current_test_case.IsL_Shaped())
      {
        // TODO (change depending on the mesh)
        load_value[1] *= -1.0;

@@ -48,7 +48,7 @@
 #include <dirent.h>
 #include <cstdlib>
 
-#include "./../source/test_cases.cpp"
+#include "test_cases.h"
 
 void create_directory (const std::string &directory_name)
 {
@@ -191,7 +191,8 @@ public:
   double density_timestep_ratio;
   double lame_coefficient_mu, lame_coefficient_lambda, poisson_ratio_nu;  
 
-
+  // test cases for functional values function
+  std::set<test_cases> remaining_test_cases_functional_values;
   double cell_diameter;  
   double max_no_of_augmented_L_penal_iterations;
   unsigned int penal_iterations;

@@ -111,7 +111,7 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
       // We need the cell diameter to control the fluid mesh motion
       cell_diameter = cell->diameter();
 
-      if (test_case == "Het3D")
+      if (current_test_case.IsHet3D())
 	{
 	  E_modulus = func_emodulus->value(cell->center(), 0);
 	  E_modulus += 1.0;

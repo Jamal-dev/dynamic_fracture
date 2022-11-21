@@ -114,8 +114,8 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
   std::string parent_dir = "./results/miehe_test";
-  std::string current_test_case = test_case;
-  if (current_test_case.compare("miehe_tension")==0)
+  // std::string current_test_case = test_case;
+  if (current_test_case.IsMiehe_Tension())
     parent_dir = "./results/miehe_tension";
   else
     parent_dir = "./results/miehe_shear";

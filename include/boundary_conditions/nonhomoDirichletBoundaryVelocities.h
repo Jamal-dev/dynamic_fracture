@@ -4,6 +4,7 @@
 #include <deal.II/base/tensor.h>
 #include <deal.II/base/function.h>
 #include <deal.II/base/point.h>
+#include "./../test_cases.h"
 using namespace dealii;
 using namespace std;
 
@@ -12,7 +13,7 @@ class NonhomDirichletBoundaryVelocity : public Function<dim>
 {
   public:
   NonhomDirichletBoundaryVelocity (const double time,
-				 std::string test_case,
+				 test_cases test_case,
 				 const double alpha_eps)    
     : Function<dim>(dim+1+dim) 
     {

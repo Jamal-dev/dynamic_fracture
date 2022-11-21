@@ -107,7 +107,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   grid_in.attach_triangulation (triangulation);
   std::ifstream input_file(grid_name.c_str());      
   Assert (dim==2, ExcInternalError());
-  gridin.read_msh(input_file); 
+  grid_in.read_msh(input_file); 
   
   global_refinement_steps = 0;
   pred_corr_levels = 1;

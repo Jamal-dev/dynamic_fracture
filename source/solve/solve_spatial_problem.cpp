@@ -143,7 +143,7 @@ void Dynamic_Fracture_Problem<dim>::solve_spatial_problem ()
 	      lower_bound_newton_update = 1.0e-8; 
 	      lower_bound_newton_residuum = 1.0e-8; 
 
-	      if (test_case == "miehe_shear")
+	      if (current_test_case.IsMiehe_Shear())
 		{
 		  lower_bound_newton_update = 1.0e-8;
 		  lower_bound_newton_residuum = 1.0e-8; 
@@ -237,8 +237,8 @@ void Dynamic_Fracture_Problem<dim>::solve_spatial_problem ()
           
       // TODO
       // Predictor-correcter check
-      if (test_case == "miehe_shear" ||
-	  test_case == "l_shaped")
+      if (current_test_case.IsMiehe_Shear() ||
+	  current_test_case.IsL_Shaped())
 	{
 	  // Plot predictor solution on old mesh
 	  if (bool_plot_additional_solutions)

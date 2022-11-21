@@ -12,7 +12,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
     component_mask[dim+1] = true;
     component_mask[dim+2] = true;
  
-    if (test_case == "miehe_tension")
+    if (current_test_case == test_cases::MIEHE_TENSION)
       {
     component_mask[0]     = false;
     component_mask[1]     = false;
@@ -45,7 +45,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
     component_mask[dim+2]     = false;
     VectorTools::interpolate_boundary_values (dof_handler,
 					      3,
-					      NonhomDirichletBoundaryValues<dim>(time, test_case,alpha_eps),
+					      NonhomDirichletBoundaryValues<dim>(time, current_test_case,alpha_eps),
 					      boundary_values,
 					      component_mask);
 
@@ -67,7 +67,54 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 		//					      boundary_values,
 		//					      component_mask);
 	}
-	else if (test_case == "miehe_shear")
+	else if (current_test_case == test_cases::P_MESH_1)
+      {
+		/*
+			left_edge,      1
+			right_edge,     0
+			top_edge,       3
+			bottom_edge,    2
+			crack_bottom,   4
+			crack_top,      5
+		*/
+    component_mask[0]     = false;
+    component_mask[1]     = false;
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      0,
+					      ZeroFunction<dim>(dim+1+dim),
+					      //NonhomDirichletBoundaryValues<dim>(time),
+					      boundary_values,
+					      component_mask);  
+
+
+    component_mask[0] = false;
+    component_mask[1] = true;
+    component_mask[2] = false; // phase_field
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+                                              2,
+					      ZeroFunction<dim>(dim+1+dim),
+					      //NonhomDirichletBoundaryValues2<dim>(time),
+                                              boundary_values,
+                                              component_mask);
+ 
+    component_mask[0]   = false; // ux
+    component_mask[1]   = true; 
+    component_mask[2]   = false; // phase_field
+	component_mask[dim+1]     = false;
+    component_mask[dim+2]     = false;
+    VectorTools::interpolate_boundary_values (dof_handler,
+					      3,
+					      NonhomDirichletBoundaryValues<dim>(time, current_test_case,alpha_eps),
+					      boundary_values,
+					      component_mask);
+
+
+	}
+	else if (current_test_case == test_cases::MIEHE_SHEAR)
 	{
 		// ux = component_mask[0]
 		// uy = component_mask[1]
@@ -120,7 +167,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 		component_mask[dim + 2] = true;
 		VectorTools::interpolate_boundary_values(dof_handler,
 												 3,
-												 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
+												 NonhomDirichletBoundaryValues<dim>(time, current_test_case, alpha_eps),
 												 boundary_values,
 												 component_mask);
 
@@ -146,12 +193,12 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 			component_mask[dim + 2] = false;
 			VectorTools::interpolate_boundary_values(dof_handler,
 													 1,
-													 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
+													 NonhomDirichletBoundaryValues<dim>(time, current_test_case, alpha_eps),
 													 boundary_values,
 													 component_mask);
 		}
 	}
-	else if (test_case == "l_shaped")
+	else if (current_test_case == test_cases::L_SHAPED)
 	{
 		component_mask[0] = false;
 		component_mask[1] = false;
@@ -197,7 +244,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 		component_mask[1] = true;
 		VectorTools::interpolate_boundary_values(dof_handler,
 												 5,
-												 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
+												 NonhomDirichletBoundaryValues<dim>(time, current_test_case, alpha_eps),
 												 boundary_values,
 												 component_mask);
 
@@ -217,7 +264,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 												 boundary_values,
 												 component_mask);
 	}
-	else if (test_case == "pressurized" || test_case == "Sneddon")
+	else if (current_test_case == test_cases::PRESSURIZED || current_test_case == test_cases::SNEDDON)
 	{
 		component_mask[0] = true;
 		component_mask[1] = true;
@@ -227,7 +274,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 												 boundary_values,
 												 component_mask);
 	}
-	else if (test_case == "screw_domi")
+	else if (current_test_case == test_cases::SCREW_DOMI)
 	{
 		component_mask[0] = false;
 		component_mask[1] = false;
@@ -258,7 +305,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 		component_mask[1] = true;
 		VectorTools::interpolate_boundary_values(dof_handler,
 												 3,
-												 NonhomDirichletBoundaryValues<dim>(time, test_case, alpha_eps),
+												 NonhomDirichletBoundaryValues<dim>(time, current_test_case, alpha_eps),
 												 boundary_values,
 												 component_mask);
 
@@ -272,7 +319,7 @@ Dynamic_Fracture_Problem<dim>::set_initial_bc (const double time)
 												 boundary_values,
 												 component_mask);
 	}
-	else if ((test_case == "Sneddon3D") || (test_case == "Het3D"))
+	else if ((current_test_case == test_cases::SNEDDON3D) || (current_test_case == test_cases::HET3D))
 	{
 		component_mask[0] = true;
 		component_mask[1] = true;

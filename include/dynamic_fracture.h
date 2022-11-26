@@ -49,6 +49,7 @@
 #include <cstdlib>
 
 #include "test_cases.h"
+#include "utilities/csv.h"
 
 void create_directory (const std::string &directory_name)
 {
@@ -95,6 +96,8 @@ public:
   void set_runtime_parameters_screw_domi ();
   void set_runtime_parameters_Sneddon3D ();
   void set_runtime_parameters_Het3D ();
+
+  void write_rutime_parameters_csv ();
 
   void setup_system ();
   void make_material_vectors();
@@ -184,7 +187,7 @@ public:
   
 
   double gravity_x, gravity_y, volume_source, traction_x, traction_y;
-  
+  std::tuple <int,int,int> dofs_per_component;
   
   // Structure parameters
   double density_structure; 
@@ -196,7 +199,7 @@ public:
   double cell_diameter;  
   double max_no_of_augmented_L_penal_iterations;
   unsigned int penal_iterations;
-  
+  double min_cell_diameter;
   bool bool_use_stress_splitting;
  
   double constant_k, alpha_eps, G_c, delta_penal, gamma_penal;

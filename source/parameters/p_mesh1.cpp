@@ -15,7 +15,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   current_pressure = 0.0; 
   alpha_biot = 0.0;
 
-  G_c = 1.5e3; // N/m
+  G_c = 1.5; // N/mm
   delta_penal = 0.0; // simple penalization
   gamma_penal = 1.0; //  augmented Lagrangian penalization
 
@@ -34,8 +34,8 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
 
 
   density_structure = 1.2e2; // kg/m^3 
-  poisson_ratio_nu = 0.3; 
-  double E_modulus = 2e11; // pa
+  poisson_ratio_nu = 0.3;//0.3; 
+  E_modulus = 2.908e5;//2e11; // pa
   // Structure parameters
   lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));
 
@@ -50,12 +50,12 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   time_stepping_scheme = "BE";
 
   // Timestep size:
-  timestep = 1.0e-7; //1.0e-4;
+  timestep = 1.0e-5;//1.0e-7; //1.0e-4;
 
   // Maximum number of timesteps:
-  max_no_timesteps = 1e5; //130;
+  max_no_timesteps = 1000;//1e5; //130;
   // changed end_time_value = 1.0e-2;
-  end_time_value = 1.0e-2; // Crack reaches lower left around 1.3e-2 sec
+  end_time_value = 1.4e-2;//1.0e-2; // Crack reaches lower left around 1.3e-2 sec
 
   number_of_nonadaptive_time_steps = 2;
 

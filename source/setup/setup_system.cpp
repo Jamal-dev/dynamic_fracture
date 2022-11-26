@@ -36,7 +36,9 @@ void Dynamic_Fracture_Problem<dim>::setup_system ()
   DoFTools::count_dofs_per_block (dof_handler, dofs_per_block, block_component);  
   const unsigned int n_u = dofs_per_block[0],
     n_c =  dofs_per_block[1], n_v = dofs_per_block[2];
-
+  get<0>(dofs_per_component) = n_u;
+  get<1>(dofs_per_component) = n_c;
+  get<2>(dofs_per_component) = n_v;
   std::cout << "Cells:\t"
             << triangulation.n_active_cells()
             << std::endl  	  

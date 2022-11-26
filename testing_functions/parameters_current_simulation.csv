@@ -1,0 +1,4 @@
+lambda;0.1;mu;0.3;
+density;0.3;
+E;0.2;nu;0.3;
+timestep;1e-05;

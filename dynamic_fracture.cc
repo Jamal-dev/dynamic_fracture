@@ -139,7 +139,27 @@ using namespace std;
 ////////////////////////////////////////////////////////////
 
 
+template<int dim> void Dynamic_Fracture_Problem<dim>::write_rutime_parameters_csv()
+{
+   try
+        {
+            csvfile csv("parameters_current_simulation.csv",","); // throws exceptions!
+            // Header
+            csv.AddRow("Cells",triangulation.n_active_cells(),"DOFs",dof_handler.n_dofs()); 
+            csv.AddRow("Dofs_u",get<0>(dofs_per_component) ,"Dofs_p",get<1>(dofs_per_component) ,"Dofs_v",get<2>(dofs_per_component) );
+            csv.AddRow("lambda",lame_coefficient_lambda,"mu",lame_coefficient_mu);
+            csv.AddRow("density",density_structure, "G_c", G_c);
+            csv.AddRow("E",E_modulus,"nu",poisson_ratio_nu);
+            csv.AddRow("timestep",timestep,"end_time",end_time_value);
+            csv.AddRow("kappa",constant_k,"eps",alpha_eps);
+            csv.AddRow("min_h", min_cell_diameter, "delta_penal",delta_penal);
+            csv.AddRow("is_use_stress_splitting", bool_use_stress_splitting, "is_use_adaptive_newton_bound",bool_use_adaptive_newton_bound);
+            
+        }
+    catch (const std::exception& ex)
+        {std::cout << "Exception was thrown: " << ex.what() << std::endl;}  
 
+}
 
 // As usual, we have to call the run method. It handles
 // the output stream to the terminal.
@@ -157,7 +177,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
   // Defining test cases
   // test_case = "dynamic_slit";
   // test_case = "miehe_shear";
-  test_case = "miehe_tension";
+  // test_case = "miehe_tension";
   //test_case = "l_shaped";
   //test_case = "Sneddon";
   // before it was pressurized test case
@@ -204,8 +224,10 @@ void Dynamic_Fracture_Problem<dim>::run ()
       std::cout << "Framework not implemented. Aborting. " << std::endl;
       abort();
     }
-
+  
   setup_system();
+
+  write_rutime_parameters_csv();
 
 
   if (current_test_case == test_cases::SNEDDON3D 
@@ -217,7 +239,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
     }
 
 
-  double min_cell_diameter = 1.0e+10;
+  min_cell_diameter = 1.0e+10;
   /*
   typename DoFHandler<dim>::active_cell_iterator
     cell = dof_handler.begin_active(),
@@ -296,9 +318,11 @@ void Dynamic_Fracture_Problem<dim>::run ()
                   VectorTools::project (dof_handler,
                       constraints,
                       QGauss<dim>(degree+2),
-                      InitialValuesPhaseField<dim>(alpha_eps,bool_initial_crack_via_phase_field),
+                      InitialValuesPhaseField<dim>(alpha_eps,
+                                                    bool_initial_crack_via_phase_field,
+                                                    current_test_case),
                       solution
-                      );
+                              );
                 }
               
               compute_stress_per_cell();

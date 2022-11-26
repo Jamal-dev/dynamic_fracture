@@ -265,6 +265,8 @@ cstdlib
 -
 test_cases.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
+utilities/csv.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utilities/csv.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
 vector
@@ -305,6 +307,8 @@ deal.II/base/function.h
 -
 deal.II/base/point.h
 -
+./../test_cases.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/pressurized.h
 vector
@@ -336,6 +340,14 @@ iostream
 set
 -
 algorithm
+-
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utilities/csv.h
+iostream
+-
+fstream
+-
+stdio.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utils.h

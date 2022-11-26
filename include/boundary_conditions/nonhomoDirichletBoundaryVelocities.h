@@ -33,7 +33,7 @@ class NonhomDirichletBoundaryVelocity : public Function<dim>
 
 private:
   double _time, _alpha_eps;
-  std::string _test_case;
+  test_cases _test_case;
 
 };
 

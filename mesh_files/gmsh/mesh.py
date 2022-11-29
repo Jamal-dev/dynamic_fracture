@@ -9,7 +9,7 @@ gmsh.initialize()
 
 
 # square points:
-lc = 1e-1
+lc = 1
 eps = 0.05
 width = 10.0
 height = 10.0

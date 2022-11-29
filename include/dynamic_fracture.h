@@ -105,7 +105,7 @@ public:
   void assemble_system_rhs ();
   
   // functions for setting initial and boundary condition
-  void set_initial_bc (const double time);
+  void  set_initial_guess_Newton (const double time);
   void set_newton_bc ();
   
   void solve ();

@@ -18,7 +18,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utils.h
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/assemble/assemble_lhs.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/assemble/assemble_rhs.cpp
- /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_bc.cpp
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_guess_newton.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/newton_bc.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundary.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp

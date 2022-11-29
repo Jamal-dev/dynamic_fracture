@@ -17,7 +17,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/utilities/csv.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: include/utils.h
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/assemble/assemble_lhs.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/assemble/assemble_rhs.cpp
-CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/initial_bc.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/initial_guess_newton.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/newton_bc.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/nonhomoDirichletBoundary.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/boundary_conditions/nonhomoDirichletBoundaryVelocities.cpp

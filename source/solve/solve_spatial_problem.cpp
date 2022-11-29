@@ -79,7 +79,7 @@ void Dynamic_Fracture_Problem<dim>::solve_spatial_problem ()
       do
 	{
 	  // Step 1: Solve forward system
-	  set_initial_bc (time);
+	   set_initial_guess_Newton (time);
 	  if (!bool_use_error_oriented_Newton)
 	    {
 	      delta_fixed_point_newton = 1.0;

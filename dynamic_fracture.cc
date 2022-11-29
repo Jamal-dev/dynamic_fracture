@@ -88,7 +88,7 @@
 #include "source/parameters/p_mesh1.cpp"
 
 // Import initial guesses for the newton iteration
-#include "source/boundary_conditions/initial_bc.cpp"
+#include "source/boundary_conditions/initial_guess_newton.cpp"
 #include "source/boundary_conditions/newton_bc.cpp"
 
 // Import assemble

@@ -175,7 +175,8 @@ template <int dim>
 void Dynamic_Fracture_Problem<dim>::run () 
 { 
   // Switch dimension !!
-  current_test_case = test_cases::P_MESH_1;
+  // current_test_case = test_cases::P_MESH_1;
+  current_test_case = test_cases::P_NOTCHED_CAVITY;
   // Defining test cases
   // test_case = "dynamic_slit";
   // test_case = "miehe_shear";
@@ -203,6 +204,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
     set_runtime_parameters_Dynamic_Slit();
   else if (current_test_case == test_cases::P_MESH_1)
     set_runtime_parameters_p_mesh_1();
+	else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
+    set_runtime_parameters_p_notched_cavity();
   else if (current_test_case == test_cases::L_SHAPED)
     set_runtime_parameters_L_shaped ();
   else if (current_test_case == test_cases::SNEDDON)

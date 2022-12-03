@@ -117,8 +117,10 @@ source/parameters/l_shaped.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/l_shaped.cpp
 source/parameters/dynamic_slit.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/dynamic_slit.cpp
-source/parameters/p_mesh1.cpp
-/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh1.cpp
+source/parameters/p_mesh_1.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh_1.cpp
+source/parameters/p_notched_cavity.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_notched_cavity.cpp
 source/boundary_conditions/initial_guess_newton.cpp
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/boundary_conditions/initial_guess_newton.cpp
 source/boundary_conditions/newton_bc.cpp
@@ -452,7 +454,11 @@ deal.II/base/point.h
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
 
-/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh1.cpp
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh_1.cpp
+./../../include/dynamic_fracture.h
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
+
+/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_notched_cavity.cpp
 ./../../include/dynamic_fracture.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/dynamic_fracture.h
 

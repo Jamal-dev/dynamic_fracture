@@ -95,9 +95,9 @@ Dynamic_Fracture_Problem<dim>::set_newton_bc ()
 							constraints,		
 							component_mask);
 
-}
+	}
 else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
-{
+	{
 		/*
 			left_edge,      1
 			right_edge,     0
@@ -140,7 +140,8 @@ else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
 							constraints,		
 							component_mask);
 
-      }
+}
+
 	else if  (current_test_case == test_cases::DYNAMIC_SLIT)
       {
 		// ux = component_mask[0]

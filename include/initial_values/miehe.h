@@ -83,7 +83,7 @@ template <int dim>
         if (component == 2)   
           {
             
-            if (_test_case.IsPMesh1())
+            if (_test_case.Is_pmesh1())
               {
                 // checking if the point lies at the crack line
                 if (p(1) == m1*p(0) + b1 || p(1) == m2*p(0) + b2)

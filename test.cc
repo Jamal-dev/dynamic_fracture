@@ -55,7 +55,8 @@ void grid_1()
   // std::string file_name = "mesh_files/mesh-new-1.msh";
   // std::string file_name = "mesh_files/mesh-1.msh";
   // std::string file_name = "mesh_files/gmsh/mesh.inp";
-  std::string file_name = "mesh_files/gmsh/mesh.msh";
+  // std::string file_name = "mesh_files/gmsh/mesh.msh";
+  std::string file_name = "mesh_files/example2/p_mesh_1.msh";
   std::ifstream f(file_name.c_str());
   if (file_name.find(".inp")!= std::string::npos)
     { 

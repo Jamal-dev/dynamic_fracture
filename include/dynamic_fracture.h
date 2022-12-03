@@ -87,7 +87,9 @@ public:
   
   void set_global_parameters ();
 
-  void set_runtime_parameters_p_mesh1 ();
+  void set_runtime_parameters_p_mesh_1 ();
+	void set_runtime_parameters_p_notched_cavity ();
+	
   void set_runtime_parameters_Miehe ();
   void set_runtime_parameters_Dynamic_Slit ();
   void set_runtime_parameters_L_shaped ();

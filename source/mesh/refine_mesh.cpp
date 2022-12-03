@@ -32,7 +32,7 @@ bool Dynamic_Fracture_Problem<dim>::refine_mesh()
 	}
 
     }
-  else if (current_test_case.IsSnedon3d())
+  else if (current_test_case.Is_snedon3d())
     {
       for (; cell!=endc; ++cell)
 	{
@@ -53,7 +53,7 @@ bool Dynamic_Fracture_Problem<dim>::refine_mesh()
       
 
     }
-  else if (current_test_case.IsHet3D())
+  else if (current_test_case.Is_het3d())
     {
       for (; cell!=endc; ++cell)
 	{

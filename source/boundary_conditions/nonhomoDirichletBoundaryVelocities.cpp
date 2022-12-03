@@ -28,7 +28,18 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 	{
 	  // p_mesh1
 	  dis_step_per_timestep = 1.0;
-	  if (component == 1) // u_y
+	  if (component == comp.disp_y) // u_y
+		{
+		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 
+			? 			
+			(1.0)  * dis_step_per_timestep : 0 ); 
+		
+}
+else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
+{
+	  // p_mesh1
+	  dis_step_per_timestep = 1.0;
+	  if (component == comp.disp_y) // u_y
 		{
 		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 
 			? 			
@@ -36,7 +47,7 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 		
 		}
 	}
-  else if (_test_case.IsDynamicSlit())
+  else if (_test_case.Is_dynamicslit())
     {
       // Dynamic slit
 	  // Important: dynamic slit is not from 0 to 1
@@ -51,7 +62,7 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 		
 		}
     }
-  else if (_test_case.IsMiehe_Shear())
+  else if (_test_case.Is_miehe_shear())
     {
       // Miehe shear
       if (component == comp.vel_x) // u_x
@@ -89,7 +100,7 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 
     } // bracket for mieher shear
     
- else if (_test_case.IsL_Shaped())
+ else if (_test_case.Is_l_shaped())
     {
       // L_shaped
       if (component == comp.vel_y)
@@ -134,7 +145,7 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 
 
     } // end l-shaped
- else if (_test_case.IsScrewDomi())
+ else if (_test_case.Is_screwdomi())
    {
      if (component == comp.vel_y)
 		{
@@ -161,3 +172,5 @@ NonhomDirichletBoundaryVelocity<dim>::vector_value (const Point<dim> &p,
   for (unsigned int c=0; c<this->n_components; ++c)
     values (c) = NonhomDirichletBoundaryVelocity<dim>::value (p, c);
 }
+
+} // end of bc P_NOTCHED_CAVITY

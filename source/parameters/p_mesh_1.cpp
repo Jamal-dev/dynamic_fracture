@@ -4,7 +4,7 @@
 
 // In this method, we set up runtime parameters 
 template <int dim>
-void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
+void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
 {
   // it does not have anything with boundary condition
   // changed bool_initial_crack_via_phase_field = false;
@@ -15,7 +15,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
   current_pressure = 0.0; 
   alpha_biot = 0.0;
 
-  G_c = 2.7;
+  G_c = 1.5e3; // N/mm
   delta_penal = 0.0; // simple penalization
   gamma_penal = 1.0; //  augmented Lagrangian penalization
 
@@ -33,13 +33,18 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
   traction_y = 0.0; 
 
 
-  density_structure = 1.0; 
-
+  density_structure = 1.2e2; // kg/m^3 
+  poisson_ratio_nu = 0.3;//0.3; 
+  E_modulus = 2e11;//2e11; // pa
+  // Timestep size:
+  timestep = 1.0e-7;//1.0e-7; //1.0e-4;
+  end_time_value = 1.0e-2;//1.0e-2; // Crack reaches lower left around 1.3e-2 sec
   // Structure parameters
-  lame_coefficient_mu = 80.77e+3; 
-  poisson_ratio_nu = 0.3; 
+  lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));
+
+  lame_coefficient_lambda = (2 * poisson_ratio_nu * lame_coefficient_mu)
+                                / (1.0 - 2 * poisson_ratio_nu);
   
-  lame_coefficient_lambda = 121.15e+3; //(2 * poisson_ratio_nu * lame_coefficient_mu)/(1.0 - 2 * poisson_ratio_nu);
 
   
   // Timestepping schemes
@@ -47,13 +52,12 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
   // BE: backward euler
   time_stepping_scheme = "BE";
 
-  // Timestep size:
-  timestep = 1.0e-4; //1.0e-4;
+  
 
   // Maximum number of timesteps:
-  max_no_timesteps = 1000; //130;
+  max_no_timesteps = 1e6;//1e5; //130;
   // changed end_time_value = 1.0e-2;
-  end_time_value = 2.0e-2; // Crack reaches lower left around 1.3e-2 sec
+  
 
   number_of_nonadaptive_time_steps = 2;
 
@@ -95,32 +99,27 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_Miehe ()
 
   // In the following, we read a *.inp grid from a file.
   std::string grid_name;
-  // grid_name  = "mesh_files/unit_slit.inp";
   // Comented this part
   if (!bool_initial_crack_via_phase_field)
-    grid_name  = "mesh_files/unit_slit.inp";
+    grid_name  = "mesh_files/gmsh/mesh_1.msh";
   else if (bool_initial_crack_via_phase_field)
-    grid_name  = "mesh_files/unit_square_4.inp"; 
+    std::logic_error("Not implemented yet"); 
  
   GridIn<dim> grid_in;
   grid_in.attach_triangulation (triangulation);
   std::ifstream input_file(grid_name.c_str());      
   Assert (dim==2, ExcInternalError());
-  grid_in.read_ucd (input_file); 
+  grid_in.read_msh(input_file); 
   
-  global_refinement_steps = 4;
+  global_refinement_steps = 0;
   pred_corr_levels = 1;
   triangulation.refine_global (global_refinement_steps); 
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
-  std::string parent_dir = "./results/miehe_test";
-  // std::string current_test_case = test_case;
-  if (current_test_case.Is_miehe_tension())
-    parent_dir = "./results/miehe_tension";
-  else
-    parent_dir = "./results/miehe_shear";
+  std::string parent_dir = "./results/patrick_tests/mesh_1";
+  
   create_directory (parent_dir);
-  filename_basis  = parent_dir + "/" +  "solution_Miehe_test_"; 
+  filename_basis  = parent_dir + "/" +  "solution_p_mesh1_test_"; 
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = true; // if true need to set error_oriented_Newton to false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false

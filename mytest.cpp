@@ -88,7 +88,6 @@
 #include "source/parameters/p_mesh_1.cpp"
 #include "source/parameters/p_notched_cavity.cpp"
 
-
 // Import initial guesses for the newton iteration
 #include "source/boundary_conditions/initial_guess_newton.cpp"
 #include "source/boundary_conditions/newton_bc.cpp"

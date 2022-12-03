@@ -4,8 +4,7 @@
 
 // In this method, we set up runtime parameters 
 template <int dim>
-void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
-{
+void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
   // it does not have anything with boundary condition
   // changed bool_initial_crack_via_phase_field = false;
   bool_initial_crack_via_phase_field = false;
@@ -15,7 +14,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   current_pressure = 0.0; 
   alpha_biot = 0.0;
 
-  G_c = 1.5e3; // N/mm
+	G_c = 500.0;
   delta_penal = 0.0; // simple penalization
   gamma_penal = 1.0; //  augmented Lagrangian penalization
 
@@ -33,12 +32,12 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   traction_y = 0.0; 
 
 
-  density_structure = 1.2e2; // kg/m^3 
-  poisson_ratio_nu = 0.3;//0.3; 
-  E_modulus = 2e11;//2e11; // pa
+	density_structure = 1000.0;
+	poisson_ratio_nu = 0.3;
+	E_modulus = 3e+111;
   // Timestep size:
-  timestep = 1.0e-7;//1.0e-7; //1.0e-4;
-  end_time_value = 1.0e-2;//1.0e-2; // Crack reaches lower left around 1.3e-2 sec
+	timestep = 1e-07;
+	end_time_value = 0.1;
   // Structure parameters
   lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));
 
@@ -101,7 +100,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   std::string grid_name;
   // Comented this part
   if (!bool_initial_crack_via_phase_field)
-    grid_name  = "mesh_files/gmsh/mesh_1.msh";
+		grid_name = "mesh_files/example2/p_notched_cavity.msh";
   else if (bool_initial_crack_via_phase_field)
     std::logic_error("Not implemented yet"); 
  
@@ -116,10 +115,10 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh1 ()
   triangulation.refine_global (global_refinement_steps); 
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
-  std::string parent_dir = "./results/patrick_tests/mesh_1";
+	std::string parent_dir = "./results/patrick_tests/p_notched_cavity";
   
   create_directory (parent_dir);
-  filename_basis  = parent_dir + "/" +  "solution_p_mesh1_test_"; 
+	filename_basis  = parent_dir + "/" +  "solution_p_notched_cavity_test_";
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = true; // if true need to set error_oriented_Newton to false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false

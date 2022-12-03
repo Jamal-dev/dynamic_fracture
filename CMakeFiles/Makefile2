@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/dynamic_fracture.dir/all
+all: CMakeFiles/test.dir/all
 
 .PHONY : all
 
@@ -64,13 +64,13 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/info.dir/clean
-clean: CMakeFiles/strip_comments.dir/clean
 clean: CMakeFiles/distclean.dir/clean
 clean: CMakeFiles/runclean.dir/clean
 clean: CMakeFiles/release.dir/clean
 clean: CMakeFiles/debug.dir/clean
 clean: CMakeFiles/run.dir/clean
-clean: CMakeFiles/dynamic_fracture.dir/clean
+clean: CMakeFiles/strip_comments.dir/clean
+clean: CMakeFiles/test.dir/clean
 
 .PHONY : clean
 
@@ -100,33 +100,6 @@ info: CMakeFiles/info.dir/rule
 CMakeFiles/info.dir/clean:
 	$(MAKE) -f CMakeFiles/info.dir/build.make CMakeFiles/info.dir/clean
 .PHONY : CMakeFiles/info.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/strip_comments.dir
-
-# All Build rule for target.
-CMakeFiles/strip_comments.dir/all:
-	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/depend
-	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=8 "Built target strip_comments"
-.PHONY : CMakeFiles/strip_comments.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/strip_comments.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/strip_comments.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
-.PHONY : CMakeFiles/strip_comments.dir/rule
-
-# Convenience name for target.
-strip_comments: CMakeFiles/strip_comments.dir/rule
-
-.PHONY : strip_comments
-
-# clean rule for target.
-CMakeFiles/strip_comments.dir/clean:
-	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/clean
-.PHONY : CMakeFiles/strip_comments.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/distclean.dir
@@ -162,7 +135,7 @@ CMakeFiles/distclean.dir/clean:
 CMakeFiles/runclean.dir/all:
 	$(MAKE) -f CMakeFiles/runclean.dir/build.make CMakeFiles/runclean.dir/depend
 	$(MAKE) -f CMakeFiles/runclean.dir/build.make CMakeFiles/runclean.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=7 "Built target runclean"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=5 "Built target runclean"
 .PHONY : CMakeFiles/runclean.dir/all
 
 # Build rule for subdir invocation for target.
@@ -189,7 +162,7 @@ CMakeFiles/runclean.dir/clean:
 CMakeFiles/release.dir/all:
 	$(MAKE) -f CMakeFiles/release.dir/build.make CMakeFiles/release.dir/depend
 	$(MAKE) -f CMakeFiles/release.dir/build.make CMakeFiles/release.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=5 "Built target release"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=3 "Built target release"
 .PHONY : CMakeFiles/release.dir/all
 
 # Build rule for subdir invocation for target.
@@ -240,10 +213,10 @@ CMakeFiles/debug.dir/clean:
 # Target rules for target CMakeFiles/run.dir
 
 # All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/dynamic_fracture.dir/all
+CMakeFiles/run.dir/all: CMakeFiles/test.dir/all
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=6 "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=4 "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
@@ -264,31 +237,58 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/dynamic_fracture.dir
+# Target rules for target CMakeFiles/strip_comments.dir
 
 # All Build rule for target.
-CMakeFiles/dynamic_fracture.dir/all:
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/depend
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=3,4 "Built target dynamic_fracture"
-.PHONY : CMakeFiles/dynamic_fracture.dir/all
+CMakeFiles/strip_comments.dir/all:
+	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/depend
+	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=6 "Built target strip_comments"
+.PHONY : CMakeFiles/strip_comments.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/dynamic_fracture.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dynamic_fracture.dir/all
+CMakeFiles/strip_comments.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/strip_comments.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
-.PHONY : CMakeFiles/dynamic_fracture.dir/rule
+.PHONY : CMakeFiles/strip_comments.dir/rule
 
 # Convenience name for target.
-dynamic_fracture: CMakeFiles/dynamic_fracture.dir/rule
+strip_comments: CMakeFiles/strip_comments.dir/rule
 
-.PHONY : dynamic_fracture
+.PHONY : strip_comments
 
 # clean rule for target.
-CMakeFiles/dynamic_fracture.dir/clean:
-	$(MAKE) -f CMakeFiles/dynamic_fracture.dir/build.make CMakeFiles/dynamic_fracture.dir/clean
-.PHONY : CMakeFiles/dynamic_fracture.dir/clean
+CMakeFiles/strip_comments.dir/clean:
+	$(MAKE) -f CMakeFiles/strip_comments.dir/build.make CMakeFiles/strip_comments.dir/clean
+.PHONY : CMakeFiles/strip_comments.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test.dir
+
+# All Build rule for target.
+CMakeFiles/test.dir/all:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles --progress-num=7,8 "Built target test"
+.PHONY : CMakeFiles/test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/CMakeFiles 0
+.PHONY : CMakeFiles/test.dir/rule
+
+# Convenience name for target.
+test: CMakeFiles/test.dir/rule
+
+.PHONY : test
+
+# clean rule for target.
+CMakeFiles/test.dir/clean:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/clean
+.PHONY : CMakeFiles/test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

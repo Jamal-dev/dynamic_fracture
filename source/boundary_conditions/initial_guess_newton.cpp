@@ -125,6 +125,65 @@ Dynamic_Fracture_Problem<dim>:: set_initial_guess_Newton (const double time)
 								component_mask);
 
 
+}
+else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
+{
+		/*
+			left_edge,      1
+			right_edge,     0
+			top_edge,       3
+			bottom_edge,    2
+			crack_bottom,   4
+			crack_top,      5
+		*/
+			component_mask[0]     = false;
+			component_mask[1]     = false;
+			component_mask[dim+1]     = false;
+			component_mask[dim+2]     = false;
+			VectorTools::interpolate_boundary_values (dof_handler,
+								0,
+								ZeroFunction<dim>(dim+1+dim),
+								//NonhomDirichletBoundaryValues<dim>(time),
+								boundary_values,
+								component_mask);  
+
+
+			component_mask[0] = false;
+			component_mask[1] = true;
+			component_mask[2] = false; // phase_field
+			component_mask[dim+1]     = false;
+			component_mask[dim+2]     = false;
+			VectorTools::interpolate_boundary_values (dof_handler,
+													2,
+								ZeroFunction<dim>(dim+1+dim),
+								//NonhomDirichletBoundaryValues2<dim>(time),
+													boundary_values,
+													component_mask);
+		
+			component_mask[0]   = false; // ux
+			component_mask[1]   = true; 
+			component_mask[2]   = false; // phase_field
+			component_mask[dim+1]     = false;
+			component_mask[dim+2]     = false;
+			VectorTools::interpolate_boundary_values (dof_handler,
+								3,
+								NonhomDirichletBoundaryValues<dim>(time, current_test_case,alpha_eps),
+								boundary_values,
+								component_mask);
+
+			// velocity
+			component_mask[0]   = false; // ux
+			component_mask[1]   = false; 
+			component_mask[2]   = false; // phase_field
+			component_mask[dim+1]     = false;
+			component_mask[dim+2]     = true;
+			VectorTools::interpolate_boundary_values (dof_handler,
+								3,
+								NonhomDirichletBoundaryVelocity<dim>(time, current_test_case,alpha_eps),
+								boundary_values,
+								component_mask);
+
+
 	}
 	else if (current_test_case == test_cases::MIEHE_SHEAR)
 	{

@@ -50,7 +50,7 @@ Dynamic_Fracture_Problem<dim>::output_results (const unsigned int refinement_cyc
   //data_out.add_data_vector(lame_coefficient_mu_vector, "mu");
   //data_out.add_data_vector(lame_coefficient_lambda_vector, "lambda");
 
-  if (current_test_case.IsScrewDomi())
+  if (current_test_case.Is_screwdomi())
     data_out.add_data_vector(solution_stress_per_cell, "stress"); 
 
 
@@ -60,7 +60,7 @@ Dynamic_Fracture_Problem<dim>::output_results (const unsigned int refinement_cyc
 
 
   Vector<float> e_mod(triangulation.n_active_cells());
- if (current_test_case.IsHet3D())
+ if (current_test_case.Is_het3d())
     {
  
       typename DoFHandler<dim>::active_cell_iterator cell =

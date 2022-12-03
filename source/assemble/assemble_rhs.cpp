@@ -95,7 +95,7 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
       
       cell_diameter = cell->diameter();
 
-      if (current_test_case.IsHet3D())
+      if (current_test_case.Is_het3d())
 	{
 	  E_modulus = func_emodulus->value(cell->center(), 0);
 	  E_modulus += 1.0;

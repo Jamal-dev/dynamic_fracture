@@ -22,6 +22,7 @@ public:
   ,HET3D
   ,DYNAMIC_SLIT
   ,P_MESH_1
+	, P_NOTCHED_CAVITY
   };
   
   std::set<test_cases> all_cases()  { 
@@ -34,21 +35,22 @@ public:
           ,SNEDDON3D
           ,HET3D
           ,DYNAMIC_SLIT
+					, P_NOTCHED_CAVITY
           ,P_MESH_1}; 
  
     }
     
-    constexpr bool IsMiehe_Tension() const { return value == MIEHE_TENSION; }
-    constexpr bool IsMiehe_Shear() const { return value == MIEHE_SHEAR; }
-    constexpr bool IsL_Shaped() const { return value == L_SHAPED; }
-    constexpr bool IsSnedon() const { return value == SNEDDON; }
-    constexpr bool IsSnedon3d() const { return value == SNEDDON3D; }
-    constexpr bool IsPressurized() const { return value == PRESSURIZED; }
-    constexpr bool IsScrewDomi() const { return value == SCREW_DOMI; }
-    constexpr bool IsHet3D() const { return value == HET3D; }
-    constexpr bool IsDynamicSlit() const { return value == DYNAMIC_SLIT; }
-    constexpr bool IsPMesh1() const { return value == P_MESH_1; }
-
+    constexpr bool Is_miehe_tension() const { return value == MIEHE_TENSION; }
+    constexpr bool Is_miehe_shear() const { return value == MIEHE_SHEAR; }
+    constexpr bool Is_l_shaped() const { return value == L_SHAPED; }
+    constexpr bool Is_snedon() const { return value == SNEDDON; }
+    constexpr bool Is_snedon3d() const { return value == SNEDDON3D; }
+    constexpr bool Is_pressurized() const { return value == PRESSURIZED; }
+    constexpr bool Is_screwdomi() const { return value == SCREW_DOMI; }
+    constexpr bool Is_het3d() const { return value == HET3D; }
+    constexpr bool Is_dynamicslit() const { return value == DYNAMIC_SLIT; }
+    constexpr bool Is_pmesh1() const { return value == P_MESH_1; }
+		constexpr bool Is_p_notched_cavity() const { return value == P_NOTCHED_CAVITY; }
   
   
   

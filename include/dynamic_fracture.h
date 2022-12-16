@@ -238,7 +238,7 @@ public:
   double TOL_for_time_adaptivity, timestep_rejection_factor, timestep_growth_factor;
   bool use_time_step_control;
   double timestep_upper_bound, timestep_lower_bound,end_time_value;
-  int number_of_nonadaptive_time_steps;
+  unsigned int number_of_nonadaptive_time_steps;
 
   double delta_fixed_point_newton;
   double a_fp, b_fp;

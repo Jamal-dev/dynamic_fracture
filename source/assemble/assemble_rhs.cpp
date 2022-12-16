@@ -8,7 +8,12 @@ template <int dim>
 void
 Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
 {
-  timer.enter_section("Assemble Rhs.");
+  #if DEAL_II_VERSION_GTE(9,0,0)
+	timer.enter_subsection("Assemble Rhs.");
+  #else
+	timer.enter_section("Assemble Rhs.");
+  #endif
+  
   system_rhs=0;
   
   QGauss<dim>   quadrature_formula(degree+2);
@@ -500,5 +505,10 @@ Dynamic_Fracture_Problem<dim>::assemble_system_rhs ()
       
     }  // end cell
       
-  timer.exit_section();
+  #if DEAL_II_VERSION_GTE(9,0,0)
+	timer.leave_subsection("Assemble Rhs.");
+  #else
+	timer.exit_section();
+  #endif
+  
 }

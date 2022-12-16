@@ -5,7 +5,12 @@
 template <int dim>
 void Dynamic_Fracture_Problem<dim>::assemble_system_matrix ()
 {
-  timer.enter_section("Assemble Matrix.");
+  #if DEAL_II_VERSION_GTE(9,0,0)
+    timer.enter_subsection("Assemble Matrix.");
+  #else
+	timer.enter_section("Assemble Matrix.");
+  #endif
+  
   system_matrix=0;
      
   QGauss<dim>   quadrature_formula(degree+2);  
@@ -378,5 +383,10 @@ std::vector<Vector<double> > old_solution_values_lambda_penal_func (n_q_points,
       // end cell
     }   
   
-  timer.exit_section();
+  #if DEAL_II_VERSION_GTE(9,0,0)
+    timer.leave_subsection("Assemble Matrix.");
+  #else
+	timer.exit_section();
+  #endif
+  
 }

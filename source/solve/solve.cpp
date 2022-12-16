@@ -7,7 +7,12 @@ template <int dim>
 void 
 Dynamic_Fracture_Problem<dim>::solve () 
 {
-  timer.enter_section("Solve linear system.");
+  #if DEAL_II_VERSION_GTE(9,0,0)
+    timer.enter_subsection("Solve linear system.");
+  #else
+    timer.enter_section("Solve linear system.");
+  #endif
+  
   Vector<double> sol, rhs;    
   sol = newton_update;    
   rhs = system_rhs;
@@ -19,5 +24,10 @@ Dynamic_Fracture_Problem<dim>::solve ()
   
   // TODO: constraints.distrubte is it making sense here?
   constraints.distribute (newton_update);
-  timer.exit_section();
+  #if DEAL_II_VERSION_GTE(9,0,0)
+    timer.leave_subsection("Solve linear system.");
+  #else
+    timer.exit_section();
+  #endif
+  
 }

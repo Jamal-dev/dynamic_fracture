@@ -94,11 +94,11 @@ double Dynamic_Fracture_Problem<dim>::goal_functional_stress_x ()
 
        double load_increment = time;
         if (time < 0.3)
-	  load_increment = time;
-	else if (time >= 0.3 && time < 0.8)
-	  load_increment = 0.6 - time;
-	else if (time >= 0.8)
-	  load_increment = -1.0 + time;
+          load_increment = time;
+        else if (time >= 0.3 && time < 0.8)
+          load_increment = 0.6 - time;
+        else if (time >= 0.8)
+          load_increment = -1.0 + time;
 
 
      }

@@ -68,7 +68,7 @@ void Dynamic_Fracture_Problem<dim>::solve_spatial_problem ()
 	}
       */
 
-      double pressure_increment_factor = 0.1;
+    //   double pressure_increment_factor = 0.1;
       
  pf_extra_step:
       

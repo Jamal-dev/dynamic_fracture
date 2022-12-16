@@ -373,11 +373,11 @@ void Dynamic_Fracture_Problem<dim>::run ()
        bool_set_initial_strain_history = false;
      }
 
-  unsigned int refine_mesh_1st = 500000;
-  unsigned int refine_mesh_2nd = 20000;
-  unsigned int refine_mesh_3rd = 30000;
-  unsigned int refine_mesh_4th = 40000;
-  unsigned int refine_mesh_5th = 500000;
+  // unsigned int refine_mesh_1st = 500000;
+  // unsigned int refine_mesh_2nd = 20000;
+  // unsigned int refine_mesh_3rd = 30000;
+  // unsigned int refine_mesh_4th = 40000;
+  // unsigned int refine_mesh_5th = 500000;
  
   const unsigned int output_skip = 1;
   unsigned int refinement_cycle = 0;
@@ -694,8 +694,9 @@ int main ()
       deallog.depth_console (0);
 
       const unsigned int dimension = 2;
-      Dynamic_Fracture_Problem<dimension> flow_problem(1);
-      flow_problem.run ();
+      const unsigned int fe_degree = 1;
+      Dynamic_Fracture_Problem<dimension> dynamic_fracture_problem(fe_degree);
+      dynamic_fracture_problem.run ();
     }
   catch (std::exception &exc)
     {

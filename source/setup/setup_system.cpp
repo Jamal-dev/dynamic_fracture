@@ -4,7 +4,11 @@
 template <int dim>
 void Dynamic_Fracture_Problem<dim>::setup_system ()
 {
-  timer.enter_section("Setup system.");
+  #if DEAL_II_VERSION_GTE(9,1,0)
+    timer.enter_subsection("Setup system.");
+  #else
+    timer.enter_section("Setup system.");
+  #endif
 
 
   value_phase_field_for_refinement = 0.9;
@@ -32,8 +36,15 @@ void Dynamic_Fracture_Problem<dim>::setup_system ()
   }
   constraints.close ();
   
-  std::vector<unsigned int> dofs_per_block (3);
-  DoFTools::count_dofs_per_block (dof_handler, dofs_per_block, block_component);  
+  #if DEAL_II_VERSION_GTE(9,2,0)
+      std::vector<types::global_dof_index> dofs_per_block =
+        DoFTools::count_dofs_per_fe_block (dof_handler, block_component);
+  #else
+      std::vector<types::global_dof_index> dofs_per_block (3);
+      DoFTools::count_dofs_per_block (dof_handler, dofs_per_block, block_component);
+  #endif
+  // std::vector<unsigned int> dofs_per_block (3);
+  // DoFTools::count_dofs_per_block (dof_handler, dofs_per_block, block_component);  
   const unsigned int n_u = dofs_per_block[0],
     n_c =  dofs_per_block[1], n_v = dofs_per_block[2];
   get<0>(dofs_per_component) = n_u;
@@ -163,7 +174,12 @@ void Dynamic_Fracture_Problem<dim>::setup_system ()
 
   std::cout << "Min cell dia: " << min_cell_diameter << std::endl;
 
-  timer.exit_section(); 
+  #if DEAL_II_VERSION_GTE(9,1,0)
+    timer.leave_subsection("Setup system.");
+  #else
+    timer.exit_section(); 
+  #endif
+  
 }
 
 

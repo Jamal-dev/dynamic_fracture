@@ -1,6 +1,7 @@
 #ifndef utils_local_h
 #define utils_local_h
-#include <vector>
+
+#include <deal.II/lac/vector.h>
 #include <deal.II/base/tensor.h>
 #include <deal.II/base/function.h>
 #include <deal.II/base/point.h>

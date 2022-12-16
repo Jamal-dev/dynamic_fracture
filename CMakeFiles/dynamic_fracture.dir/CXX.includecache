@@ -205,7 +205,7 @@ utilities/csv.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utilities/csv.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/dynamic_slit.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -215,7 +215,7 @@ deal.II/base/point.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/het3d.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -225,7 +225,7 @@ deal.II/base/point.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/hohlwalzung.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -235,7 +235,7 @@ deal.II/base/point.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/miehe.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -247,7 +247,7 @@ deal.II/base/point.h
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/test_cases.h
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/pressurized.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -257,7 +257,7 @@ deal.II/base/point.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/initial_values/sneddon3d.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -
@@ -287,7 +287,7 @@ stdio.h
 -
 
 /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/include/utils.h
-vector
+deal.II/lac/vector.h
 -
 deal.II/base/tensor.h
 -

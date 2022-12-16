@@ -208,7 +208,7 @@ gmsh.option.setNumber('Mesh.MshFileVersion', 4)
 
 gmsh.model.mesh.generate()
 # Write mesh data:
-gmsh.write("p_notched_cavity.msh")
+gmsh.write(f"p_compression_test_num_holes_{num_holes}.msh")
 # Creates  graphical user interface
 if 'close' not in sys.argv:
     gmsh.fltk.run()

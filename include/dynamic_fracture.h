@@ -20,7 +20,7 @@
 #include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/grid_in.h>
 
-// #include <deal.II/grid/tria_boundary_lib.h>
+
 #include <deal.II/grid/manifold_lib.h>
 #include <deal.II/grid/grid_out.h>
 #include <deal.II/grid/grid_in.h>
@@ -29,7 +29,14 @@
 #include <deal.II/dofs/dof_renumbering.h>
 #include <deal.II/dofs/dof_accessor.h>
 #include <deal.II/dofs/dof_tools.h>
-#include <deal.II/lac/constraint_matrix.h>
+
+#if DEAL_II_VERSION_GTE(9,1,0)
+#  include <deal.II/lac/affine_constraints.h>
+using ConstraintMatrix = dealii::AffineConstraints<double>;
+#else
+#  include <deal.II/lac/constraint_matrix.h>
+#  include <deal.II/grid/tria_boundary_lib.h>
+#endif
 
 #include <deal.II/fe/fe_q.h>
 #include <deal.II/fe/fe_dgq.h>
@@ -203,6 +210,8 @@ public:
   unsigned int penal_iterations;
   double min_cell_diameter;
   bool bool_use_stress_splitting;
+  unsigned int refinement_level;
+  std::string parent_directory_;
  
   double constant_k, alpha_eps, G_c, delta_penal, gamma_penal;
   double upper_newton_rho;

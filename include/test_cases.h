@@ -23,6 +23,7 @@ public:
   ,DYNAMIC_SLIT
   ,P_MESH_1
 	, P_NOTCHED_CAVITY
+	, P_ASYMMETRY
   };
   
   std::set<test_cases> all_cases()  { 
@@ -36,6 +37,7 @@ public:
           ,HET3D
           ,DYNAMIC_SLIT
 					, P_NOTCHED_CAVITY
+					, P_ASYMMETRY
           ,P_MESH_1}; 
  
     }
@@ -51,6 +53,7 @@ public:
     constexpr bool Is_dynamicslit() const { return value == DYNAMIC_SLIT; }
     constexpr bool Is_pmesh1() const { return value == P_MESH_1; }
 		constexpr bool Is_p_notched_cavity() const { return value == P_NOTCHED_CAVITY; }
+    constexpr bool Is_p_asymmetry() const { return value == P_ASYMMETRY; }		
   
   
   

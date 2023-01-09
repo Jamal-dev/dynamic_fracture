@@ -5,10 +5,13 @@
 
 
 import re
-from path import Path
+from pathlib import Path
 
-
-
+import logging
+# log configuration
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# log file configuration
+fh = logging.FileHandler('create_new_test_case.log')
 
 
 def write_code(modify=False, path=None, match_str = None, target_str = None, add_str = None):
@@ -20,7 +23,7 @@ def write_code(modify=False, path=None, match_str = None, target_str = None, add
             lines = f.readlines()
             for i,line in enumerate(lines):
                 if target_str in line:
-                    print(f'file: {path}, has already function: {target_str}')
+                    logging.info(f'file: {path}, has already function: {target_str}')
                     return 
     with open(path, 'r') as f:
         lines = f.readlines()
@@ -62,8 +65,8 @@ def write_code(modify=False, path=None, match_str = None, target_str = None, add
             lines.insert(i+j+1, line)
 
         
-    print(f'Function: {target_str} added to file: {output_file}')
-    print(f'Edit this function at line: {starting_index}')
+    logging.info(f'Function: {target_str} added to file: {output_file}')
+    logging.info(f'Edit this function at line: {starting_index}')
     with open(path, 'w') as f:
         f.writelines(lines)
         
@@ -91,7 +94,7 @@ def write_test_cases(modify=False, path=None, match_str = None, target_name = No
                 if match_str in line:
                     flag = True
                 if flag and target_name in line:
-                    print(f'file: {path}, has already function: {target_name}')
+                    logging.info(f'file: {path}, has already function: {target_name}')
                     return 
     with open(path, 'r') as f:
         lines = f.readlines()
@@ -122,8 +125,8 @@ def write_test_cases(modify=False, path=None, match_str = None, target_name = No
         output_file = path
         
         
-    print(f'Function: {target_name} added to file: {output_file}')
-    print(f'Edit this function at line: {starting_index}')
+    logging.info(f'Function: {target_name} added to file: {output_file}')
+    logging.info(f'Edit this function at line: {starting_index}')
     with open(path, 'w') as f:
         f.writelines(lines)
         if add_str is not None:
@@ -141,7 +144,7 @@ def write_goal_functional(modify=False, path=None, match_str = None, target_name
             lines = f.readlines()
             for i,line in enumerate(lines):
                 if target_name in line:
-                    print(f'file: {path}, has already function: {target_name}')
+                    logging.info(f'file: {path}, has already function: {target_name}')
                     return 
     with open(path, 'r') as f:
         lines = f.readlines()
@@ -155,7 +158,7 @@ def write_goal_functional(modify=False, path=None, match_str = None, target_name
                     tabs_ += '\t'
                 name_field = f'{tabs_} {target_name} ||\n'
                 lines.insert(i+1, name_field)
-                print(f'Added line: {i+2}')
+                logging.info(f'Added line: {i+2}')
                 break
                 
 
@@ -167,8 +170,8 @@ def write_goal_functional(modify=False, path=None, match_str = None, target_name
         output_file = path
         
         
-    print(f'Function: {target_name} added to file: {output_file}')
-    print(f'Edit this function at line: {starting_index}')
+    logging.info(f'Function: {target_name} added to file: {output_file}')
+    logging.info(f'Edit this function at line: {starting_index}')
     with open(path, 'w') as f:
         f.writelines(lines)
         if add_str is not None:
@@ -183,7 +186,7 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
     source_file = Path(path)
     target_file = source_file.parent / Path(f'{target.lower()}.cpp')
     source_name_function = f'void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_{source.lower()} ()'
-    print(f'Adding changes to file: {target_file}')
+    logging.info(f'Adding changes to file: {target_file}')
     target_name_function = f'void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_{target.lower()} ()'
     target_name_function_only = f'set_runtime_parameters_{target.lower()} ();'
     def check_if_already_changed(path,target_line):
@@ -195,7 +198,7 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
         return True
     if not previous_file_modify:
         if target_file.exists():
-            print(f'file: {target_file}, already exists')
+            logging.info(f'file: {target_file}, already exists')
             return
          
     with open(path, 'r') as f:
@@ -203,13 +206,13 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
         for i, line in enumerate(lines):
             if source_name_function in line:
                 lines[i] = target_name_function
-                print(f'Line: {i+1} modified')
+                logging.info(f'Line: {i+1} modified')
             if 'lame_coefficient_mu' in  line or 'lame_coefficient_lambda' in line:
                 break
             for key in parameters.keys():
                 if key in line:
                     lines[i] = f'\t{key} = {parameters[key]};\n'
-                    print(f'Line: {i} modified')
+                    logging.info(f'Line: {i} modified')
 
     with open(target_file, 'w') as f:
         f.writelines(lines)
@@ -220,7 +223,7 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
                 continue
             if "grid_name" in line:
                 lines[i] = f'\t\tgrid_name = "{mesh_path}";\n'
-                print(f'Line: {i} modified')
+                logging.info(f'Line: {i} modified')
                 break
     with open(target_file, 'w') as f:
         f.writelines(lines)
@@ -229,7 +232,7 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
         for i, line in enumerate(lines):
             if "std::string parent_dir" in line:
                 lines[i] = f'\tstd::string parent_dir = "./results/patrick_tests/{target.lower()}";\n'
-                print(f'Line: {i} modified')
+                logging.info(f'Line: {i} modified')
                 break
     with open(target_file, 'w') as f:
         f.writelines(lines)
@@ -238,7 +241,7 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
         for i, line in enumerate(lines):
             if 'filename_basis  = parent_dir + "/"' in line:
                 lines[i] = f'\tfilename_basis  = parent_dir + "/" +  "solution_{target.lower()}_test_";\n'
-                print(f'Line: {i} modified')
+                logging.info(f'Line: {i} modified')
                 break
                     
           
@@ -248,41 +251,41 @@ def write_parameters(previous_file_modify=False, path=None, parameters:dict = No
     target_line = f'#include "source/parameters/{target.lower()}.cpp"'
     target_file = 'dynamic_fracture.cc'
     if check_if_already_changed(target_file,target_line):
-        print('Adding parameters to {target_file} file')
+        logging.info('Adding parameters to {target_file} file')
         with open(target_file,'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
                 if '#include "source/parameters/p_mesh_1.cpp"' in line:
                     lines.insert(i+1, f'{target_line}\n')
-                    print(f'Line: {i+2} Added')
+                    logging.info(f'Line: {i+2} Added')
                     break
         with open(target_file,'w') as f:
             f.writelines(lines)
     target_line = f'else if (current_test_case == test_cases::{target.upper()})'
     target_line_add = f'    set_runtime_parameters_{target}();'
     if check_if_already_changed(target_file,target_line):
-        print(f'Adding parameters to {target_file} file')
+        logging.info(f'Adding parameters to {target_file} file')
         with open(target_file,'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
                 if 'else if (current_test_case == test_cases::P_MESH_1)' in line:
                     lines.insert(i+2, f'\t{target_line}\n')
                     lines.insert(i+3, f'{target_line_add}\n')
-                    print(f'Line: {i+3} Added')
-                    print(f'Line: {i+4} Added')
+                    logging.info(f'Line: {i+3} Added')
+                    logging.info(f'Line: {i+4} Added')
                     break
         with open(target_file,'w') as f:
             f.writelines(lines)
     target_line = f'void {target_name_function_only}'
     target_file = 'include/dynamic_fracture.h'
     if check_if_already_changed(target_file,target_line):
-        print(f'Adding parameters to {target_file} file')
+        logging.info(f'Adding parameters to {target_file} file')
         with open(target_file,'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
                 if 'void set_runtime_parameters_p_mesh_1 ();' in line:
                     lines.insert(i+1, f'\tvoid {target_name_function_only}\n')
-                    print(f'Line: {i+2} Added')
+                    logging.info(f'Line: {i+2} Added')
                     break
         with open(target_file,'w') as f:
             f.writelines(lines)
@@ -298,9 +301,9 @@ def section(text):
     t = ''
     for i in range(len(text)+4):
         t += '='
-    print(t)
-    print(f'== {text} ==')
-    print(t)
+    logging.info(t)
+    logging.info(f'== {text} ==')
+    logging.info(t)
 def calling_functions(parameters,mesh_path):
     section('Adding parameter file')
     path = f'source/parameters/{source.lower()}.cpp'
@@ -380,16 +383,16 @@ def calling_functions(parameters,mesh_path):
 
 def main():
     global target, source
-    target = 'p_notched_cavity'
+    target = 'p_asymmetry'
     source = 'p_mesh_1'
     parameters = dict()
-    parameters['G_c'] = 8e3
-    parameters['density_structure'] = 1.2e3
-    parameters['poisson_ratio_nu'] = 1/3
-    parameters['E_modulus'] = 72000e6
-    parameters['timestep'] = 1e-7
+    parameters['G_c'] = 1.0
+    parameters['density_structure'] = 1.0
+    parameters['poisson_ratio_nu'] = 0.3
+    parameters['E_modulus'] = 2.080e4
+    parameters['timestep'] = 1e-3
     parameters['end_time_value'] = 1e-1
-    mesh_path = f'mesh_files/example2/{target.lower()}.msh'
+    mesh_path = f'mesh_files/example3/assymetric_three_point_bending_1.inp'
     calling_functions(parameters,mesh_path)
 
 if __name__ == '__main__':

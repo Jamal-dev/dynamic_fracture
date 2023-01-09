@@ -32,6 +32,25 @@ bool Dynamic_Fracture_Problem<dim>::refine_mesh()
 	}
 
     }
+  else if (current_test_case.Is_p_asymmetry())
+    {
+      for (unsigned int vertex=0;vertex < GeometryInfo<dim>::vertices_per_cell;++vertex)   	 
+	    {
+	      Tensor<1,dim> cell_vertex = (cell->vertex(vertex));
+	      if (cell_vertex[0] <= 6.0 && cell_vertex[0] >= 3.0 && 
+	      cell_vertex[1] <= 5.0 && cell_vertex[1] >= 0.0) 	  
+	    {
+	      cell->set_refine_flag();
+	      //      break;
+	    }
+
+	      // Refine also bottom and top boundary because
+	      // otherwise artificial cracks are produced
+	      if (cell_vertex[1] == 8.0 || cell_vertex[1] == 0.0)
+		cell->set_refine_flag();
+
+	    } 
+    }
   else if (current_test_case.Is_snedon3d())
     {
       for (; cell!=endc; ++cell)

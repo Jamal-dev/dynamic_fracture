@@ -87,6 +87,14 @@ void Dynamic_Fracture_Problem<dim>::compute_functional_values()
        std::cout << "Stress(y): " << time << "   " << load_value[1] << std::endl;
 
      }
+   else if (current_test_case.Is_p_asymmetry())
+      {
+        // load_value[0] *= -1.0;
+  
+        std::cout << "Stress(x): " << time << "   " << load_value[0] << std::endl;
+        std::cout << "Stress(y): " << time << "   " << load_value[1] << std::endl;
+  
+      }
    else if (current_test_case.Is_l_shaped())
      {
        // TODO (change depending on the mesh)

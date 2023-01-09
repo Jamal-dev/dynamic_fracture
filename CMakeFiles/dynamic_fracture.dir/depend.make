@@ -38,6 +38,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/global.
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/het3d.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/l_shaped.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/miehe.cpp
+CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/p_asymmetry.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/p_mesh_1.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/p_notched_cavity.cpp
 CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o: source/parameters/pressurized.cpp

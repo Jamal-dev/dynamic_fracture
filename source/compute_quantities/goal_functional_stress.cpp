@@ -79,6 +79,7 @@ double Dynamic_Fracture_Problem<dim>::goal_functional_stress_x ()
 
     // load_cases_started
    if (current_test_case.Is_miehe_shear()  || 
+			 current_test_case.Is_p_asymmetry() ||
 			 current_test_case.Is_p_notched_cavity() ||
        current_test_case.Is_miehe_tension()
        || current_test_case.Is_pmesh1()) // load_cases_ended

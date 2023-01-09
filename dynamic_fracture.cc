@@ -41,6 +41,7 @@
 #include "source/parameters/l_shaped.cpp"
 #include "source/parameters/dynamic_slit.cpp"
 #include "source/parameters/p_mesh_1.cpp"
+#include "source/parameters/p_asymmetry.cpp"
 #include "source/parameters/p_notched_cavity.cpp"
 
 
@@ -131,7 +132,7 @@ template <int dim>
 void Dynamic_Fracture_Problem<dim>::run () 
 { 
   // Switch dimension !!
-  current_test_case = test_cases::P_MESH_1;
+  current_test_case = test_cases::P_ASYMMETRY;
   refinement_level = 1;
   // current_test_case = test_cases::P_NOTCHED_CAVITY;
   // Defining test cases
@@ -161,6 +162,8 @@ void Dynamic_Fracture_Problem<dim>::run ()
     set_runtime_parameters_Dynamic_Slit();
   else if (current_test_case == test_cases::P_MESH_1)
     set_runtime_parameters_p_mesh_1();
+	else if (current_test_case == test_cases::P_ASYMMETRY)
+    set_runtime_parameters_p_asymmetry();
 	else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
     set_runtime_parameters_p_notched_cavity();
   else if (current_test_case == test_cases::L_SHAPED)

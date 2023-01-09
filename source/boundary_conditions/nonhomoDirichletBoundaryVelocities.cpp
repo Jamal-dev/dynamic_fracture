@@ -28,18 +28,32 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
 	{
 	  // p_mesh1
 	  dis_step_per_timestep = 1.0;
-	  if (component == comp.disp_y) // u_y
+	  if (component == comp.vel_y) // u_y
 		{
 		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 
 			? 			
 			(1.0)  * dis_step_per_timestep : 0 ); 
 		}
 	}
+else if (_test_case == test_cases::P_ASYMMETRY)
+	{
+	  // Patrick third case
+	  dis_step_per_timestep = 1.0;
+	  if (component == comp.vel_y) // u_y
+		{
+			if ( p(1) == 8.0)
+				{
+						return - 10.0 * std::exp(-( (p(0) - 10.0) * (p(0) - 10.0)/100.0 ) );
+				} 
+			else 
+				return 0.0;
+		}
+	}
 else if (_test_case == test_cases::P_NOTCHED_CAVITY)
 	{
-	  // p_mesh1
+	  // Patrick second case
 	  dis_step_per_timestep = 1.0;
-	  if (component == comp.disp_y) // u_y
+	  if (component == comp.vel_y) // u_y
 		{
 		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 
 			? 			

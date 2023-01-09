@@ -39,6 +39,7 @@ CMakeFiles/dynamic_fracture.dir/dynamic_fracture.cc.o
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/het3d.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/l_shaped.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/miehe.cpp
+ /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_asymmetry.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_mesh_1.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/p_notched_cavity.cpp
  /home/jamal/deal/deal.II-v9.2.0/examples/dynamic_fracture/source/parameters/pressurized.cpp

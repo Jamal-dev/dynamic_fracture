@@ -35,6 +35,21 @@ NonhomDirichletBoundaryValues<dim>::value (const Point<dim>  &p,
 			(1.0) * _time * dis_step_per_timestep : 0 ); 
 		}
 	}
+	else if (_test_case == test_cases::P_ASYMMETRY)
+	{
+      // p_mesh1
+	  dis_step_per_timestep = 1.0;
+      if (component == 1) // u_y
+		{
+			if ( p(1) == 8.0)
+				{
+						return - 10.0 * _time * std::exp(-( (p(0) - 10.0) * (p(0) - 10.0)/100.0 ) );
+				}
+			else 
+				return 0.0;
+		
+		}
+	}
 	else if (_test_case == test_cases::P_NOTCHED_CAVITY)
 	{
       // p_mesh1

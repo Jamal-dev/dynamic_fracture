@@ -142,10 +142,13 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_asymmetry (){
     }
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
-	std::string parent_dir = "./results/patrick_tests/p_asymmetry";
+	std::string parent_dir = "./results/patrick_tests/p_asymmetry/case_" +
+                             std::to_string(refinement_level);
   parent_directory_ = parent_dir;
   create_directory (parent_dir);
-	filename_basis  = parent_dir + "/" +  "solution_p_asymmetry_test_";
+	filename_basis  = parent_dir + "/" +  "solution_p_asymmetry_case_" 
+                                    + std::to_string(refinement_level) + "_"
+                                    + "_test_";
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = true; // if true need to set error_oriented_Newton to false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false

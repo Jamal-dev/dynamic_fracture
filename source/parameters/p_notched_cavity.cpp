@@ -99,8 +99,11 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
   // In the following, we read a *.inp grid from a file.
   std::string grid_name;
   // Comented this part
+  if (refinement_level>3)
+    std::logic_error("Not implemented yet");
+  std::string mesh_file_name = "mesh_files/example2/p_notched_cavity_" + std::to_string(refinement_level) +".msh";
   if (!bool_initial_crack_via_phase_field)
-		grid_name = "mesh_files/example2/p_notched_cavity.msh";
+		grid_name = mesh_file_name;
   else if (bool_initial_crack_via_phase_field)
     std::logic_error("Not implemented yet"); 
  
@@ -115,10 +118,10 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
   triangulation.refine_global (global_refinement_steps); 
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
-	std::string parent_dir = "./results/patrick_tests/p_notched_cavity";
+	std::string parent_dir = "./results/patrick_tests/p_notched_cavity_" + std::to_string(refinement_level);
   
   create_directory (parent_dir);
-	filename_basis  = parent_dir + "/" +  "solution_p_notched_cavity_test_";
+	filename_basis  = parent_dir + "/" +  "solution_p_notched_cavity_" +  std::to_string(refinement_level) + "test_";
   bool_use_error_oriented_Newton = false;
   bool_use_modified_Newton = true; // if true need to set error_oriented_Newton to false
   bool_set_explicitely_delta_fp = false; // if true, must set use_modified Newton to false

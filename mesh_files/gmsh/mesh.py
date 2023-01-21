@@ -8,7 +8,7 @@ import sys
 
 
 # square points:
-lc_list = [0.1, 0.1/2,0.1/4]
+lc_list = [0.1, 0.1/1.5,0.1/4]
 for i, lc in enumerate(lc_list):
     # Initialize gmsh:
     gmsh.initialize()

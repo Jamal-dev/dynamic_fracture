@@ -60,17 +60,6 @@ else if (_test_case == test_cases::P_NOTCHED_CAVITY)
 			(1.0)  * dis_step_per_timestep : 0 ); 
 		}
 	}
-else if (_test_case == test_cases::P_NOTCHED_CAVITY)
-	{
-	  // p_mesh1
-	  dis_step_per_timestep = 1.0;
-	  if (component == comp.disp_y) // u_y
-		{
-		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 
-			? 			
-			(1.0)  * dis_step_per_timestep : 0 ); 
-		}
-	}
 
 
   else if (_test_case.Is_dynamicslit())

@@ -217,17 +217,19 @@ else if (current_test_case == test_cases::P_NOTCHED_CAVITY)
 			right_edge,     0
 			top_edge,       3
 			bottom_edge,    2
-			crack_bottom,   4
-			crack_top,      5
+			circle_edge,    5
 		*/
-		component_mask[0]       = false;
-		component_mask[1]     = false;
-		component_mask[dim+1]     = false;
-		component_mask[dim+2]     = false;
+		// fix hole to 0
+		component_mask[0]     = true;
+		component_mask[1]     = true;
+		component_mask[2]     = false;
+		component_mask[dim+1]     = true;
+		component_mask[dim+2]     = true;
 		VectorTools::interpolate_boundary_values (dof_handler,
-							0,
-							ZeroFunction<dim>(dim+1+dim), 
-							constraints,				
+							5,
+							ZeroFunction<dim>(dim+1+dim),
+							//NonhomDirichletBoundaryValues<dim>(time),
+							boundary_values,
 							component_mask);  
 
 	

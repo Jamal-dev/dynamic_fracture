@@ -35,3 +35,11 @@
 results/*
 CMakeFiles/*
 build/*
+**/CMakeFiles/
+CMakeCache.txt
+Makefile
+.create_test_case.sh.swp
+.ipynb_checkpoints/
+.vscode/
+mesh_files/gmsh/mesh_1.msh.opt
+mesh_files/gmsh/test.vtk

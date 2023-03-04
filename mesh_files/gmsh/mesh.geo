@@ -1,6 +1,6 @@
 Mesh.SaveParametric = 1;
 Mesh.Algorithm = 8;
-cl__1 = 5;
+cl__1 = 0.1;
 Point(1) = {0, 10, 0, cl__1};
 Point(2) = {5, 10, 0, cl__1};
 Point(3) = {10, 10, 0, cl__1};

@@ -6,6 +6,7 @@
 #include <deal.II/grid/manifold_lib.h>
 #include <deal.II/grid/grid_out.h>
 #include <deal.II/grid/grid_in.h>
+#include <deal.II/dofs/dof_handler.h>
  
 #include <iostream>
 #include <fstream>
@@ -14,14 +15,22 @@
  
 using namespace dealii;
  
- 
+
 template <int dim>
 void print_mesh_info(const Triangulation<dim> &triangulation,
                      const std::string &       filename)
 {
+  DoFHandler<2>      dof_handler(triangulation);
+
+  double min_cell_diameter;
+  double alpha_eps;
+  min_cell_diameter = dof_handler.begin(0)->diameter();
+  alpha_eps = 2 * min_cell_diameter;
   std::cout << "Mesh info:" << std::endl
             << " dimension: " << dim << std::endl
             << " no. of cells: " << triangulation.n_active_cells() << std::endl;
+  std::cout<< "h:"<<min_cell_diameter<<std::endl
+  	   << "l0:"<<alpha_eps<<std::endl;
  
   {
     std::map<types::boundary_id, unsigned int> boundary_count;
@@ -55,8 +64,8 @@ void grid_1()
   // std::string file_name = "mesh_files/mesh-new-1.msh";
   // std::string file_name = "mesh_files/mesh-1.msh";
   // std::string file_name = "mesh_files/gmsh/mesh.inp";
-  // std::string file_name = "mesh_files/gmsh/mesh.msh";
-  std::string file_name = "mesh_files/example2/p_mesh_1.msh";
+  std::string file_name = "mesh_files/gmsh/mesh_1.msh";
+  // std::string file_name = "mesh_files/example2/p_mesh_1.msh";
   std::ifstream f(file_name.c_str());
   if (file_name.find(".inp")!= std::string::npos)
     { 

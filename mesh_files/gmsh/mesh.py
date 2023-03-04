@@ -82,7 +82,7 @@ for i, lc in enumerate(lc_list):
     # Write mesh data:
     gmsh.write(f"mesh_{i+1}.msh")
     # Creates  graphical user interface
-    # if 'close' not in sys.argv:
-    #     gmsh.fltk.run()
+    if 'close' not in sys.argv:
+    	gmsh.fltk.run()
     # It finalize t
     gmsh.finalize()

@@ -119,7 +119,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
 	std::string parent_dir = "./results/patrick_tests/p_notched_cavity_" + std::to_string(refinement_level);
-  
+  parent_directory_ = parent_dir;
   create_directory (parent_dir);
 	filename_basis  = parent_dir + "/" +  "solution_p_notched_cavity_" +  std::to_string(refinement_level) + "test_";
   bool_use_error_oriented_Newton = false;

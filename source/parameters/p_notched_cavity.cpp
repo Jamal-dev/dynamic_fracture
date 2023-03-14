@@ -14,7 +14,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
   current_pressure = 0.0; 
   alpha_biot = 0.0;
 
-	G_c = 8000.0;
+	G_c = 1500.0;
   delta_penal = 0.0; // simple penalization
   gamma_penal = 1.0; //  augmented Lagrangian penalization
 
@@ -34,10 +34,10 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
 
 	density_structure = 1200.0;
 	poisson_ratio_nu = 0.3333333333333333;
-	E_modulus = 72000000000.0;
+	E_modulus = 2e11;
   // Timestep size:
-	timestep = 1e-07;
-	end_time_value = 0.1;
+	timestep = 1e-06;
+	end_time_value = 0.00375;
   // Structure parameters
   lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));
 

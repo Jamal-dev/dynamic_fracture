@@ -27,7 +27,7 @@ NonhomDirichletBoundaryVelocity <dim>::value (const Point<dim>  &p,
   else if (_test_case == test_cases::P_MESH_1)
 	{
 	  // p_mesh1
-	  dis_step_per_timestep = 1.0;
+	  dis_step_per_timestep = 0.1;
 	  if (component == comp.vel_y) // u_y
 		{
 		return ( ((p(1) == 10.0) && (p(0) <= 10.0) && (p(0) >= 0.0)) 

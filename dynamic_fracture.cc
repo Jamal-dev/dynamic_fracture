@@ -133,7 +133,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
 { 
   // Switch dimension !!
   // current_test_case = test_cases::P_ASYMMETRY;
-  refinement_level = 3;
+  refinement_level = 1;
   current_test_case = test_cases::P_NOTCHED_CAVITY;
   // Defining test cases
   // test_case = "dynamic_slit";
@@ -192,7 +192,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
   
   setup_system();
 
-  write_rutime_parameters_csv();
+  
 
 
   if (current_test_case == test_cases::SNEDDON3D 
@@ -205,7 +205,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
 
 
   min_cell_diameter = 1.0e+10;
-  /*
+  
   typename DoFHandler<dim>::active_cell_iterator
     cell = dof_handler.begin_active(),
     endc = dof_handler.end();
@@ -213,25 +213,25 @@ void Dynamic_Fracture_Problem<dim>::run ()
   for (; cell!=endc; ++cell)
     { 
       cell_diameter = cell->diameter();
-      if (min_cell_diameter > cell_diameter)
-	min_cell_diameter = cell_diameter;	
+      if (cell_diameter  < min_cell_diameter)
+	      min_cell_diameter = cell_diameter;	
       
     }
-  */
   
-  min_cell_diameter = dof_handler.begin(0)->diameter();
-  min_cell_diameter *= std::pow(2.,-1.0*( global_refinement_steps  +  pred_corr_levels ));
+  
+  // min_cell_diameter = dof_handler.begin(0)->diameter();
+  // min_cell_diameter *= std::pow(2.,-1.0*( global_refinement_steps  +  pred_corr_levels ));
   std::cout << "Min cell dia: " << min_cell_diameter << std::endl;
 
 
   // Set phase-field parameters
   constant_k = 1.0e-12;// * min_cell_diameter;
   // TODO - adjust according to mesh levels
-  alpha_eps =  2.0 * min_cell_diameter; 
+  alpha_eps =  3.0 * min_cell_diameter; 
 
   //if (test_case == "miehe_shear")
   //  alpha_eps =  0.0884;
-  
+  write_rutime_parameters_csv();
 
   std::cout << "\n==============================" 
 	    << "====================================="  << std::endl;

@@ -102,7 +102,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
   // Comented this part
   if (refinement_level>3)
     std::logic_error("Not implemented yet");
-  std::string mesh_file_name = "mesh_files/gmsh/mesh_" + std::to_string(refinement_level) +".msh";
+  std::string mesh_file_name = "mesh_files/example1/mesh_" + std::to_string(refinement_level) +".msh";
   if (!bool_initial_crack_via_phase_field)
     grid_name  = mesh_file_name;
   else if (bool_initial_crack_via_phase_field)

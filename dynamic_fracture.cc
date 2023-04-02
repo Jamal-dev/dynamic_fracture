@@ -133,7 +133,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
 { 
   // Switch dimension !!
   // current_test_case = test_cases::P_ASYMMETRY;
-  refinement_level = 2;
+  refinement_level = 1;
   current_test_case = test_cases::P_NOTCHED_CAVITY;
   // Defining test cases
   // test_case = "dynamic_slit";
@@ -280,6 +280,7 @@ void Dynamic_Fracture_Problem<dim>::run ()
                   }
                 else 
                 {
+                  cout<<"InitialValuesPhaseField is used"<<endl;
                   VectorTools::project (dof_handler,
                       constraints,
                       QGauss<dim>(degree+2),

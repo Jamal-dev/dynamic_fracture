@@ -37,8 +37,8 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
   poisson_ratio_nu = 0.3;//0.3; 
   E_modulus = 2e11;//2e11; // pa
   // Timestep size:
-  timestep = 1.0e-7;//1.0e-7; //1.0e-4;
-  end_time_value = 1.0e-2;//1.0e-2; // Crack reaches lower left around 1.3e-2 sec
+  timestep = 1.0e-5;//1.0e-7; //1.0e-4;
+  end_time_value = 0.00375;//1.0e-2; // Crack reaches lower left around 1.3e-2 sec
   // Structure parameters
   lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));
 

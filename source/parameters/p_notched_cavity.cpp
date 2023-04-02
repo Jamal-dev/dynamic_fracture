@@ -36,7 +36,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_notched_cavity (){
 	poisson_ratio_nu = 0.3333333333333333;
 	E_modulus = 2e11;
   // Timestep size:
-	timestep = 1e-06;
+	timestep = 1e-05;
 	end_time_value = 0.00375;
   // Structure parameters
   lame_coefficient_mu = E_modulus / (2.0 * (1 + poisson_ratio_nu));

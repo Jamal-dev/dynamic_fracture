@@ -9,6 +9,7 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
   // it does not have anything with boundary condition
   // changed bool_initial_crack_via_phase_field = false;
   bool_initial_crack_via_phase_field = false;
+  bool perfect_slit_case = true;
   
 
   // Parameters
@@ -102,7 +103,11 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
   // Comented this part
   if (refinement_level>3)
     std::logic_error("Not implemented yet");
-  std::string mesh_file_name = "mesh_files/example1/mesh_" + std::to_string(refinement_level) +".msh";
+  std::string mesh_file_name;
+  if (perfect_slit_case)
+    mesh_file_name = "mesh_files/example1/perfect_slit.inp";
+  else 
+    mesh_file_name = "mesh_files/example1/mesh_" + std::to_string(refinement_level) +".msh";
   if (!bool_initial_crack_via_phase_field)
     grid_name  = mesh_file_name;
   else if (bool_initial_crack_via_phase_field)
@@ -112,11 +117,32 @@ void Dynamic_Fracture_Problem<dim>::set_runtime_parameters_p_mesh_1 ()
   grid_in.attach_triangulation (triangulation);
   std::ifstream input_file(grid_name.c_str());      
   Assert (dim==2, ExcInternalError());
-  grid_in.read_msh(input_file); 
+  if (perfect_slit_case)
+    grid_in.read_ucd(input_file);
+  else
+    grid_in.read_msh(input_file); 
   
-  global_refinement_steps = 0;
+  if (perfect_slit_case)
+    {
+      if (refinement_level == 1)
+        global_refinement_steps = 4;
+      else if (refinement_level == 2)
+        global_refinement_steps = 5;
+      else if (refinement_level == 3)
+        global_refinement_steps = 6;
+      }
+  else
+    global_refinement_steps = 0;
   pred_corr_levels = 1;
   triangulation.refine_global (global_refinement_steps); 
+  // if perfect slit then write the mesh as vtk file
+  if (perfect_slit_case)
+  {
+    std::string mesh_file_name = "mesh_files/example1/mesh_" + std::to_string(refinement_level) +".vtk";
+    std::ofstream out (mesh_file_name);
+    GridOut grid_out;
+    grid_out.write_vtk (triangulation, out);
+  }
 
   //filename_basis  = "solution_Miehe_eps_2h_ref_6_delta_0_"; 
   std::string parent_dir = "./results/patrick_tests/example1/mesh_" + std::to_string(refinement_level) ;
